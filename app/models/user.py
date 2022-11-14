@@ -16,6 +16,8 @@ class User(db.Model, UserMixin):
     updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)
     hashed_password = db.Column(db.String(255), nullable=False)
 
+    servers = db.relationship('Server', back_populates='users', cascade='all, delete-orphan')
+
     @property
     def password(self):
         return self.hashed_password
@@ -32,5 +34,8 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'username': self.username,
             'email': self.email,
-            'profile_picture' : self.profile_picture
+            'first_name' : self.first_name,
+            'last_name' : self.last_name,
+            'profile_picture' : self.profile_picture,
+            'owned_servers' : [{'server_id': server.id, 'name' : server.name, 'icon': server.icon_img} for server in self.servers]
         }
