@@ -18,6 +18,7 @@ class User(db.Model, UserMixin):
 
     servers = db.relationship('Server', back_populates='users', cascade='all, delete-orphan')
     server_messages = db.relationship('ServerMessage', back_populates='users', cascade='all, delete-orphan')
+    server_members = db.relationship('ServerMember', back_populates='users', cascade='all, delete-orphan')
 
     @property
     def password(self):
@@ -38,5 +39,6 @@ class User(db.Model, UserMixin):
             'first_name' : self.first_name,
             'last_name' : self.last_name,
             'profile_picture' : self.profile_picture,
-            'owned_servers' : [{'server_id': server.id, 'name' : server.name, 'icon': server.icon_img} for server in self.servers]
+            'owned_servers' : [{'server_id': server.id, 'name' : server.name, 'server_icon': server.server_icon} for server in self.servers],
+            'server_messages' : [{'id' : message.id, 'body' : message.body, 'image' : message.image} for message in self.server_messages]
         }

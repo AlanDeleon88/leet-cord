@@ -8,18 +8,19 @@ class Server(db.Model):
     name = db.Column(db.String(40), nullable=False)
     description = db.Column(db.String(255), nullable=True)
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    icon_img = db.Column(db.String(255), nullable=False, default='https://i.imgur.com/bRfwYF3.png')
+    server_icon = db.Column(db.String(255), nullable=False, default='https://i.imgur.com/bRfwYF3.png')
     created_at = db.Column(db.DateTime, default=datetime.now)
     updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)
 
     users = db.relationship('User', back_populates='servers', single_parent=True)
     channels = db.relationship('Channel', back_populates='servers', cascade='all, delete-orphan')
+    server_members = db.relationship('ServerMember', back_populates='servers', cascade='all, delete-orphan')
 
     def to_dict(self):
         return {
             'id': self.id,
             'name' : self.name,
             'owner_id' : self.owner_id,
-            'icon_img' : self.icon_img,
+            'server_icon' : self.server_icon,
             'channels' : [{'channel_id' : channel.id, 'name' : channel.name, 'description' : channel.description} for channel in self.channels]
         }
