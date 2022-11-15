@@ -23,6 +23,8 @@ class User(db.Model, UserMixin):
     dm_left = db.relationship('DmRoom', foreign_keys='DmRoom.user1_id')
     dm_right = db.relationship('DmRoom', foreign_keys='DmRoom.user2_id')
 
+    direct_messages = db.relationship('DirectMessage', foreign_keys='DirectMessage.sender_id')
+
     @property
     def password(self):
         return self.hashed_password
@@ -43,5 +45,6 @@ class User(db.Model, UserMixin):
             'last_name' : self.last_name,
             'profile_picture' : self.profile_picture,
             'owned_servers' : [{'server_id': server.id, 'name' : server.name, 'server_icon': server.server_icon} for server in self.servers],
-            'server_messages' : [{'id' : message.id, 'body' : message.body, 'image' : message.image} for message in self.server_messages]
+            'server_messages' : [{'id' : message.id, 'channel_id' : message.channel_id, 'body' : message.body, 'img' : message.img} for message in self.server_messages],
+            'direct_messages' : [{'id' : message.id, 'dm_room_id' : message.dm_room_id,'body' : message.body, 'img' : message.img} for message in self.direct_messages]
         }
