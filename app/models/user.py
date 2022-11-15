@@ -20,6 +20,9 @@ class User(db.Model, UserMixin):
     server_messages = db.relationship('ServerMessage', back_populates='users', cascade='all, delete-orphan')
     server_members = db.relationship('ServerMember', back_populates='users', cascade='all, delete-orphan')
 
+    dm_left = db.relationship('DmRoom', foreign_keys='DmRoom.user1_id')
+    dm_right = db.relationship('DmRoom', foreign_keys='DmRoom.user2_id')
+
     @property
     def password(self):
         return self.hashed_password

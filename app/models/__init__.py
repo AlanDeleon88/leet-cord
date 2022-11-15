@@ -5,3 +5,4 @@ from .channels import Channel
 from .server_messages import ServerMessage
 from .permissions import Permission
 from .server_members import ServerMember
+from .dm_rooms import DmRoom
