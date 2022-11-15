@@ -22,4 +22,4 @@ def seed_servers():
 
 def undo_servers():
     db.session.execute('DELETE FROM servers;')
-    db.sesison.commit()
+    db.session.commit()

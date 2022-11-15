@@ -13,6 +13,7 @@ class Server(db.Model):
     updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)
 
     users = db.relationship('User', back_populates='servers', single_parent=True)
+    channels = db.relationship('Channel', back_populates='servers', cascade='all, delete-orphan')
 
     def to_dict(self):
         return {
@@ -20,4 +21,5 @@ class Server(db.Model):
             'name' : self.name,
             'owner_id' : self.owner_id,
             'icon_img' : self.icon_img,
+            'channels' : [{'channel_id' : channel.id, 'name' : channel.name, 'description' : channel.description} for channel in self.channels]
         }
