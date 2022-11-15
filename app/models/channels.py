@@ -11,11 +11,13 @@ class Channel(db.Model):
     updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)
 
     servers = db.relationship('Server', back_populates='channels', single_parent=True)
+    server_messages = db.relationship('ServerMessage', back_populates='channels', cascade='all, delete-orphan')
 
     def to_dict(self):
         return{
             'id' : self.id,
             'name' : self.name,
             'description' : self.description,
-            'server_id' : self.server_id
+            'server_id' : self.server_id,
+            'server_messages' : [{'message_id' : message.id, 'sender_id' : message.sender_id, 'body' : message.body, 'img' : message.img} for message in self.server_messages]
         }

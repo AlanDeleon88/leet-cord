@@ -17,6 +17,7 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
 
     servers = db.relationship('Server', back_populates='users', cascade='all, delete-orphan')
+    server_messages = db.relationship('ServerMessage', back_populates='users', cascade='all, delete-orphan')
 
     @property
     def password(self):
