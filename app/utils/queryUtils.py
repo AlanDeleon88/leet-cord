@@ -17,3 +17,18 @@ def buildUserDict(user):
         return user_dict
     else:
         return user_dict
+
+def buildServerDict(server):
+    server_dict = server.to_dict()
+    server_dict['members'] = []
+
+    for server in server.server_members:
+        server_member = User.query.get(server.user_id)
+        permission = Permission.query.get(server.permission_id)
+        member = {'id' : server_member.id,
+                  'username' : server_member.username,
+                  'profile_picture' : server_member.profile_picture,
+                  'permission' : permission.permission
+                }
+        server_dict['members'].append(member)
+    return server_dict
