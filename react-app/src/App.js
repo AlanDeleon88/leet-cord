@@ -43,6 +43,10 @@ function App() {
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
         </ProtectedRoute>
+        <ProtectedRoute path= '/debug-forms' exact={true}>
+          Add debuging forms here for creating servers/channels/messages
+          <h1>TESTING!!</h1>
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );

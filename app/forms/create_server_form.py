@@ -5,4 +5,4 @@ from wtforms.validators import DataRequired
 class CreateServer(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])
     description = StringField('Description')
-    icon_img = StringField('Icon')
+    server_icon = StringField('Icon')

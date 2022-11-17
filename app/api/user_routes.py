@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, DmRoom, db
-from app.utils import queryUtils
+from app.utils import buildUserDict
 from app.forms import EditProfilePicture
 from app.forms import EditUsername
 from app.utils import queryUtils
@@ -53,10 +53,10 @@ def edit_profile_picture(id):
     if form.validate_on_submit():
         user.profile_picture = form.data['profile_picture']
         db.session.commit()
-        user_dict = queryUtils.buildUserDict(user)
+        user_dict = buildUserDict(user)
         return user_dict
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
-    
+
 #! still needs testing
 @user_routes.route('/<int:id>/username', methods=['PUT'])
 @login_required
