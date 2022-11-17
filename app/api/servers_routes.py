@@ -23,7 +23,7 @@ def validation_errors_to_error_messages(validation_errors):
 @login_required
 def get_all_servers():
     servers = Server.query.all()
-    return {'servers' : [server.to_dict()] for server in servers}
+    return {'servers' : [server.to_dict() for server in servers]}
 
 @server_routes.route('/<int:id>')
 @login_required
@@ -47,29 +47,41 @@ def new_server():
             server = Server(
                 name = form.data['name'],
                 owner_id = current_user.id,
-                server_icon = ['server_icon']
+                server_icon = form.data['server_icon'],
+                description = form.data['description']
             )
+            db.session.add(server)
+            db.session.commit()
+
             general_channel = Channel(
                 name = 'general',
                 description = 'general chat',
                 server_id = server.id
             )
-            db.session.add(server)
+
             db.session.add(general_channel)
             db.session.commit()
+            server_dict = buildServerDict(server)
+            return server_dict()
         else:
             server = Server(
                 name = form.data['name'],
-                owner_id = current_user.id
+                owner_id = current_user.id,
+                description = form.data['description']
             )
+
+            db.session.add(server)
+            db.session.commit()
+
             general_channel = Channel(
                 name = 'general',
                 description = 'general chat',
                 server_id = server.id
             )
-            db.session.add(server)
             db.session.add(general_channel)
             db.session.commit()
+            server_dict = buildServerDict(server)
+            return server_dict
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 @server_routes.route('/<int:id>/name', methods = ['PUT'])

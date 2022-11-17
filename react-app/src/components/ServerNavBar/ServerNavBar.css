@@ -1,0 +1,26 @@
+.server-icon{
+    height: 60px;
+    width: 60px;
+    border-radius: 100px;
+}
+
+.nav-bar-container{
+    background-color: blue;
+    border: black solid 1px;
+    width : fit-content
+
+}
+
+.server-list{
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    background-color: red;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.server-list > li{
+    list-style-type: none;
+
+}

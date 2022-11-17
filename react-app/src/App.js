@@ -8,6 +8,8 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
+import ServerNavBar from './components/ServerNavBar';
+import DebugForms from './components/DebugForms/DebugForms';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -26,7 +28,10 @@ function App() {
 
   return (
     <BrowserRouter>
+     <div className='main'>
+     {/* {user && <NavBar />} code to only render nav bar when logged in*/}
       <NavBar />
+      <ServerNavBar /> {/* only show up if user is logged in*/}
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />
@@ -45,9 +50,21 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path= '/debug-forms' exact={true}>
           Add debuging forms here for creating servers/channels/messages
-          <h1>TESTING!!</h1>
+          <DebugForms />
+
         </ProtectedRoute>
+        {/* {user ? ( code needed here to redirect to a log in page if user not signed in.
+          <Route path="/" exact={true}>
+            <HomeFeed />
+          </Route>
+        ) : (
+          <Route path="/" exact={true}>
+            <LoginPage />
+          </Route>
+        )} */}
       </Switch>
+
+     </div>
     </BrowserRouter>
   );
 }
