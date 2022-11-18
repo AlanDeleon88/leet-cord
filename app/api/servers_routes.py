@@ -1,7 +1,6 @@
 from flask import Blueprint, jsonify, session, request
 from app.models import User, Server, Channel, db
-from app.forms import CreateServer, EditServerIcon, EditServerName
-from app.forms import EditServerName
+from app.forms import CreateServer, EditServerIcon, EditServerName, EditServerDescription
 from flask_login import current_user, login_user, logout_user, login_required
 from app.utils import buildServerDict
 
@@ -84,31 +83,61 @@ def new_server():
             return server_dict
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
+
+#! try to refactor server edits into a single route later
 @server_routes.route('/<int:id>/name', methods = ['PUT'])
 @login_required
 def edit_server_name(id):
     server = Server.query.get(id)
+    if current_user.id != server.owner_id:
+        return {'error' : 'server doest not belong to current user'}, 401
     form = EditServerName()
+    form['csrf_token'].data = request.cookies['csrf_token']
     if not server:
-        return {'errors' : 'could not find server with that id'}
+        return {'errors' : 'could not find server with that id'}, 404
 
     if form.validate_on_submit():
         server.name = form.data['name']
-        db.commit()
+        db.session.commit()
+        server_dict = buildServerDict(server)
+        return server_dict
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+@server_routes.route('/<int:id>/desc', methods = ['PUT'])
+@login_required
+def edit_server_decsription(id):
+    server = Server.query.get(id)
+    if current_user.id != server.owner_id:
+        return {'error' : 'server doest not belong to current user'}, 401
+    form = EditServerDescription()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if not server:
+        return {'errors' : 'could not find server with that id'}, 404
+
+    if form.validate_on_submit():
+        server.description = form.data['description']
+        db.session.commit()
+        server_dict = buildServerDict(server)
+        return server_dict
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 @server_routes.route('/<int:id>/server_icon', methods = ['PUT'])
 @login_required
 def edit_server_icon(id):
     server = Server.query.get(id)
+    if current_user.id != server.owner_id:
+        return {'error' : 'server doest not belong to current user'}, 404
     form = EditServerIcon()
+    form['csrf_token'].data = request.cookies['csrf_token']
 
     if not server:
-        return{'errors' : 'could not find server with that id'}
+        return{'errors' : 'could not find server with that id'}, 401
 
     if form.validate_on_submit():
-        server.name = form.data['server_icon']
-        db.commit()
+        server.server_icon = form.data['server_icon']
+        db.session.commit()
+        server_dict = buildServerDict(server)
+        return server_dict
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 @server_routes.route('/<int:id>',methods=['DELETE'])
@@ -120,4 +149,4 @@ def delete_server(id):
         db.session.delete(server)
         db.session.commit()
         return {'deletedServerId' : id}
-    return {'errors' : 'server could not be found with that id'}
+    return {'errors' : 'server could not be found with that id'}, 404

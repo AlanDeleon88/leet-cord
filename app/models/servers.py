@@ -22,5 +22,6 @@ class Server(db.Model):
             'name' : self.name,
             'owner_id' : self.owner_id,
             'server_icon' : self.server_icon,
+            'description' : self.description,
             'channels' : [{'channel_id' : channel.id, 'name' : channel.name, 'description' : channel.description} for channel in self.channels]
         }
