@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, session, request
-from app.models import User, Server, Channel, db
-from app.forms import CreateServer, EditServerIcon, EditServerName, EditServerDescription
+from app.models import User, Server, Channel, ServerMember, db
+from app.forms import CreateServer, EditServerIcon, EditServerName, EditServerDescription, CreateChannel
 from flask_login import current_user, login_user, logout_user, login_required
 from app.utils import buildServerDict
 
@@ -52,6 +52,7 @@ def new_server():
             db.session.add(server)
             db.session.commit()
 
+            #* create a default general channel for new server.
             general_channel = Channel(
                 name = 'general',
                 description = 'general chat',
@@ -60,6 +61,17 @@ def new_server():
 
             db.session.add(general_channel)
             db.session.commit()
+
+            #* add association to server members for newly created server.
+            server_member = ServerMember(
+                user_id = current_user.id,
+                server_id = server.id,
+                permission_id = 3
+            )
+
+            db.session.add(server_member)
+            db.session.commit()
+
             server_dict = buildServerDict(server)
             return server_dict()
         else:
@@ -72,6 +84,7 @@ def new_server():
             db.session.add(server)
             db.session.commit()
 
+            #* create default channel for new server.
             general_channel = Channel(
                 name = 'general',
                 description = 'general chat',
@@ -79,8 +92,42 @@ def new_server():
             )
             db.session.add(general_channel)
             db.session.commit()
+
+            #* add association to server members for newly created server.
+            server_member = ServerMember(
+                user_id = current_user.id,
+                server_id = server.id,
+                permission_id = 3
+            )
+
+            db.session.add(server_member)
+            db.session.commit()
             server_dict = buildServerDict(server)
             return server_dict
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+@server_routes.route('/<int:id>/channels', methods=['POST'])
+@login_required
+def add_channel(id):
+    '''
+        add new channel to server
+    '''
+    server = Server.query.get(id)
+    form = CreateChannel()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if not server:
+        return {'error' : 'server not found with that id'}, 404
+
+    if form.validate_on_submit():
+        new_channel = Channel(
+            server_id = id,
+            name = form.data['name'],
+            description = form.data['description']
+        )
+        db.session.add(new_channel)
+        db.session.commit()
+        return new_channel.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
@@ -88,6 +135,9 @@ def new_server():
 @server_routes.route('/<int:id>/name', methods = ['PUT'])
 @login_required
 def edit_server_name(id):
+    '''
+        edit server name
+    '''
     server = Server.query.get(id)
     if current_user.id != server.owner_id:
         return {'error' : 'server doest not belong to current user'}, 401
@@ -106,6 +156,9 @@ def edit_server_name(id):
 @server_routes.route('/<int:id>/desc', methods = ['PUT'])
 @login_required
 def edit_server_decsription(id):
+    '''
+        edit serer description
+    '''
     server = Server.query.get(id)
     if current_user.id != server.owner_id:
         return {'error' : 'server doest not belong to current user'}, 401
@@ -124,6 +177,9 @@ def edit_server_decsription(id):
 @server_routes.route('/<int:id>/server_icon', methods = ['PUT'])
 @login_required
 def edit_server_icon(id):
+    '''
+        edit server icon
+    '''
     server = Server.query.get(id)
     if current_user.id != server.owner_id:
         return {'error' : 'server doest not belong to current user'}, 404

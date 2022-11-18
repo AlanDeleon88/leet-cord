@@ -24,7 +24,8 @@ def authenticate():
     Authenticates a user.
     """
     if current_user.is_authenticated:
-        return current_user.to_dict()
+        user_dict = buildUserDict(current_user)
+        return user_dict
     return {'errors': ['Unauthorized']}
 
 
@@ -74,7 +75,8 @@ def sign_up():
         db.session.add(user)
         db.session.commit()
         login_user(user)
-        return user.to_dict()
+        user_dict = buildUserDict(user)
+        return user_dict
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 

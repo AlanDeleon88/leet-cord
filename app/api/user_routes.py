@@ -33,6 +33,18 @@ def user(id):
     user_dict = queryUtils.buildUserDict(user)
     return user_dict
 
+@user_routes.route('/<int:id>/servers')
+@login_required
+def get_user_servers(id):
+    '''
+        get all servers the current user is associated with. IE get server Members list from user.
+    '''
+    user = User.query.get(id)
+    if not user:
+        return {'error' : 'user couldnt be found'}
+    user_dict = buildUserDict(user)
+    return {'servers' : user_dict['servers']}
+
 
 #! still needs testing
 @user_routes.route('/<int:id>/profile_picture', methods=['PUT'])

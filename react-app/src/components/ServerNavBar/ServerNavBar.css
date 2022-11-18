@@ -5,7 +5,7 @@
 }
 
 .nav-bar-container{
-    background-color: blue;
+    background-color:	#1e2124;
     border: black solid 1px;
     width : fit-content
 
@@ -15,12 +15,28 @@
     padding: 5px;
     display: flex;
     flex-direction: column;
-    background-color: red;
+    background-color:	#1e2124;
     align-items: flex-start;
     justify-content: flex-start;
 }
 
 .server-list > li{
     list-style-type: none;
+    margin-bottom: 5px;
 
+}
+
+.default-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    /* border: black solid 1px; */
+    font-size: 30px;
+    font-weight: bold;
+    height:60px;
+    width: 60px;
+    padding-bottom: 0px;
+    background-color: #424549;
+    color: whitesmoke;
 }

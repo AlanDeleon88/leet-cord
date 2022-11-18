@@ -8,7 +8,7 @@ class Server(db.Model):
     name = db.Column(db.String(40), nullable=False)
     description = db.Column(db.String(255), nullable=True)
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    server_icon = db.Column(db.String(255), nullable=False, default='https://i.imgur.com/bRfwYF3.png')
+    server_icon = db.Column(db.String(255), nullable=True)
     created_at = db.Column(db.DateTime, default=datetime.now)
     updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)
 

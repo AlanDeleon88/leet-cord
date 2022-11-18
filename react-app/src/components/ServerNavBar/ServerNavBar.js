@@ -14,6 +14,7 @@ const ServerNavBar = () =>{
 
 
     useEffect(() => {
+        //! Eventually change this to all servers associated with logged in user.
         dispatch(getServers()).then(() =>{
             setIsLoaded(true)
         })
@@ -29,7 +30,17 @@ const ServerNavBar = () =>{
                             return(
                                 <li key={el.id}>
                                     <div data-tip={el.name} data-for='serverName' data-place='right'>
-                                        <img src={el.server_icon} className='server-icon'/> {/* make nav link later */}
+                                        {el.server_icon ?
+                                            (
+                                            <>
+                                                <img src={el.server_icon} className='server-icon'/> {/* make nav link later, with activeClassName might have to use states to toggle the cursor on and off..*/}
+                                            </>
+                                            )
+                                                :
+                                            (<>
+                                                    <div className='default-icon'> {el.name[0]}  </div>
+                                            </>)
+                                    }
                                     </div>
                                     <ReactTooltip id='serverName' />
                                 </li>

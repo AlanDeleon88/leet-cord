@@ -63,6 +63,13 @@ const DebugForms = () =>{
             })
 
         })
+        if(response.ok){
+            let data = await response.json()
+            dispatch(getServers())
+            setServerName('')
+            setServerDesc('')
+            setServerIcon('')
+        }
     }
 
     const handleServerNameEdit = async (e) =>{

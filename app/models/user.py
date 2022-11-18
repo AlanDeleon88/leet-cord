@@ -44,7 +44,7 @@ class User(db.Model, UserMixin):
             'first_name' : self.first_name,
             'last_name' : self.last_name,
             'profile_picture' : self.profile_picture,
-            'owned_servers' : [{'server_id': server.id, 'name' : server.name, 'server_icon': server.server_icon} for server in self.servers],
+            'owned_servers' : [{'server_id': server.id, 'name' : server.name, 'server_icon': server.server_icon, 'description' : server.description} for server in self.servers],
             'server_messages' : [{'id' : message.id, 'channel_id' : message.channel_id, 'body' : message.body, 'img' : message.img} for message in self.server_messages],
             'direct_messages' : [{'id' : message.id, 'dm_room_id' : message.dm_room_id,'body' : message.body, 'img' : message.img} for message in self.direct_messages],
             'dm_rooms1' : [{'id' : dm_room.id, 'user2_id' : dm_room.user2_id, 'user1_active' : dm_room.user1_active, 'user2_active' : dm_room.user2_active} for dm_room in self.dm_left],
