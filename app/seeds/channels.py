@@ -15,9 +15,16 @@ def seed_channels():
         name='stuff',
         description='a place to talk about stuff'
     )
+
+    channel4 = Channel(
+        server_id = 3,
+        name= 'general',
+        description = 'general chat'
+    )
     db.session.add(channel1)
     db.session.add(channel2)
     db.session.add(channel3)
+    db.session.add(channel4)
     db.session.commit()
 
 def undo_channels():
