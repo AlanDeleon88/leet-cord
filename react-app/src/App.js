@@ -11,10 +11,12 @@ import { authenticate } from './store/session';
 import ServerNavBar from './components/ServerNavBar';
 import DebugForms from './components/DebugForms/DebugForms';
 import ServerWindow from './components/ServerWindow';
+import {useSelector} from 'react-redux'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
+  const user = useSelector(state => state.session.user)
 
   useEffect(() => {
     (async() => {
@@ -33,10 +35,10 @@ function App() {
      {/* {user && <NavBar />} code to only render nav bar when logged in*/}
 
       <NavBar />
-      <ServerNavBar /> {/* only show up if user is logged in*/}
+      {user && <ServerNavBar />} {/* only show up if user is logged in*/}
       <Switch>
         <Route path='/server/:serverId'>
-          <ServerWindow />
+        {user && <ServerWindow />}
         </Route>
         <Route path='/login' exact={true}>
           <LoginForm />
