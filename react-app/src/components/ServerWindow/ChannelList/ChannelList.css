@@ -1,0 +1,17 @@
+.channel-name-box{
+    color: white;
+    font-size: 17px;
+    border: white solid 1px;
+    height : 30px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 20px;
+
+
+}
+
+.channel-list{
+    padding : 0px;
+}
+

@@ -73,7 +73,7 @@ def new_server():
             db.session.commit()
 
             server_dict = buildServerDict(server)
-            return server_dict()
+            return server_dict
         else:
             server = Server(
                 name = form.data['name'],

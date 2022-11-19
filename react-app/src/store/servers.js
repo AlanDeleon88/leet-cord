@@ -22,6 +22,35 @@ export const getServers = () => async (dispatch) => {
     }
 }
 
+export const getUserServers = (id) => async (dispatch) =>{
+    const response = await fetch(`/api/users/${id}/servers`)
+
+    if(response.ok){
+        const data = await response.json()
+        dispatch(get_server_action(data.servers))
+
+    }
+}
+
+export const addUserServer = (server) => async (dispatch) =>{
+    const response = await fetch('/api/servers',{
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: server.name,
+            description: server.description,
+            server_icon: server.server_icon
+          }),
+    })
+    if(response.ok){
+        const data = await response.json()
+        //! dispatch here..
+    }
+}
+
+
 export default function serverReducer(state = {}, action) {
     let newState;
     switch(action.type){

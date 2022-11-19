@@ -2,20 +2,22 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getServers } from '../../store/servers';
+import { getServers,getUserServers } from '../../store/servers';
+import {FaPlus} from 'react-icons/fa'
 import './ServerNavBar.css'
+import ServerIcon from './ServerIcon';
 import ReactTooltip from 'react-tooltip'
 
 const ServerNavBar = () =>{
     const servers = Object.values(useSelector(state => state.servers))
+    const user = useSelector(state => state.session.user)
     const [isLoaded, setIsLoaded] = useState(false)
     const dispatch = useDispatch();
 
 
 
     useEffect(() => {
-        //! Eventually change this to all servers associated with logged in user.
-        dispatch(getServers()).then(() =>{
+        dispatch(getUserServers(user.id)).then(() =>{
             setIsLoaded(true)
         })
     },[dispatch])
@@ -26,26 +28,23 @@ const ServerNavBar = () =>{
                 {isLoaded ?
                 (<>
                     <ul className='server-list'>
+                        <div className='direct-messages-button'>
+                            <img className='dm-button' src='https://i.imgur.com/VxBVVgq.png'/>
+
+                        </div>
                         {servers.map(el =>{
                             return(
                                 <li key={el.id}>
-                                    <div data-tip={el.name} data-for='serverName' data-place='right'>
-                                        {el.server_icon ?
-                                            (
-                                            <>
-                                                <img src={el.server_icon} className='server-icon'/> {/* make nav link later, with activeClassName might have to use states to toggle the cursor on and off..*/}
-                                            </>
-                                            )
-                                                :
-                                            (<>
-                                                    <div className='default-icon'> {el.name[0]}  </div>
-                                            </>)
-                                    }
-                                    </div>
-                                    <ReactTooltip id='serverName' />
+                                    <ServerIcon server={el} />
                                 </li>
                             )
                         })}
+                        <li>
+                            <div className='add-server-button'>
+                                <FaPlus />
+                            </div>
+
+                        </li>
 
                     </ul>
                 </>

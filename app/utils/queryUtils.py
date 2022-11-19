@@ -10,7 +10,8 @@ def buildUserDict(user):
             server_dict={'id' : server_q.id,
                         'name' : server_q.name,
                         'description' : server_q.description,
-                        'icon_img' : server_q.server_icon,
+                        'server_icon' : server_q.server_icon,
+                        'channels' : [{'channel_id' : channel.id, 'name' : channel.name, 'description' : channel.description} for channel in server_q.channels],
                         'permission' : permission.permission
                         }
             user_dict['servers'].append(server_dict)

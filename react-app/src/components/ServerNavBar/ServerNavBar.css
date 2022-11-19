@@ -1,14 +1,35 @@
 .server-icon{
-    height: 60px;
-    width: 60px;
-    border-radius: 100px;
+    height: 50px;
+    width: 50px;
+    object-fit:cover;
+    border-radius: 100%;
+    margin: 5px;
+
+}
+
+.circle.square img{
+    border-radius: 5px;
+    object-fit:cover;
+    border-radius: 30%;
+}
+
+.circle.square div{
+    border-radius: 30%;
 }
 
 .nav-bar-container{
     background-color:	#1e2124;
     border: black solid 1px;
-    width : fit-content
+    width : fit-content;
+    height: 100%;
+    /* position: absolute; */
 
+}
+
+.dm-button{
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
 }
 
 .server-list{
@@ -34,9 +55,10 @@
     /* border: black solid 1px; */
     font-size: 30px;
     font-weight: bold;
-    height:60px;
-    width: 60px;
+    height: 50px;
+    width: 50px;
     padding-bottom: 0px;
     background-color: #424549;
     color: whitesmoke;
+    margin: 5px;
 }
