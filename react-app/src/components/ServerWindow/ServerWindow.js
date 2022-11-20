@@ -41,15 +41,8 @@ const ServerWindow = () =>{
                         )
                     }
                 </div>
-                <Switch>
-                    <Route path={`${match.url}/channel/:channelId`}>
-                        <MessageWindow />
 
-                    </Route>
-
-
-                </Switch>
-
+                    <MessageWindow />
             </div>
 
 

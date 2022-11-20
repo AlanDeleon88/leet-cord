@@ -40,14 +40,23 @@ const ServerIcon = ({server}) => {
                         <div data-tip={server.name} data-for='serverName' data-place='right'>
                         {server.server_icon ?
                             (
-                            <>
+                            <div className='server-icon-container'>
+                                <div className='server-marker'></div>
                                 <img src={server.server_icon} className='server-icon' /> {/* make nav link later, with activeClassName might have to use states to toggle the cursor on and off..*/}
-                            </>
+
+                            </div>
+
                             )
                                 :
-                            (<>
+                            (
+                            <div className='server-icon-container'>
+                                <div className='server-marker'></div>
                                 <div className='default-icon' > {server.name[0]}  </div>
-                            </>)
+                                {/* Add a div element to act as a marker on which server is active, use nav links active class to select it*/}
+                            </div>
+
+
+                            )
                         }
                         </div>
                     <ReactTooltip id='serverName' />

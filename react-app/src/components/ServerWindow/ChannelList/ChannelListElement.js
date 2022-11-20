@@ -12,13 +12,12 @@ export const ChannelListElement = ({channel, serverId}) =>{
 
     return(
         <>
-            <div className="channel-name-box">
+            <button className="channel-name-box" onClick={onChannelClick}>
                 {/* Change color of the text when the link is active.. eventually make this element a nav link */}
-                <NavLink to={`/server/${serverId}/channel/${channel.channel_id}`} onClick={onChannelClick}>
-                    # {channel.name}
-                </NavLink>
 
-            </div>
+                    # {channel.name}
+
+            </button>
         </>
     )
 

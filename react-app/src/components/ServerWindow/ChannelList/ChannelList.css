@@ -1,17 +1,22 @@
 .channel-name-box{
     color: white;
+    background-color: #282b30;
     font-size: 17px;
-    border: white solid 1px;
+    border: none;
     height : 30px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     padding-left: 20px;
+    width:100%;
 
 
+}
+
+.channel-name-box:hover{
+    background-color: #424549;
 }
 
 .channel-list{
     padding : 0px;
 }
-

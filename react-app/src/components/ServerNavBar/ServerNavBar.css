@@ -1,4 +1,4 @@
-.server-icon{
+.server-icon {
     height: 50px;
     width: 50px;
     object-fit:cover;
@@ -7,14 +7,47 @@
 
 }
 
-.circle.square img{
+.server-icon-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.server-marker{
+    border: white solid 1px;
+    width: 1px;
+    background-color: white;
+    height: 30px;
+    border-radius: 50%;
+    opacity: 0;
+
+
+}
+
+.circle:hover > div .server-marker{
+    opacity:100;
+    height:10px;
+}
+
+.square:hover > div .server-marker{
+    opacity:100;
+    height:30px;
+}
+
+.circle.square .server-icon{
     border-radius: 5px;
     object-fit:cover;
     border-radius: 30%;
 }
 
-.circle.square div{
+.circle.square .default-icon{
     border-radius: 30%;
+}
+
+.circle.square .server-marker{
+    opacity: 100;
 }
 
 .nav-bar-container{
@@ -30,6 +63,7 @@
     width: 50px;
     height: 50px;
     border-radius: 100px;
+    margin: 5px;
 }
 
 .server-list{

@@ -5,8 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getChannel } from '../../../store/channel';
 
 const MessageWindow = () =>{
-    let {channelId} = useParams();
-    const id = Number(channelId);
+
     const [isLoaded, setIsLoaded] = useState(false)
     const dispatch = useDispatch()
     const channel = useSelector(state => state.channel)
@@ -14,11 +13,11 @@ const MessageWindow = () =>{
 
 
 
-    useEffect(() =>{
-        dispatch(getChannel(id)).then(() =>{
-            setIsLoaded(true)
-        })
-    },[dispatch])
+    // useEffect(() =>{
+    //     dispatch(getChannel(id)).then(() =>{
+    //         setIsLoaded(true)
+    //     })
+    // },[dispatch])
 
 
 
@@ -27,7 +26,7 @@ const MessageWindow = () =>{
             <div className="message-container">
                 <div>
                     {
-                        isLoaded && (
+                        channel && (
                             <>
                                 {channel.name}
 
