@@ -32,8 +32,10 @@ export const getUserServers = (id) => async (dispatch) =>{
     }
 }
 
+
 export const addUserServer = (server) => async (dispatch) =>{
-    const response = await fetch('/api/servers',{
+
+    const response = await fetch('/api/servers/',{
         method: 'POST',
         headers: {
             "Content-Type": "application/json",
@@ -46,7 +48,15 @@ export const addUserServer = (server) => async (dispatch) =>{
     })
     if(response.ok){
         const data = await response.json()
+        dispatch(add_server_action(data))
+        return null
         //! dispatch here..
+    }
+    else if(response.status < 500){
+        const data = await response.json()
+        if(data.errors){
+            return data.errors
+        }
     }
 }
 
@@ -61,6 +71,11 @@ export default function serverReducer(state = {}, action) {
             })
 
             return newState
+
+        case ADD_SERVER:
+            newState = {...state}
+            newState[action.payload.id] = action.payload
+            return newState;
         default:
             return state;
     }

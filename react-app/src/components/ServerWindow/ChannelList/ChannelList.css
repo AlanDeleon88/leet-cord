@@ -8,7 +8,9 @@
     align-items: center;
     justify-content: flex-start;
     padding-left: 20px;
-    width:100%;
+    text-overflow: ellipsis;
+    width:250px;
+
 
 
 }
@@ -19,4 +21,5 @@
 
 .channel-list{
     padding : 0px;
+    width:250px;
 }

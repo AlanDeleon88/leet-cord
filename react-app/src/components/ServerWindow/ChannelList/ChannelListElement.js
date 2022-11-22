@@ -18,6 +18,7 @@ export const ChannelListElement = ({channel, serverId}) =>{
                     # {channel.name}
 
             </button>
+
         </>
     )
 

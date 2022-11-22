@@ -6,7 +6,7 @@ import { getServers,getUserServers } from '../../store/servers';
 import {FaPlus} from 'react-icons/fa'
 import './ServerNavBar.css'
 import ServerIcon from './ServerIcon';
-import ReactTooltip from 'react-tooltip'
+import AddServerModal from './AddServerModal';
 
 const ServerNavBar = () =>{
     const servers = Object.values(useSelector(state => state.servers))
@@ -28,10 +28,16 @@ const ServerNavBar = () =>{
                 {isLoaded ?
                 (<>
                     <ul className='server-list'>
-                        <div className='direct-messages-button'>
-                            <img className='dm-button' src='https://i.imgur.com/VxBVVgq.png'/>
+                        <li>
+                            <NavLink to={`/${user.username}/dm`} className='circle' activeClassName='square'>
+                                <div
+                                    className='server-icon-container'>
+                                    <div className='server-marker'></div>
+                                    <img className='dm-button' src='https://i.imgur.com/VxBVVgq.png'/>
+                                </div>
 
-                        </div>
+                            </NavLink>
+                        </li>
                         {servers.map(el =>{
                             return(
                                 <li key={el.id}>
@@ -41,7 +47,7 @@ const ServerNavBar = () =>{
                         })}
                         <li>
                             <div className='add-server-button'>
-                                <FaPlus />
+                                <AddServerModal type={'Add'}/>
                             </div>
 
                         </li>

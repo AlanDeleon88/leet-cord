@@ -40,6 +40,9 @@ function App() {
         <Route path='/server/:serverId'>
         {user && <ServerWindow />}
         </Route>
+        <Route path ={`/${user.username}/dm`}>
+            <h1>TEST RENDER</h1>
+        </Route>
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
