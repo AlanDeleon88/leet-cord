@@ -34,8 +34,8 @@ def undo():
     undo_dm_rooms()
     undo_server_messages()
     undo_channels()
-    undo_permissions()
     undo_server_members()
+    undo_permissions()
     undo_servers()
     undo_users()
     # Add other undo functions here
