@@ -18,10 +18,8 @@ const EditServerForm = ({server, setShowModal}) =>{
     const [serverIcon, setServerIcon] = useState('')
     const [servIconName, setServIconName] = useState('')
 
-    const [editName, setEditName] = useState(false)
-    const [editDescription, setEditDescription] = useState(false)
-    const [editServerIcon, setEditServerIcon] = useState(false)
     const [isLoaded, setIsLoaded] = useState(false)
+    const [imgLoading, setImgLoading] = useState(false)
     const [myServer, setMyServer] = useState(false)
     const [errors, setErrors] = useState([])
     const dispatch = useDispatch();
@@ -107,7 +105,7 @@ const EditServerForm = ({server, setShowModal}) =>{
           const formData = new FormData();
               // aws uploads can be a bit slow—displaying
               // some sort of loading message is a good idea
-
+          setImgLoading(true)
           formData.append("image", image);
           const res = await fetch("/api/img/upload", {
             method: "POST",
@@ -115,16 +113,11 @@ const EditServerForm = ({server, setShowModal}) =>{
           });
           if (res.ok) {
               const img_url = await res.json();
-
+              setImgLoading(false)
               setServerIcon(img_url.url);
-
               //!dispatch here
-              let updateServer = {
-                id: server.id,
-                server_icon : img_url.url
-              }
               //! temp dispatch, will implement it in the save button later.
-              dispatch(updateServerIcon(updateServer, user.id))
+
 
             }
       }
@@ -143,12 +136,21 @@ const EditServerForm = ({server, setShowModal}) =>{
                         {server.server_icon ? (
 
                             <>
-                                 <img src={`${serverIcon ? serverIcon : server.server_icon}`} className='prev-server-icon'/>
+                               {imgLoading ?
+                                (
+                                <div className="default-prev-icon">
+                                    LOADING
+                                </div>
+                                )
+                                :
+                                (<img src={`${serverIcon ? serverIcon : server.server_icon}`} className='prev-server-icon'/>)
+                                }
                                  <button className="edit-icon-button" onClick={() =>{
                                     document.getElementById('file').click()
                                  }}>
                                     <HiPencilSquare />
                                  </button>
+
                                 {myServer && (
                                     <>
                                         <input type="file" accept="image/*" onChange={updateImage} style={{display:'none'}} id='file'/>
@@ -162,10 +164,20 @@ const EditServerForm = ({server, setShowModal}) =>{
                         :
                         (
                             <>
+                                {imgLoading ?
+                                (
+                                    <div className="default-prev-icon">
+                                        LOADING
+                                    </div>
 
+                                )
+                                :
+                                (
                                     <div className="default-prev-icon">
                                         {servIconName}
                                     </div>
+                                )
+                                }
                                 <button style={{border:'none'}} className="edit-icon-button" onClick={() =>{
                                     document.getElementById('file').click()
                                  }}>
