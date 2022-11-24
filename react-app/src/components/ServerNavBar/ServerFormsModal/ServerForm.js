@@ -87,7 +87,7 @@ const ServerForm = ({setShowModal, setShowMenu}) =>{
 
                         />
                         <div className='server-form-buttons'>
-                            <button className="server-back-button" onClick={() =>{
+                            <button className="server-back-button" type='button' onClick={() =>{
                                 setShowModal(false);
                                 setShowMenu(false);
                             }}> Back</button>
