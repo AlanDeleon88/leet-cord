@@ -101,6 +101,7 @@ const EditServerForm = ({server, setShowModal}) =>{
 
     const handleSubmit = async (image) =>{
         // e.preventDefault();
+
         console.log(image);
           const formData = new FormData();
               // aws uploads can be a bit slow—displaying
@@ -112,12 +113,18 @@ const EditServerForm = ({server, setShowModal}) =>{
             body: formData,
           });
           if (res.ok) {
+
               const img_url = await res.json();
+              const serverUpdate = {
+                id: server.id,
+                name: name,
+                description: description,
+                server_icon : img_url.url
+            }
               setImgLoading(false)
               setServerIcon(img_url.url);
               //!dispatch here
               //! temp dispatch, will implement it in the save button later.
-
 
             }
       }
@@ -133,21 +140,25 @@ const EditServerForm = ({server, setShowModal}) =>{
 
                 <div className="sub-input-container">
                     <div className="icon-owner-container">
-                        {server.server_icon ? (
-
+                        {server.server_icon ?
+                            (
                             <>
                                {imgLoading ?
                                 (
-                                <div className="default-prev-icon">
-                                    LOADING
-                                </div>
+                                    <div className="default-prev-icon">
+                                        LOADING
+                                    </div>
                                 )
                                 :
-                                (<img src={`${serverIcon ? serverIcon : server.server_icon}`} className='prev-server-icon'/>)
+                                (
+                                    <img src={`${serverIcon ? serverIcon : server.server_icon}`} className='prev-server-icon'/>
+                                )
                                 }
-                                 <button className="edit-icon-button" onClick={() =>{
-                                    document.getElementById('file').click()
-                                 }}>
+                                <button className="edit-icon-button"
+                                onClick={() =>
+                                    {
+                                        document.getElementById('file').click()
+                                    }}>
                                     <HiPencilSquare />
                                  </button>
 
@@ -156,26 +167,35 @@ const EditServerForm = ({server, setShowModal}) =>{
                                         <input type="file" accept="image/*" onChange={updateImage} style={{display:'none'}} id='file'/>
                                     </>
                                 )}
-
                             </>
+                            )
 
-                        )
+                            :
 
-                        :
-                        (
+                            (
                             <>
                                 {imgLoading ?
                                 (
-                                    <div className="default-prev-icon">
+                                    <div className="default-prev-icon" >
                                         LOADING
                                     </div>
-
                                 )
                                 :
                                 (
-                                    <div className="default-prev-icon">
-                                        {servIconName}
-                                    </div>
+                                <>
+                                {serverIcon ?
+                                    (<>
+                                        <img src={serverIcon} className='prev-server-icon'/>
+                                    </>
+                                    )
+                                    :
+                                    (<>
+                                         <div className="default-prev-icon">
+                                             {servIconName}
+                                        </div>
+                                     </>
+                                    )}
+                                </>
                                 )
                                 }
                                 <button style={{border:'none'}} className="edit-icon-button" onClick={() =>{
@@ -196,7 +216,6 @@ const EditServerForm = ({server, setShowModal}) =>{
                     <div className="server-owner">
                         <div>
                             Server Owner
-
                         </div>
                         {isLoaded && (
                             <>
