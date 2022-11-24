@@ -3,14 +3,22 @@ import {MdKeyboardArrowDown} from 'react-icons/md'
 import {IoSettingsSharp} from 'react-icons/io5'
 import { RiDeleteBin5Fill} from "react-icons/ri";
 import {BsArrowLeftCircleFill} from 'react-icons/bs'
-import './ServerOptions.css'
+import EditServerForm from '../../ServerNavBar/ServerFormsModal/EditServerModal/EditServerForm';
 
-const ServerOptions = ({userId, serverId, serverName}) =>{
+import './ServerOptions.css'
+import { Modal } from '../../../context/Modal';
+
+const ServerOptions = ({userId, serverId, server}) =>{
     const [showMenu, setShowMenu] = useState(false)
+    const [showModal, setShowModal] = useState(false)
 
 
     const handleClick = () => {
         setShowMenu(!showMenu);
+    }
+
+    const clickShowMenuModal = e =>{
+        setShowModal(!showModal)
     }
 
     useEffect(() => {
@@ -28,7 +36,7 @@ const ServerOptions = ({userId, serverId, serverName}) =>{
     <div>
             <button onClick={handleClick} className='dropdown-arrow'>
                 <div className='serv-title'>
-                    {serverName}
+                    {server.name}
                 </div>
                 <MdKeyboardArrowDown />
 
@@ -38,9 +46,16 @@ const ServerOptions = ({userId, serverId, serverName}) =>{
             <>
                 <div className='server-options-dropdown'>
                     <ul style={{listStyle: 'none'}}  className='server-options'>
-                        <li className='server-options-item'>Edit <IoSettingsSharp/></li>
-                        {userId === serverId ? (
+                        {userId === server.owner_id ? (
+                            <>
+                            <li className='server-options-item' onClick={clickShowMenuModal}>
+                                Edit
+                                <IoSettingsSharp />
+
+                            </li>
                             <li className='server-options-item delete-server'>Delete Server <RiDeleteBin5Fill/></li>
+
+                            </>
 
                         )
                         :
@@ -54,7 +69,14 @@ const ServerOptions = ({userId, serverId, serverName}) =>{
 
             </>
             )}
+            {showModal && (
+                <Modal onClose={() =>{
+                    setShowModal(false)
+                }}>
+                    <EditServerForm server={server} setShowModal={setShowModal}/>
+                </Modal>
 
+            )}
     </div>
 
 

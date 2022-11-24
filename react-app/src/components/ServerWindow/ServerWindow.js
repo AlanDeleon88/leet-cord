@@ -22,9 +22,7 @@ const ServerWindow = () =>{
         })
     },[dispatch])
 
-
-
-
+    //!use props to thread through message window maybe.
     return (
         <>
             <div className='main-view'>
@@ -41,7 +39,7 @@ const ServerWindow = () =>{
                                         {/* {server.name} */}
                                     </div>
 
-                                        <ServerOptions userId={user.id} serverId={server.id} serverName={server.name}/>
+                                        <ServerOptions userId={user.id} serverId={server.id} server={server}/>
 
                                 </div>
 
@@ -54,10 +52,6 @@ const ServerWindow = () =>{
                     </div>
 
                         <MessageWindow />
-                    </Route>
-                    <Route path={`${match.url}/settings`}>
-                        <h1> TEST RENDER</h1>
-
                     </Route>
                 </Switch>
             </div>

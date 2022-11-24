@@ -6,7 +6,7 @@ import { getServers,getUserServers } from '../../store/servers';
 import {FaPlus} from 'react-icons/fa'
 import './ServerNavBar.css'
 import ServerIcon from './ServerIcon';
-import AddServerModal from './AddServerModal';
+import ServerFormsModal from './ServerFormsModal';
 
 const ServerNavBar = () =>{
     const servers = Object.values(useSelector(state => state.servers))
@@ -47,7 +47,7 @@ const ServerNavBar = () =>{
                         })}
                         <li>
                             <div className='add-server-button'>
-                                <AddServerModal type={'Add'}/>
+                                <ServerFormsModal type={'Add'}/>
                             </div>
 
                         </li>

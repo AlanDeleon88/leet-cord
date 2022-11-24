@@ -131,6 +131,8 @@ def add_channel(id):
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
+
+
 #! try to refactor server edits into a single route later
 @server_routes.route('/<int:id>/name', methods = ['PUT'])
 @login_required
@@ -182,12 +184,12 @@ def edit_server_icon(id):
     '''
     server = Server.query.get(id)
     if current_user.id != server.owner_id:
-        return {'error' : 'server doest not belong to current user'}, 404
+        return {'error' : 'server doest not belong to current user'}, 401
     form = EditServerIcon()
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if not server:
-        return{'errors' : 'could not find server with that id'}, 401
+        return{'errors' : 'could not find server with that id'}, 404
 
     if form.validate_on_submit():
         server.server_icon = form.data['server_icon']

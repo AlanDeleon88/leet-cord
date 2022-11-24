@@ -9,6 +9,7 @@ def buildUserDict(user):
             permission = Permission.query.get(server.permission_id)
             server_dict={'id' : server_q.id,
                         'name' : server_q.name,
+                        'owner_id' : server_q.owner_id,
                         'description' : server_q.description,
                         'server_icon' : server_q.server_icon,
                         'channels' : [{'channel_id' : channel.id, 'name' : channel.name, 'description' : channel.description} for channel in server_q.channels],

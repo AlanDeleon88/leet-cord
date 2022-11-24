@@ -11,6 +11,7 @@ import { authenticate } from './store/session';
 import ServerNavBar from './components/ServerNavBar';
 import DebugForms from './components/DebugForms/DebugForms';
 import ServerWindow from './components/ServerWindow';
+import MessageWindow from './components/ServerWindow/MessageWindow';
 import {useSelector} from 'react-redux'
 
 function App() {
@@ -40,9 +41,16 @@ function App() {
         <Route path='/server/:serverId'>
         {user && <ServerWindow />}
         </Route>
-        <Route path ={`/${user.username}/dm`}>
-            <h1>TEST RENDER</h1>
-        </Route>
+        {user &&
+        (
+
+          <Route path ={`/${user.username}/dm`}>
+              <ServerWindow />
+          </Route>
+
+        )
+
+        }
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>

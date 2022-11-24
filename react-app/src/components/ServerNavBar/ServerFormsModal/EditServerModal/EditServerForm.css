@@ -1,0 +1,130 @@
+.server-info-container{
+    width: 600px;
+    height: 350px;
+    border:red solid 1px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #424549;
+}
+
+.sub-input-container{
+    border:blue solid 1px;
+    width: 100%;
+    height: 250px;
+    display: flex;
+}
+
+.icon-owner-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border: magenta solid 1px;
+    width: 50%;
+    height: 100%;
+}
+
+.name-desc-container{
+    border: yellowgreen solid 1px;
+    width: 50%;
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.button-edit{
+    height: 50px;
+    width: 150px;
+    margin-bottom: 10px;
+}
+
+.save{
+    background-color: #7289da;
+    border: none;
+    color: whitesmoke;
+    font-size: 20px;
+}
+
+.back{
+    font-size: 20px;
+}
+
+.save:hover{
+    background-color: #5f73ba;
+}
+
+.prev-server-icon{
+    padding-top: 10px;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 100%;
+
+}
+
+.default-prev-icon{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #282b30;
+    height:150px;
+    width:150px;
+    border-radius: 100%;
+    color:whitesmoke;
+    font-size: 50px;
+}
+
+.server-owner{
+    display: flex;
+    flex-direction: column;
+    font-size: 40px;
+    align-items: center;
+    justify-content: center;
+    width:100%;
+    color: whitesmoke;
+}
+
+.edit-button-container{
+    display: flex;
+    justify-content: space-around;
+    width:100%;
+}
+
+.edit-icon-button{
+    color: #7289da;
+    background-color: transparent;
+    border: none;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    font-size: 50px;
+    top: 20px;
+    left:200px;
+}
+
+.edit-icon-button:active{
+    color: white;
+    width:35px;
+    height:35px;
+}
+
+.edit-server{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+
+}
+
+.edit-text-input{
+    background-color: #282b30;
+    color: whitesmoke;
+    font-size:20px;
+    resize: none;
+    overflow: scroll;
+}

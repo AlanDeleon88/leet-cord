@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import './AddServerForm.css'
+import './ServerForm.css'
+import ReactTooltip from "react-tooltip"
 const ImageUploadComponent = ({setServerIcon}) =>{
     const [image, setImage] = useState(null);
     const [imageLoading, setImageLoading] = useState(false);
@@ -47,20 +48,31 @@ const ImageUploadComponent = ({setServerIcon}) =>{
     return (
       <>
           {uploadedImg ? (
-            <img src={prevImgUrl} alt="your image" className="prev-img" />
+            <>
+              <div data-tip={'upload an image'} data-for='image' data-place='center'>
+              <button onClick={() =>{
+                document.getElementById('file').click();
+              }} style={{border:'none'}}>
+                <img src={prevImgUrl} alt="your image" className="prev-img" />
+              </button>
+              </div>
+              <ReactTooltip id='image' />
+
+            </>
           )
           :
           (
-            <div className="img-place-holder">
-             Server Icon
-
-            </div>
+            <button className="img-place-holder" onClick={() =>{
+              document.getElementById('file').click();
+            }}>
+             Upload Server Icon
+            </button>
           )
           }
           <form onSubmit={handleSubmit} id='photo-form'>
             <div className="upload-photo-container">
               {imageLoading && <p>Loading...</p>}
-              <input type="file" accept="image/*" onChange={updateImage} />
+              <input type="file" accept="image/*" onChange={updateImage} style={{display:'none'}} id='file'/>
               {/* <button type="submit" className="upload-img-btn">Upload</button> */}
             </div>
           </form>

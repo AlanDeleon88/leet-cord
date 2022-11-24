@@ -1,3 +1,5 @@
+import { useHistory } from "react-router-dom"
+
 const GET_SERVERS = 'servers/GET_SERVERS'
 const ADD_SERVER = 'servers/ADD_SERVERS'
 
@@ -49,7 +51,7 @@ export const addUserServer = (server) => async (dispatch) =>{
     if(response.ok){
         const data = await response.json()
         dispatch(add_server_action(data))
-        return null
+        return data
         //! dispatch here..
     }
     else if(response.status < 500){
@@ -58,6 +60,10 @@ export const addUserServer = (server) => async (dispatch) =>{
             return data.errors
         }
     }
+}
+
+export const editUserServer = (server) => async (dispatch) =>{
+    const response = await fetch('/api/servers/', )
 }
 
 

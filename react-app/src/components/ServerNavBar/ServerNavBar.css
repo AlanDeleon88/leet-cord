@@ -89,11 +89,17 @@
 .nav-bar-container{
     background-color:	#1e2124;
     border: black solid 1px;
-    width : fit-content;
+    width : 100px;
     height: 100%;
     /* position: absolute; */
+    overflow: scroll;
 
 }
+
+::-webkit-scrollbar {
+    width: 0px;
+  }
+
 
 
 

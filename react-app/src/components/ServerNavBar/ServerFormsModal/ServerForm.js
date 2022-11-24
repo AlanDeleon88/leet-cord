@@ -1,17 +1,18 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import ImageUploadComponent from "./ImageUploadComponent"
-import './AddServerForm.css'
+import './ServerForm.css'
+
 import { addUserServer } from "../../../store/servers"
 
-const AddServerForm = ({setShowModal, type}) =>{
+const ServerForm = ({setShowModal, setShowMenu}) =>{
     const [name, setName] = useState('')
     const user = useSelector(state => state.session.user)
     const [description, setDescription] = useState('')
     const [server_icon, setServerIcon] = useState('')
     const [errors, setErrors] = useState([])
     const dispatch = useDispatch();
-    console.log(type);
+
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
@@ -20,14 +21,17 @@ const AddServerForm = ({setShowModal, type}) =>{
             description: description,
             server_icon: server_icon
         }
-        if(user && type === 'Add'){
+        if(user){
             return await dispatch(addUserServer(newServer)).then((res) =>{
-                if(res){
-                    setErrors(res);
+                if(res.id){
                     // console.log(errors);
+                    setShowModal(false);
                 }
                 else{
-                    setShowModal(false);
+
+                    setErrors(res);
+
+
                 }
 
             })
@@ -48,16 +52,8 @@ const AddServerForm = ({setShowModal, type}) =>{
         <>
             <div className="add-server-container">
                 <div className="form-header">
-                    {type === 'Add' ? (
-                        <>
+
                              Create a Server
-                        </>
-                    ) :
-                    (
-                        <>
-                            Edit Server
-                        </>
-                    )}
 
                 </div>
 
@@ -93,6 +89,7 @@ const AddServerForm = ({setShowModal, type}) =>{
                         <div className='server-form-buttons'>
                             <button className="server-back-button" onClick={() =>{
                                 setShowModal(false);
+                                setShowMenu(false);
                             }}> Back</button>
                             <button type="submit" className="server-submit-button" disabled={!name}>Create Server</button>
 
@@ -110,4 +107,4 @@ const AddServerForm = ({setShowModal, type}) =>{
 
 }
 
-export default AddServerForm
+export default ServerForm

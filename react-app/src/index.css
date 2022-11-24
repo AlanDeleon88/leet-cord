@@ -42,3 +42,7 @@ li {
   body, html {
     font-family: WhitneyMedium
 }
+
+button {
+    cursor:pointer;
+}
