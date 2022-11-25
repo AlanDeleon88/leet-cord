@@ -85,7 +85,7 @@ const ServerOptions = ({userId, serverId, server}) =>{
             )}
             {showDeleteModal && (
                 <Modal onClose={() =>{
-                setShowModal(false)
+                setShowDeleteModal(false)
                 }}>
                     <DeleteServer id={server.id} setShowDeleteModal={setShowDeleteModal}/>
                 </Modal>

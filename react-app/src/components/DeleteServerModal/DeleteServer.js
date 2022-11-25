@@ -2,6 +2,7 @@ import { useDispatch,useSelector } from "react-redux"
 import { useState } from "react"
 import { useHistory } from "react-router-dom"
 import { deleteServer } from "../../store/servers"
+import './DeleteServer.css'
 
 
 const DeleteServer = ({id, setShowDeleteModal}) => {
@@ -35,6 +36,7 @@ const DeleteServer = ({id, setShowDeleteModal}) => {
 
 
                 <div className="button-container">
+                    
                     <button className ='delete-yes delbutton' onClick={handleYes}>
                         Yes
                     </button>

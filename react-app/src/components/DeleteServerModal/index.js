@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Modal } from "../../../context/Modal";
+import DeleteServer from "./DeleteServer";
 
 
 
@@ -10,7 +11,7 @@ const DeleteServerModal = ({server}) => {
   return (
     <>
 
-        <div onClick={() => setShowModal(!showModal)}>
+        <div onClick={() => setShowDeleteModal(!showDeleteModal)}>
             Delete
         </div>
 
@@ -24,7 +25,7 @@ const DeleteServerModal = ({server}) => {
 
           }
           }>
-          <DeleteServer onClose={() => setShowDeleteModal(false)} setShowModal={setShowDeleteModal} server={server}/>
+          <DeleteServer onClose={() => setShowDeleteModal(false)} setShowDeleteModal={setShowDeleteModal} server={server}/>
         </Modal>
       )}
     </>
