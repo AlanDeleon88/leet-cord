@@ -4,6 +4,6 @@
 /*
 ! for the channels, it can be the same thing maybe? it will store an object on the active channel if the active channel
  ! store matches the clicked channel, then the elements class will be active. object will have channel id and active status.
- ! so when a user clicks on a different channel 
+ ! so when a user clicks on a different channel it will swap the active channel id..
 
 */
