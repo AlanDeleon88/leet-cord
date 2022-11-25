@@ -92,6 +92,8 @@ export const updateServerIcon = (server, userId) => async(dispatch) =>{
 }
 
 
+
+
 export default function focusServerReducer(state = {}, action){
     let newState;
 

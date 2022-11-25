@@ -2,6 +2,7 @@ import { useHistory } from "react-router-dom"
 
 const GET_SERVERS = 'servers/GET_SERVERS'
 const ADD_SERVER = 'servers/ADD_SERVERS'
+const DELETE_SERVER = 'servers/DELETE_SERVER'
 
 const get_server_action = (servers) => ({
     type: GET_SERVERS,
@@ -11,6 +12,11 @@ const get_server_action = (servers) => ({
 const add_server_action = (server) => ({
     type : ADD_SERVER,
     payload : server
+})
+
+const delete_server_action = (id) => ({
+    type: DELETE_SERVER,
+    payload: id
 })
 
 export const getServers = () => async (dispatch) => {
@@ -62,11 +68,26 @@ export const addUserServer = (server) => async (dispatch) =>{
     }
 }
 
-export const editUserServer = (server) => async (dispatch) =>{
-    const response = await fetch('/api/servers/', )
+export const deleteServer = (id) => async (dispatch) =>{
+    const response = await fetch(`/api/servers/${id}`,{
+        method : 'DELETE'
+    })
+
+    if(response.ok){
+        const data = await response.json()
+
+        dispatch(delete_server_action(id))
+        //!thunk should update store as well.
+        // dispatch(get_server_action(data.servers))
+        return null;
+    }
+    else if (response.status < 500) {
+        const data = await response.json()
+        return data
+    }
+
+
 }
-
-
 export default function serverReducer(state = {}, action) {
     let newState;
     switch(action.type){
@@ -81,6 +102,10 @@ export default function serverReducer(state = {}, action) {
         case ADD_SERVER:
             newState = {...state}
             newState[action.payload.id] = action.payload
+            return newState;
+        case DELETE_SERVER:
+            newState = {...state}
+            delete newState[action.payload]
             return newState;
         default:
             return state;
