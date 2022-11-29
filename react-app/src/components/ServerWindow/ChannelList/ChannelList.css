@@ -1,5 +1,5 @@
 .channel-name-box{
-    color: white;
+    color: lightgrey;
     background-color: #282b30;
     font-size: 17px;
     border: none;
@@ -11,8 +11,20 @@
     text-overflow: ellipsis;
     width:250px;
 
+}
 
-
+.channel-text{
+    color: white;
+    background-color: #282b30;
+    font-size: 17px;
+    border: none;
+    height : 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 20px;
+    text-overflow: ellipsis;
+    width: 230px;
 }
 
 .channel-name-box:hover{
@@ -22,4 +34,20 @@
 .channel-list{
     padding : 0px;
     width:250px;
+}
+
+.channel-text{
+    display: flex;
+    align-items: center;
+    /* background-color: red; */
+    color: lightgrey;
+    border-bottom: #424549 solid 1px;
+}
+
+.add-channel-button{
+    margin-right: 15px;
+    background-color: transparent;
+    border: none;
+    font-size: 15px;
+    color: whitesmoke;
 }

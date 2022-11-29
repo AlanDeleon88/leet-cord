@@ -2,7 +2,6 @@ import { useState,useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { HiPencilSquare } from "react-icons/hi2";
 import './EditServerForm.css'
-import ImageUploadComponent from "../ImageUploadComponent";
 import { getUserId } from "../../../../store/user";
 import { updateServerIcon, updateServerName, updateServerDesc } from "../../../../store/focusServer";
 

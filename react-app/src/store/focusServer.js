@@ -1,10 +1,17 @@
 import { getUserServers } from "./servers"
 const GET_SERVER = 'focus_server/GET_SERVER'
+const ADD_CHANNEL = 'focus_server/ADD_CHANNEL'
 
 const getServerAction = (server) => ({
     type: GET_SERVER,
     payload: server
 })
+
+const addChannelAction = (channel) =>({
+    type: ADD_CHANNEL,
+    payload: channel
+})
+
 
 export const getIdServer = (id) => async (dispatch) => {
     const response = await fetch(`/api/servers/${id}`)
@@ -91,6 +98,33 @@ export const updateServerIcon = (server, userId) => async(dispatch) =>{
     }
 }
 
+export const addChannel = (serverId, channel) => async (dispatch) =>{
+    const response = await fetch(`/api/servers/${serverId}/channels`, {
+        method : 'POST',
+        headers:{
+            'Content-Type' : 'application/json'
+        },
+            body: JSON.stringify({
+                name: channel.name,
+                description: channel.description
+        })
+
+    })
+
+    if(response.ok){
+        const data = await response.json()
+
+        dispatch(addChannelAction(data))
+        return null
+    }
+    else if (response.status < 500){
+        const data = await response.json()
+        // console.log(data);
+        return data
+    }
+
+}
+
 
 
 
@@ -101,6 +135,17 @@ export default function focusServerReducer(state = {}, action){
         case GET_SERVER:
             newState = {...action.payload}
             return newState
+        case ADD_CHANNEL:{
+            newState = {...state}
+            let newChannel = {}
+            newChannel['name'] = action.payload.name;
+            newChannel['channel_id'] = action.payload.id;
+            newChannel['description'] = action.payload.description;
+
+
+            newState.channels.push(newChannel)
+            return newState
+        }
         default:
             return state
     }

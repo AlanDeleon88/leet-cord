@@ -1,0 +1,87 @@
+.channel-form-container{
+    width:500px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #424549;
+    border-radius: 3%;
+}
+
+.add-channel-caption{
+    font-size: 30px;
+    color: whitesmoke;
+    padding: 15px;
+    margin-top: 5px;
+}
+
+.add-ch-yes{
+    background-color: #7289da;
+    border: none;
+    color: whitesmoke;
+    font-size: 20px;
+}
+
+.add-ch-yes:hover{
+    background-color: white;
+    color: black;
+}
+
+.add-ch-cancel:hover{
+    background-color: black;
+    color: whitesmoke;
+}
+
+.add-ch-cancel:active{
+    background-color: white;
+    color: black;
+}
+
+.add-ch-yes:active{
+    height: 45px;
+    width: 145px;
+    background-color: black;
+
+}
+
+.add-ch-cancel{
+    font-size: 20px;
+}
+
+.add-ch-form-button{
+    height: 50px;
+    width: 150px;
+    margin-bottom: 30px;
+}
+
+.buttons-container{
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.channel-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.channel-name-input{
+ background-color: #282b30;
+ color: whitesmoke;
+ width: 300px;
+ font-size: 20px;
+ height: 30px;
+ margin: 5px;
+}
+
+.channel-desc-input{
+    background-color: #282b30;
+    color: whitesmoke;
+    width: 300px;
+    font-size: 20px;
+    height: 30px;
+    margin: 5px;
+}
