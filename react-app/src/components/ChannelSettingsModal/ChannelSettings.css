@@ -1,0 +1,83 @@
+.edit-channel-container{
+    width: 450px;
+    height: 300px;
+    /* border:red solid 1px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #424549;
+    border-radius: 2%;
+}
+
+.edit-channel-caption{
+    display: flex;
+
+    font-size: 30px;
+    color: whitesmoke;
+    padding-top:30px;
+
+}
+
+.ch-del{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border:none;
+    font-size: 30px;
+    height: 40px;
+    width: 40px;
+    position:absolute;
+    left: 335px;
+    bottom: 240px;
+    color: red
+}
+
+.edit-channel-form-container{
+    display:flex;
+    flex-direction: column;
+}
+
+.ch-name-ipnut-container{
+    display: flex;
+    flex-direction: column;
+    color: whitesmoke;
+    font-size: 25px;
+}
+
+.ch-desc-input-container{
+    display:flex;
+    flex-direction: column;
+    color: whitesmoke;
+    font-size: 25px;
+}
+
+.buttons-container{
+    display: flex;
+    justify-content: center;
+    /* background-color: red; */
+    /* flex-direction: column; */
+}
+.ch-edit{
+    height: 50px;
+    width: 150px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.ch-save{
+    background-color: #7289da;
+    border: none;
+    color: whitesmoke;
+    font-size: 20px;
+}
+
+.edit-text{
+    background-color: #282b30;
+    color: whitesmoke;
+    font-size:20px;
+    resize: none;
+    overflow: scroll;
+}
