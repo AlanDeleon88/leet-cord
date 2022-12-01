@@ -63,7 +63,7 @@ const EditServerForm = ({server, setShowModal}) =>{
         if(serverUpdate.name){
             dispatch(updateServerName(serverUpdate, user.id)).then((res)=>{
                 err.push(res)
-                console.log(res);
+                // console.log(res);
             })
         }
         if(serverUpdate.description){
@@ -79,7 +79,7 @@ const EditServerForm = ({server, setShowModal}) =>{
         // console.log('ERRORS', err);
         if(err.length > 0){
             setErrors(err)
-            console.log(err);
+            // console.log(err);
         }
         else {
             window.alert('settings saved')

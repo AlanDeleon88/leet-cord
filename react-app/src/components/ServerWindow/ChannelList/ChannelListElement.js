@@ -52,7 +52,7 @@ export const ChannelListElement = ({channel, serverId}) =>{
                         <Modal onClose={() =>{
                             setShowSettingModal(false)
                         }}>
-                            <ChannelSettings channel={channel} setShowSettingModal={setShowSettingModal}/>
+                            <ChannelSettings channel={channel} setShowSettingModal={setShowSettingModal} serverId={serverId}/>
                         </Modal>
 
                     </>

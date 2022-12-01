@@ -1,6 +1,7 @@
 import { getUserServers } from "./servers"
 const GET_SERVER = 'focus_server/GET_SERVER'
 const ADD_CHANNEL = 'focus_server/ADD_CHANNEL'
+const EDIT_CHANNEL = 'focus_server/EDIT_CHANNEL'
 
 const getServerAction = (server) => ({
     type: GET_SERVER,
@@ -9,6 +10,11 @@ const getServerAction = (server) => ({
 
 const addChannelAction = (channel) =>({
     type: ADD_CHANNEL,
+    payload: channel
+})
+
+const editChannelAction = (channel) => ({
+    type: EDIT_CHANNEL,
     payload: channel
 })
 
@@ -123,6 +129,31 @@ export const addChannel = (serverId, channel) => async (dispatch) =>{
         return data
     }
 
+}
+
+export const editChannel = (channel, serverId) => async dispatch =>{
+    console.log('thunk!---------------', channel);
+    const response = await fetch(`/api/channels/${channel.id}`,{
+        method: 'PUT',
+        headers:{
+            'Content-Type' : 'application/json'
+        },
+            body: JSON.stringify({
+                name: channel.name,
+                description: channel.description
+        })
+
+    })
+    if(response.ok){
+        const data = await response.json();
+        // dispatch(editChannelAction(data))
+        dispatch(getIdServer(serverId))
+        return null
+    }
+    else if (response.status < 500){
+        const data = await response.json()
+        return data
+    }
 }
 
 

@@ -69,6 +69,9 @@ def edit_channel_name(id):
         return {'error' : 'channel could not be found with that id'}
 
     form = EditChannel()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    print('DEBUG--------------------------------------------', form.data)
 
     if form.validate_on_submit():
         if form.data['name']:
@@ -78,7 +81,9 @@ def edit_channel_name(id):
         if not form.data['name'] and not form.data['description']:
             return {'error' : 'both fields cannot be empty!'}
         db.session.commit()
-        return channel.to_dict()
+        channel_dict = channel.to_dict()
+        return channel_dict
+    return {'error' : 'form not validated correctly'}, 401
 
 @channel_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
