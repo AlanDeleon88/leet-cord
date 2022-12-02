@@ -33,36 +33,36 @@ const ChannelSettings = ({channel, setShowSettingModal, serverId}) =>{
 
     const handleSave = async e => {
         //! at this point, might refactor backend channel edit to multiple endpoints.. kind of a pain to keep track of all this.
-
-        if((!checkStr(name) && !checkStr(description)) && (inputtedName && inputtedDesc)){
+        //? maybe i might make this whole check a modular and have it return an object...
+        if((!checkStr(name) && !checkStr(description)) && (inputtedName && inputtedDesc)){ //*checks to see if inputs are just empty spaces.
             let errors = []
             errors.push('name and description cannot be empty')
             setErrors(errors)
 
         }
-        else if(!checkStr(name) && inputtedName){
+        else if(!checkStr(name) && inputtedName){ //*checks to see if only name is empty spaces
             let errors = []
             errors.push('name field cannot be empty')
             setErrors(errors)
         }
-        else if(inputtedName || inputtedDesc){
+        else if(inputtedName || inputtedDesc){ //*checks to see if an input has been made to either input.
             let formatName;
             let formatDesc;
-            if(name){
+            if(name){ //* formats string to be ready to send to back end.
                 formatName = name.split(' ').join('-')
             }
             else{
                 // setName(channel.name)
                 formatName = channel.name.split(' ').join('-')
             }
-            if(description){
+            if(description){ //* formats string to be ready to send to back end.
                 formatDesc = description.split(' ').join('-')
 
             }
-            else if(inputtedDesc && !description){
+            else if(inputtedDesc && !description){ //* checks to see if any changes have been made to previous setting.
                 formatDesc = description
             }
-            else if(!inputtedDesc && !description){
+            else if(!inputtedDesc && !description){ //*if no changes has been made and no input has been made, it will send default data to backend.
                 // setDescription(channel.description)
                 formatDesc = channel.description.split(' ').join('-')
             }
