@@ -76,8 +76,7 @@ def edit_channel_name(id):
     if form.validate_on_submit():
         if form.data['name']:
             channel.name = form.data['name']
-        if form.data['description']:
-            channel.description = form.data['description']
+        channel.description = form.data['description']
         if not form.data['name'] and not form.data['description']:
             return {'error' : 'both fields cannot be empty!'}
         db.session.commit()

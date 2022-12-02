@@ -3,5 +3,5 @@ from wtforms import StringField
 from wtforms.validators import DataRequired
 
 class EditChannel(FlaskForm):
-    name = StringField('Name', validators=[DataRequired()])
+    name = StringField('Name')
     description = StringField('Description')

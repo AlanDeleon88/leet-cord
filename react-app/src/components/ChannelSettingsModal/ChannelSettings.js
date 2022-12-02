@@ -59,7 +59,10 @@ const ChannelSettings = ({channel, setShowSettingModal, serverId}) =>{
                 formatDesc = description.split(' ').join('-')
 
             }
-            else{
+            else if(inputtedDesc && !description){
+                formatDesc = description
+            }
+            else if(!inputtedDesc && !description){
                 // setDescription(channel.description)
                 formatDesc = channel.description.split(' ').join('-')
             }
@@ -69,6 +72,7 @@ const ChannelSettings = ({channel, setShowSettingModal, serverId}) =>{
                 name: formatName,
                 description: formatDesc
             }
+            console.log('TEST TO SEE DESC--------------------------------',updateChannel);
             const data = await dispatch(editChannel(updateChannel, serverId))
             if(data){
                 let errors = []
@@ -77,6 +81,7 @@ const ChannelSettings = ({channel, setShowSettingModal, serverId}) =>{
                 // console.log(data.error);
             }
             else{
+                setShowSettingModal(false)
                 window.alert('settings saved')
                 dispatch(getChannel(channel.channel_id))
             }

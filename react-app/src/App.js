@@ -64,7 +64,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
-          {/* <h1>My Home Page</h1> */}
+          {/* <h1>My Home Page Create Splash page here.</h1> */}
         </ProtectedRoute>
         <ProtectedRoute path= '/debug-forms' exact={true}>
           Add debuging forms here for creating servers/channels/messages
