@@ -24,8 +24,8 @@
 }
 
 .add-ch-yes:hover{
-    background-color: white;
-    color: black;
+    background-color: #5a6db0;
+    /* color: black; */
 }
 
 .add-ch-cancel:hover{
@@ -34,6 +34,8 @@
 }
 
 .add-ch-cancel:active{
+    height: 45px;
+    width: 145px;
     background-color: white;
     color: black;
 }
@@ -42,6 +44,7 @@
     height: 45px;
     width: 145px;
     background-color: black;
+    color: whitesmoke;
 
 }
 

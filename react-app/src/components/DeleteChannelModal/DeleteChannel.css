@@ -63,3 +63,18 @@
     display: flex;
     justify-content: space-between;
 }
+
+.del-channel-button{
+    background-color: transparent;
+    border: none;
+    color: rgb(232, 109, 109);
+    font-size: 40px;
+}
+
+.del-channel-button:hover{
+    color:red
+}
+
+.del-channel-button:active{
+    font-size:35px;
+}
