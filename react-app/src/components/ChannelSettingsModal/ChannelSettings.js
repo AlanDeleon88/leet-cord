@@ -4,6 +4,8 @@ import { RiDeleteBin5Fill} from "react-icons/ri";
 import checkStr from "./checkStr";
 import './ChannelSettings.css'
 import { editChannel } from "../../store/focusServer";
+import DeleteChannelModal from "../DeleteChannelModal";
+import { getChannel } from "../../store/channel";
 
 const ChannelSettings = ({channel, setShowSettingModal, serverId}) =>{
     const [name,setName] = useState('')
@@ -76,6 +78,7 @@ const ChannelSettings = ({channel, setShowSettingModal, serverId}) =>{
             }
             else{
                 window.alert('settings saved')
+                dispatch(getChannel(channel.channel_id))
             }
 
             // console.log(channel);
@@ -93,9 +96,9 @@ const ChannelSettings = ({channel, setShowSettingModal, serverId}) =>{
                 <div className="edit-channel-caption">
                     Edit Channel
                     <div>
-                    <button className="ch-del ch-edit" onClick={handleDelete}>
-                            <RiDeleteBin5Fill />
-                        </button>
+                    <div className="ch-del ch-edit" >
+                            <DeleteChannelModal serverId={serverId} channel={channel}/>
+                        </div>
                     </div>
                 </div>
                 <div className="edit-channel-form-container">

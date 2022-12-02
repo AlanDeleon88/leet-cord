@@ -99,4 +99,4 @@ def delete_channel(id):
     db.session.delete(channel)
     db.session.commit()
 
-    return channel_dict()
+    return channel_dict

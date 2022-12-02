@@ -2,6 +2,7 @@ import { getUserServers } from "./servers"
 const GET_SERVER = 'focus_server/GET_SERVER'
 const ADD_CHANNEL = 'focus_server/ADD_CHANNEL'
 const EDIT_CHANNEL = 'focus_server/EDIT_CHANNEL'
+const DELETE_CHANNEL = 'focus_server/DELETE_CHANNEL'
 
 const getServerAction = (server) => ({
     type: GET_SERVER,
@@ -16,6 +17,11 @@ const addChannelAction = (channel) =>({
 const editChannelAction = (channel) => ({
     type: EDIT_CHANNEL,
     payload: channel
+})
+
+const deleteChannelAction = (channelId) => ({
+    type: DELETE_CHANNEL,
+    payload: channelId
 })
 
 
@@ -153,6 +159,22 @@ export const editChannel = (channel, serverId) => async dispatch =>{
     else if (response.status < 500){
         const data = await response.json()
         return data
+    }
+}
+
+export const deleteChannel = (channelId, serverId) => async dispatch =>{
+    const response = await fetch(`/api/channels/${channelId}`, {
+        method: 'DELETE',
+        headers:{
+            'Content-Type' : 'application/json'
+        },
+    })
+
+    if(response.ok){
+        const data = await response.json()
+        //!maybe need to write a case for this?
+        // dispatch(deleteChannelAction(data.id))
+        dispatch(getIdServer(serverId))
     }
 }
 
