@@ -1,9 +1,9 @@
 .main-view{
     width:100%;
-    height: 96%;
+    height: 100%;
     background-color: #1e2124;
     border: red solid 1px;
-    margin-top: 30px;
+    /* margin-top: 30px; */
     display:flex;
 
 

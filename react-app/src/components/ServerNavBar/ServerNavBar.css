@@ -24,6 +24,7 @@
 .add-server-button:hover{
     color: white;
     background-color: rgb(59, 165, 93);
+    border-radius: 20%;
     cursor: pointer;
 }
 
@@ -79,6 +80,13 @@
 
 }
 
+.circle:hover > div .server-icon{
+    border-radius: 30%;
+}
+
+.circle:hover > div .default-icon{
+    border-radius: 30%;
+}
 
 .circle:hover > div .server-marker{
     opacity:100;

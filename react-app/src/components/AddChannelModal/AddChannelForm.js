@@ -64,7 +64,7 @@ const AddChannelForm = ({serverId, setShowModal}) =>{
                     </div>
 
                     <div className="buttons-container">
-                        <button type='submit' className="add-ch-form-button add-ch-yes" disabled={!name}>Submit</button>
+                        <button type='submit' className="add-ch-form-button add-ch-yes">Submit</button>
                         <button onClick={handleCancel} className="add-ch-form-button add-ch-cancel">Cancel</button>
                     </div>
 
