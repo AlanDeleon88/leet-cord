@@ -13,7 +13,7 @@ class Server(db.Model):
     updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now)
 
     users = db.relationship('User', back_populates='servers', single_parent=True)
-    channels = db.relationship('Channel', back_populates='servers', cascade='all, delete-orphan')
+    channels = db.relationship('Channel', back_populates='servers', order_by='Channel.created_at', cascade='all, delete-orphan')
     server_members = db.relationship('ServerMember', back_populates='servers', cascade='all, delete-orphan')
 
     def to_dict(self):
