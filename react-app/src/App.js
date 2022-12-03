@@ -68,7 +68,7 @@ function App() {
           <SplashPage />
         </Route>
         <ProtectedRoute path= '/debug-forms' exact={true}>
-          Add debuging forms here for creating servers/channels/messages
+          Add debuging forms here for creating servers/channels/messages/edit
           <DebugForms />
 
         </ProtectedRoute>
