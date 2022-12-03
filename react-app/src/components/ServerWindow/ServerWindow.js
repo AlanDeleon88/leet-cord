@@ -19,7 +19,7 @@ const ServerWindow = () =>{
     useEffect(() =>{
         dispatch(getIdServer(id)).then(() =>{
             setIsLoaded(true)
-            console.log('IM THE ONE');
+            // console.log('IM THE ONE');
         })
     },[dispatch])
 
@@ -31,7 +31,7 @@ const ServerWindow = () =>{
                 <Switch>
                     <Route path={`${match.url}/channel`}>
                     <div className='channel-container'>
-                        {true &&
+                        {isLoaded &&
                             (
                             <>
 
