@@ -1,10 +1,29 @@
 import { getUserServers } from "./servers"
 const GET_SERVER = 'focus_server/GET_SERVER'
+const ADD_CHANNEL = 'focus_server/ADD_CHANNEL'
+const EDIT_CHANNEL = 'focus_server/EDIT_CHANNEL'
+const DELETE_CHANNEL = 'focus_server/DELETE_CHANNEL'
 
 const getServerAction = (server) => ({
     type: GET_SERVER,
     payload: server
 })
+
+const addChannelAction = (channel) =>({
+    type: ADD_CHANNEL,
+    payload: channel
+})
+
+const editChannelAction = (channel) => ({
+    type: EDIT_CHANNEL,
+    payload: channel
+})
+
+const deleteChannelAction = (channelId) => ({
+    type: DELETE_CHANNEL,
+    payload: channelId
+})
+
 
 export const getIdServer = (id) => async (dispatch) => {
     const response = await fetch(`/api/servers/${id}`)
@@ -91,6 +110,76 @@ export const updateServerIcon = (server, userId) => async(dispatch) =>{
     }
 }
 
+export const addChannel = (serverId, channel) => async (dispatch) =>{
+    const response = await fetch(`/api/servers/${serverId}/channels`, {
+        method : 'POST',
+        headers:{
+            'Content-Type' : 'application/json'
+        },
+            body: JSON.stringify({
+                name: channel.name,
+                description: channel.description
+        })
+
+    })
+
+    if(response.ok){
+        const data = await response.json()
+
+        dispatch(addChannelAction(data))
+        return null
+    }
+    else if (response.status < 500){
+        const data = await response.json()
+        // console.log(data);
+        return data
+    }
+
+}
+
+export const editChannel = (channel, serverId) => async dispatch =>{
+    console.log('thunk!---------------', channel);
+    const response = await fetch(`/api/channels/${channel.id}`,{
+        method: 'PUT',
+        headers:{
+            'Content-Type' : 'application/json'
+        },
+            body: JSON.stringify({
+                name: channel.name,
+                description: channel.description
+        })
+
+    })
+    if(response.ok){
+        const data = await response.json();
+        // dispatch(editChannelAction(data))
+        dispatch(getIdServer(serverId))
+        return null
+    }
+    else if (response.status < 500){
+        const data = await response.json()
+        return data
+    }
+}
+
+export const deleteChannel = (channelId, serverId) => async dispatch =>{
+    const response = await fetch(`/api/channels/${channelId}`, {
+        method: 'DELETE',
+        headers:{
+            'Content-Type' : 'application/json'
+        },
+    })
+
+    if(response.ok){
+        const data = await response.json()
+        //!maybe need to write a case for this?
+        // dispatch(deleteChannelAction(data.id))
+        dispatch(getIdServer(serverId))
+    }
+}
+
+
+
 
 export default function focusServerReducer(state = {}, action){
     let newState;
@@ -99,6 +188,17 @@ export default function focusServerReducer(state = {}, action){
         case GET_SERVER:
             newState = {...action.payload}
             return newState
+        case ADD_CHANNEL:{
+            newState = {...state}
+            let newChannel = {}
+            newChannel['name'] = action.payload.name;
+            newChannel['channel_id'] = action.payload.id;
+            newChannel['description'] = action.payload.description;
+
+
+            newState.channels.push(newChannel)
+            return newState
+        }
         default:
             return state
     }

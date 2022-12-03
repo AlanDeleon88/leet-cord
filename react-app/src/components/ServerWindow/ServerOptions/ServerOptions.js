@@ -4,12 +4,14 @@ import {IoSettingsSharp} from 'react-icons/io5'
 import { RiDeleteBin5Fill} from "react-icons/ri";
 import {BsArrowLeftCircleFill} from 'react-icons/bs'
 import EditServerForm from '../../ServerNavBar/ServerFormsModal/EditServerModal/EditServerForm';
+import DeleteServer from '../../DeleteServerModal/DeleteServer';
 
 import './ServerOptions.css'
 import { Modal } from '../../../context/Modal';
 
 const ServerOptions = ({userId, serverId, server}) =>{
     const [showMenu, setShowMenu] = useState(false)
+    const [showDeleteModal, setShowDeleteModal] = useState(false)
     const [showModal, setShowModal] = useState(false)
 
 
@@ -19,6 +21,10 @@ const ServerOptions = ({userId, serverId, server}) =>{
 
     const clickShowMenuModal = e =>{
         setShowModal(!showModal)
+    }
+
+    const clickShowDeleteModal = e =>{
+        setShowDeleteModal(!showModal)
     }
 
     useEffect(() => {
@@ -53,7 +59,7 @@ const ServerOptions = ({userId, serverId, server}) =>{
                                 <IoSettingsSharp />
 
                             </li>
-                            <li className='server-options-item delete-server'>Delete Server <RiDeleteBin5Fill/></li>
+                            <li className='server-options-item delete-server' onClick={clickShowDeleteModal}>Delete Server <RiDeleteBin5Fill/></li>
 
                             </>
 
@@ -76,6 +82,13 @@ const ServerOptions = ({userId, serverId, server}) =>{
                     <EditServerForm server={server} setShowModal={setShowModal}/>
                 </Modal>
 
+            )}
+            {showDeleteModal && (
+                <Modal onClose={() =>{
+                setShowDeleteModal(false)
+                }}>
+                    <DeleteServer id={server.id} setShowDeleteModal={setShowDeleteModal}/>
+                </Modal>
             )}
     </div>
 

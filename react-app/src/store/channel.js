@@ -6,14 +6,20 @@ const getChannelAction = (channel) => ({
     payload: channel
 })
 
+
 export const getChannel = (channelId) => async (dispatch) =>{
-    console.log('IN THUNK', channelId);
     const response = await fetch(`/api/channels/${channelId}`)
 
     if(response.ok){
         const data = await response.json()
-        console.log('IN THUNK!!!');
+
         dispatch(getChannelAction(data))
+        return null
+    }
+    else{
+        const data = await response.json()
+
+        return data
     }
 }
 

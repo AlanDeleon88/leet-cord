@@ -12,6 +12,7 @@ const ServerNavBar = () =>{
     const servers = Object.values(useSelector(state => state.servers))
     const user = useSelector(state => state.session.user)
     const [isLoaded, setIsLoaded] = useState(false)
+    const [activeClass, setActiveClass] = useState(false)
     const dispatch = useDispatch();
 
 
@@ -46,8 +47,8 @@ const ServerNavBar = () =>{
                             )
                         })}
                         <li>
-                            <div className='add-server-button'>
-                                <ServerFormsModal type={'Add'}/>
+                            <div className={activeClass ? 'add-server-active':'add-server-button'}>
+                                <ServerFormsModal type={'Add'} setActiveClass={setActiveClass}/>
                             </div>
 
                         </li>

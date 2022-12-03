@@ -1,0 +1,80 @@
+.delete-channel-window{
+    width:400px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #424549;
+    border-radius: 3%;
+}
+
+.delete-channel-caption{
+    font-size: 20px;
+    color: whitesmoke;
+}
+
+#modal-content {
+    border-radius: 4%;
+}
+
+
+.delete-yes{
+    background-color: #7289da;
+    border: none;
+    color: whitesmoke;
+    font-size: 20px;
+}
+
+.delete-yes:hover{
+    background-color: red;
+}
+
+.delete-no:hover{
+    background-color: black;
+    color: whitesmoke;
+}
+
+.delete-no:active{
+    background-color: white;
+    color: black;
+}
+
+.delete-yes:active{
+    height: 45px;
+    width: 145px;
+    background-color: black;
+
+}
+
+.delete-no{
+    font-size: 20px;
+}
+
+.delbutton{
+    height: 50px;
+    width: 150px;
+    margin-bottom: 10px;
+    margin: 50px;
+}
+
+.button-container{
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.del-channel-button{
+    background-color: transparent;
+    border: none;
+    color: rgb(232, 109, 109);
+    font-size: 40px;
+}
+
+.del-channel-button:hover{
+    color:red
+}
+
+.del-channel-button:active{
+    font-size:35px;
+}

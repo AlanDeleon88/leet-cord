@@ -5,7 +5,7 @@ import './ServerForm.css'
 
 import { addUserServer } from "../../../store/servers"
 
-const ServerForm = ({setShowModal, setShowMenu}) =>{
+const ServerForm = ({setShowModal, setShowMenu, setActiveClass}) =>{
     const [name, setName] = useState('')
     const user = useSelector(state => state.session.user)
     const [description, setDescription] = useState('')
@@ -26,6 +26,7 @@ const ServerForm = ({setShowModal, setShowMenu}) =>{
                 if(res.id){
                     // console.log(errors);
                     setShowModal(false);
+                    setActiveClass(false);
                 }
                 else{
 
@@ -87,7 +88,7 @@ const ServerForm = ({setShowModal, setShowMenu}) =>{
 
                         />
                         <div className='server-form-buttons'>
-                            <button className="server-back-button" onClick={() =>{
+                            <button className="server-back-button" type='button' onClick={() =>{
                                 setShowModal(false);
                                 setShowMenu(false);
                             }}> Back</button>

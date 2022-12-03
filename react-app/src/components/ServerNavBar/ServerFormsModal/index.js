@@ -5,7 +5,7 @@ import { AiOutlinePlusSquare } from "react-icons/ai";
 import {FaPlus} from 'react-icons/fa'
 
 
-const ServerFormsModal = ({server}) => {
+const ServerFormsModal = ({server, setActiveClass}) => {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -13,18 +13,29 @@ const ServerFormsModal = ({server}) => {
 
         <FaPlus
         className="icon-buttons side-step"
-        onClick={() => setShowModal(!showModal)}/>
+        onClick={() =>{
+
+          setShowModal(!showModal)
+          setActiveClass(true)
+
+        }
+
+
+
+
+        }/>
 
       {showModal && (
         <Modal onClose={() =>
           {
 
             setShowModal(false)
+            setActiveClass(false)
 
 
           }
           }>
-          <ServerForm onClose={() => setShowModal(false)} setShowModal={setShowModal} server={server}/>
+          <ServerForm onClose={() => setShowModal(false)} setShowModal={setShowModal} server={server} setActiveClass={setActiveClass}/>
         </Modal>
       )}
     </>

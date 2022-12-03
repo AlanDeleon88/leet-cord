@@ -13,6 +13,7 @@ import DebugForms from './components/DebugForms/DebugForms';
 import ServerWindow from './components/ServerWindow';
 import MessageWindow from './components/ServerWindow/MessageWindow';
 import {useSelector} from 'react-redux'
+import SplashPage from './components/SplashPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -63,9 +64,9 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
-          {/* <h1>My Home Page</h1> */}
-        </ProtectedRoute>
+        <Route path='/' exact={true} >
+          <SplashPage />
+        </Route>
         <ProtectedRoute path= '/debug-forms' exact={true}>
           Add debuging forms here for creating servers/channels/messages
           <DebugForms />
