@@ -2,8 +2,10 @@ import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import ImageUploadComponent from "./ImageUploadComponent"
 import './ServerForm.css'
-
+import { useHistory } from "react-router-dom"
 import { addUserServer } from "../../../store/servers"
+import { getIdServer } from "../../../store/focusServer"
+import { getChannel } from "../../../store/channel"
 
 const ServerForm = ({setShowModal, setShowMenu, setActiveClass}) =>{
     const [name, setName] = useState('')
@@ -12,6 +14,7 @@ const ServerForm = ({setShowModal, setShowMenu, setActiveClass}) =>{
     const [server_icon, setServerIcon] = useState('')
     const [errors, setErrors] = useState([])
     const dispatch = useDispatch();
+    const history = useHistory();
 
 
     const handleSubmit = async (e) =>{
@@ -27,6 +30,9 @@ const ServerForm = ({setShowModal, setShowMenu, setActiveClass}) =>{
                     // console.log(errors);
                     setShowModal(false);
                     setActiveClass(false);
+                    // dispatch(getIdServer(res.id))
+                    // dispatch(getChannel(res.channels[0].channel_id))
+                    history.push(`/server/${res.id}/channel/${res.channels[0].channel_id}`)
                 }
                 else{
 
@@ -90,7 +96,7 @@ const ServerForm = ({setShowModal, setShowMenu, setActiveClass}) =>{
                         <div className='server-form-buttons'>
                             <button className="server-back-button" type='button' onClick={() =>{
                                 setShowModal(false);
-                                setShowMenu(false);
+                                // setShowMenu(false);
                             }}> Back</button>
                             <button type="submit" className="server-submit-button" disabled={!name}>Create Server</button>
 

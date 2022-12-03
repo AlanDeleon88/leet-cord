@@ -28,7 +28,7 @@ const ChannelSettings = ({channel, setShowSettingModal, serverId}) =>{
     }
 
     const handleDelete = e =>{
-
+        
     }
 
     const handleSave = async e => {

@@ -9,10 +9,11 @@ const ChannelList = ({id}) =>{
     const server = useSelector(state => state.focusServer)
     const user = useSelector(state =>state.session.user)
     const [isLoaded, setIsLoaded] = useState(false)
-    
+
     useEffect(() => {
         dispatch(getIdServer(id)).then(() =>{
             setIsLoaded(true)
+            console.log('IM THE ONE');
         })
 
     },[dispatch])

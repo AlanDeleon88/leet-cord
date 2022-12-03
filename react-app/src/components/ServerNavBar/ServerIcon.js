@@ -14,23 +14,24 @@ const ServerIcon = ({server}) => {
     const [serverName, setServerName] = useState('')
     const focusServer = useSelector(state =>state.focusServer)
 
-    useEffect(() =>{
-        dispatch(getIdServer(server.id)).then((res) =>{
-            setIsLoaded(true)
-            let nameArr = res.name.split('')
-            nameArr = nameArr.reverse();
+    // useEffect(() =>{
+    //     dispatch(getIdServer(server.id)).then((res) =>{
+    //         setIsLoaded(true)
+    //         let nameArr = res.name.split('')
+    //         nameArr = nameArr.reverse();
+    //         console.log('IM THE ONE');
 
-            nameArr.forEach(char =>{
-                if(char !== ' '){
-                    setServerName(char)
-                }
-            })
+    //         nameArr.forEach(char =>{
+    //             if(char !== ' '){
+    //                 setServerName(char)
+    //             }
+    //         })
 
 
-            // console.log(nameArr);
+    //         // console.log(nameArr);
 
-        })
-    },[dispatch])
+    //     })
+    // },[dispatch])
 
 
     const handleServerClick = () =>{
@@ -46,7 +47,7 @@ const ServerIcon = ({server}) => {
     //!eventually try to figure out how to remember on what channel the user was on last.. maybe add a redux store..
     return(
         <>
-            {isLoaded &&
+            {true &&
 
                 (<>
                     <NavLink to={`/server/${server.id}/channel/${server.channels[0].channel_id}`} exact={true} className ='circle' activeClassName="square" onClick={handleServerClick}>

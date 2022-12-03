@@ -1,4 +1,6 @@
 import { useHistory } from "react-router-dom"
+import { getIdServer } from "./focusServer"
+import { getChannel } from "./channel"
 
 const GET_SERVERS = 'servers/GET_SERVERS'
 const ADD_SERVER = 'servers/ADD_SERVERS'
@@ -56,6 +58,10 @@ export const addUserServer = (server) => async (dispatch) =>{
     })
     if(response.ok){
         const data = await response.json()
+        // console.log('TESTING HERE!!!!!!');
+        dispatch(getIdServer(data.id))
+        dispatch(getChannel(data.channels[0].channel_id))
+
         dispatch(add_server_action(data))
         return data
         //! dispatch here..
@@ -79,6 +85,7 @@ export const deleteServer = (id) => async (dispatch) =>{
         dispatch(delete_server_action(id))
         //!thunk should update store as well.
         // dispatch(get_server_action(data.servers))
+
         return null;
     }
     else if (response.status < 500) {
@@ -101,6 +108,7 @@ export default function serverReducer(state = {}, action) {
 
         case ADD_SERVER:
             newState = {...state}
+            console.log('MORE TESTING CLOGSSS');
             newState[action.payload.id] = action.payload
             return newState;
         case DELETE_SERVER:

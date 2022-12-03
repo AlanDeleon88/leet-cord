@@ -22,6 +22,7 @@ const DeleteChannel = ({serverId, channel, setShowModal}) => {
         //! redirect to first channel of server IE /server/server.id/server.channels[0].channel_id
         // history.push(`/server/${serverId}/channel/${server.channels[0].channel_id}`)
         dispatch(getChannel(server.channels[0].channel_id))
+        setShowModal(false)
     }
 
     const handleNo = e =>{
