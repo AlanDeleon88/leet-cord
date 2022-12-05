@@ -1,0 +1,108 @@
+.splash-main-container{
+    width:100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    /* overflow-y: scroll; */
+
+
+}
+
+.splash-background-img-container{
+    width:100%;
+    height:100%;
+    position: absolute;
+    min-height: 600px;
+    z-index: -3;
+}
+
+.splash-img{
+    height:75%;
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+}
+
+.splash-button{
+    height: 50px;
+    width: 300px;
+    border-radius: 50px;
+    border:none;
+    z-index: 2;
+    background-color: #282b30;
+    /* margin-bottom: 50px; */
+    color: whitesmoke;
+    font-size: 20px;
+}
+
+.splash-button:hover{
+    background-color: #4c515b;
+}
+
+.about-icon{
+    height: 50px;
+    width:50px;
+
+}
+.lnked-anchor{
+    height:50px;
+    width: 50px;
+}
+
+.tech-icon{
+    height:60px;
+    width:60px;
+    padding-top: 20px;
+    margin-left:10px;
+    margin-right:10px;
+}
+
+.redux{
+    height: 80px;
+    width: 80px;
+}
+
+.sqlalchemy{
+    width: 110px;
+}
+
+
+
+.splash-content-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-top:360px;
+    height:100%;
+}
+
+.splash-footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.splash-caption{
+    padding: 10px;
+    color: whitesmoke;
+}
+
+.about-icons-container{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+.tech-container{
+    display: flex;
+    align-items: center;
+    margin-top:130px
+
+}

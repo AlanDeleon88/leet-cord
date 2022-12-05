@@ -36,7 +36,7 @@ function App() {
      <div className='main'>
      {/* {user && <NavBar />} code to only render nav bar when logged in*/}
 
-      <NavBar />
+      {/* <NavBar /> */}
       {user && <ServerNavBar />} {/* only show up if user is logged in*/}
       <Switch>
         <Route path='/server/:serverId'>
