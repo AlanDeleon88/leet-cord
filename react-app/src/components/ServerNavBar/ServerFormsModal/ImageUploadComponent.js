@@ -6,6 +6,7 @@ const ImageUploadComponent = ({setServerIcon}) =>{
     const [imageLoading, setImageLoading] = useState(false);
     const [uploadedImg, setUploadImg] = useState(false);
     const [prevImgUrl, setPrevImgUrl] = useState("");
+    const [errors, setErrors] = useState([])
 
     const handleSubmit = async (image) =>{
       // e.preventDefault();
@@ -28,8 +29,13 @@ const ImageUploadComponent = ({setServerIcon}) =>{
             setUploadImg(true);
             setPrevImgUrl(img_url.url);
             // console.log(img_url.url);
-          } else {
+          } else if (res.status < 500){
             setImageLoading(false);
+            // console.log(res);
+            const error = []
+            error.push('File not uploaded, an error occured')
+            setErrors(error)
+            window.alert(error[0])
             // a real app would probably use more advanced
             // error handling
             // console.log("error");
@@ -55,6 +61,12 @@ const ImageUploadComponent = ({setServerIcon}) =>{
               }} style={{border:'none'}}>
                 <img src={prevImgUrl} alt="your image" className="prev-img" />
               </button>
+
+              </div>
+              <div>
+                  {errors.map((error, ind) => (
+                    <div key={ind} className='error'>{error}</div>
+                  ))}
               </div>
               <ReactTooltip id='image' />
 
