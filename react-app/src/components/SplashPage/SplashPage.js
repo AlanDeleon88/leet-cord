@@ -6,6 +6,7 @@ import reduxIcon from './icons/reduxLogo.png'
 import sqlAlchIcon from './icons/sqlalchemyLogo.png'
 import flaskIcon from './icons/flaskLogo.png'
 import './SplashPage.css'
+import LoginModal from '../LoginModal'
 
 const SplashPage = () => {
 
@@ -19,9 +20,10 @@ const SplashPage = () => {
             </div>
             <div className='splash-content-container'>
                 <div className="splash-button-container">
-                    <button className="splash-button">
+                    {/* <button className="splash-button">
                         Open Discord in browser
-                    </button>
+                    </button> */}
+                    <LoginModal />
                 </div>
                     <div className="splash-footer">
                         <div className='tech-container'>

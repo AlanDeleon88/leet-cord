@@ -6,7 +6,7 @@
     align-items: center;
     justify-content: space-around;
     background-color: #424549;
-    border-radius: 3%;
+    border-radius: 20px;;
 }
 
 .delete-server-caption{
@@ -15,7 +15,7 @@
 }
 
 #modal-content {
-    border-radius: 4%;
+    border-radius: 30px;
 }
 
 
