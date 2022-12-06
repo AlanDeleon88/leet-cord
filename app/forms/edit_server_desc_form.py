@@ -4,4 +4,4 @@ from wtforms.validators import DataRequired, Email, ValidationError
 from app.models import User
 
 class EditServerDescription(FlaskForm):
-    description = StringField('description', validators=[DataRequired()])
+    description = StringField('description')
