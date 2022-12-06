@@ -1,6 +1,6 @@
 .login-form-container{
 
-    height: 300px;
+    height: 350px;
     width: 400px;
     border-radius: 20px;
 
@@ -46,6 +46,10 @@
     margin-top: 15px;
 }
 
+.login-button:hover{
+    background-color: #6478bf;
+}
+
 .login-caption{
     color:whitesmoke;
     font-size: 30px;
@@ -57,4 +61,22 @@
 
 .reg-caption{
     color: whitesmoke;
+    padding-right: 3px;
+}
+
+.reg-button{
+    color:#7289da;
+    cursor: pointer;
+}
+
+.reg-button:hover {
+    text-decoration: underline;
+}
+
+.button-container{
+    justify-content: space-around;
+}
+
+.demo{
+    font-size: 15px;
 }

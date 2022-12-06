@@ -6,7 +6,7 @@ import LoginForm from "./LoginForm";
 
 
 
-const LoginModal = ({serverId}) => {
+const LoginModal = () => {
   const [showModal, setShowModal] = useState(false);
   const user = useSelector(state=> state.session.user);
   const history = useHistory();

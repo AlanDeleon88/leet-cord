@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
 import { useHistory } from 'react-router-dom';
 import './LoginModal.css'
+import SignUpModal from '../SignUpModal';
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -34,6 +35,11 @@ const LoginForm = () => {
 
   if (user) {
     return <Redirect to='/' />;
+  }
+
+  const handleDemo = e =>{
+    setEmail('demo@aa.io')
+    setPassword('password')
   }
 
   return (
@@ -69,8 +75,9 @@ const LoginForm = () => {
             onChange={updatePassword}
             />
         </div>
-        <div>
+        <div className='button-container'>
             <button type='submit' className='login-button'>Login</button>
+            <button onClick={handleDemo} className='login-button demo' > Demo Login</button>
 
         </div>
         <div className='register-container'>
@@ -78,7 +85,7 @@ const LoginForm = () => {
                 Need an account?
             </div>
             <div>
-                 Register
+                 <SignUpModal />
             </div>
 
         </div>

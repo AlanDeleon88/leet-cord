@@ -28,7 +28,7 @@ const ChannelSettings = ({channel, setShowSettingModal, serverId}) =>{
     }
 
     const handleDelete = e =>{
-        
+
     }
 
     const handleSave = async e => {
@@ -102,7 +102,7 @@ const ChannelSettings = ({channel, setShowSettingModal, serverId}) =>{
                     Edit Channel
                     <div>
                     <div className="ch-del ch-edit" >
-                            <DeleteChannelModal serverId={serverId} channel={channel}/>
+                            <DeleteChannelModal serverId={serverId} channel={channel} setShowSettingModal={setShowSettingModal}/>
                         </div>
                     </div>
                 </div>
