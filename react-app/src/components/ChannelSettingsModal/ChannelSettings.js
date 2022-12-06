@@ -108,7 +108,7 @@ const ChannelSettings = ({channel, setShowSettingModal, serverId}) =>{
                 </div>
                 <div className="edit-channel-form-container">
                         {errors.map((error, ind) => (
-                            <div key={ind}>{error}</div>
+                            <div key={ind} className='error'>{error}</div>
                          ))}
                     <div className="ch-name-ipnut-container">
                         <label className="input-labels">Name</label>
