@@ -29,6 +29,10 @@ const SignUpForm = ({setShowSignUpModal}) => {
         history.push(`/${data.username}/dm`)
       }
     }
+    else{
+        let error = ['Passwords do not match!']
+        setErrors(error);
+    }
   };
 
   const updateUsername = (e) => {

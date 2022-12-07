@@ -135,6 +135,10 @@ const EditServerForm = ({server, setShowModal}) =>{
               //! temp dispatch, will implement it in the save button later.
 
             }
+            else if(res.status < 500){
+                window.alert('an error occured while trying to upload the image, file was not accepted.')
+                setImgLoading(false)
+            }
       }
 
     const updateImage = (e) =>{

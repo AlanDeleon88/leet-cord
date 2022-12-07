@@ -15,6 +15,7 @@
     align-items: center;
     background-color: #36393e;
     border-radius: 20px;
+
 }
 
 .login-form > * {
@@ -34,6 +35,8 @@
     border-radius: 5px;
     width: 200px;
     height:30px;
+    color: whitesmoke;
+    font-size: 15px;
 }
 
 .login-button{
