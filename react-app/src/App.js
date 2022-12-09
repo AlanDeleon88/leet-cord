@@ -71,6 +71,7 @@ function App() {
             <Route path= {`/`} exact={true}>
               <ServerWindow />
             </Route>
+            //test merege
             // <Redirect to={`/${user.username}`}/>
           )
           :
