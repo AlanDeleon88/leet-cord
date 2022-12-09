@@ -12,6 +12,7 @@ import ServerNavBar from './components/ServerNavBar';
 import DebugForms from './components/DebugForms/DebugForms';
 import ServerWindow from './components/ServerWindow';
 import MessageWindow from './components/ServerWindow/MessageWindow';
+import DmWindow from './components/DmWindow';
 import {useSelector} from 'react-redux'
 import SplashPage from './components/SplashPage';
 
@@ -69,7 +70,7 @@ function App() {
         {user ?
           (
             <Route path= {`/`} exact={true}>
-              <ServerWindow />
+              <DmWindow />
             </Route>
             //test merege
             // <Redirect to={`/${user.username}`}/>

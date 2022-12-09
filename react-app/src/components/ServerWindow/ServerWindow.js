@@ -20,21 +20,19 @@ const ServerWindow = () =>{
     const match = useRouteMatch();
 
     useEffect(() =>{
-        dispatch(getIdServer(id)).then(() =>{
-            setIsLoaded(true)
-            // console.log('IM THE ONE');
-        })
+
+            dispatch(getIdServer(id)).then(() =>{
+                setIsLoaded(true)
+                // console.log('IM THE ONE');
+            })
+
     },[dispatch])
 
     //!use props to thread through message window maybe.
     return (
         <>
             <div className='main-view'>
-
                 <Switch>
-                    <Route path={'/'} exact={true}>
-                        <UserBox />
-                    </Route>
                     <Route path={`${match.url}/channel`}>
                     <div className='channel-container'>
                         {isLoaded &&
@@ -62,7 +60,7 @@ const ServerWindow = () =>{
                         }
                     </div>
 
-                        <MessageWindow />
+                        <MessageWindow type={'channel'}/>
                     </Route>
                 </Switch>
             </div>

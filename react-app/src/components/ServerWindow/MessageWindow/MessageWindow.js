@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getChannel } from '../../../store/channel';
 
-const MessageWindow = () =>{
+const MessageWindow = ({type}) =>{
 
     const [isLoaded, setIsLoaded] = useState(false)
     const dispatch = useDispatch()
@@ -24,17 +24,25 @@ const MessageWindow = () =>{
     return(
         <>
             <div className="message-container">
-                <div>
-                    {
-                        channel && (
-                            <>
-                                {channel.name}
+                { type === 'channel' &&
+                    <div>
+                        {
+                            channel && (
+                                <>
+                                    {channel.name}
 
-                            </>
-                        )
-                    }
+                                </>
+                            )
+                        }
 
-                </div>
+                    </div>
+                }
+                { type === 'dm' &&
+                    <div>
+                        DM messages will go here.
+                    </div>
+
+                }
 
             </div>
         </>
