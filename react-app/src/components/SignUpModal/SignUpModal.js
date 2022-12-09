@@ -26,7 +26,8 @@ const SignUpForm = ({setShowSignUpModal}) => {
         setErrors(data)
       }
       else{
-        history.push(`/${data.username}/dm`)
+        history.push(`/${data.username}`)
+        // history.push('/')
       }
     }
     else{

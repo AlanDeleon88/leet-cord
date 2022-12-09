@@ -21,7 +21,8 @@ const LoginForm = () => {
       setErrors(data);
     }
     else{
-        history.push(`/${data.username}/dm`)
+        history.push(`/${data.username}`)
+        // history.push('/')
     }
   };
 

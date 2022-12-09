@@ -30,7 +30,7 @@ const ServerNavBar = () =>{
                 (<>
                     <ul className='server-list'>
                         <li>
-                            <NavLink to={`/${user.username}/dm`} className='circle' activeClassName='square'>
+                            <NavLink to={`/${user.username}`} className='circle' activeClassName='square'>
                                 <div
                                     className='server-icon-container'>
                                     <div className='server-marker'></div>

@@ -71,11 +71,11 @@
 }
 
 .server-options{
-    background-color: #1e2124;
+    background-color: #36393e;
     position: absolute;
     width:220px;
-    left: 190px;
-    top:90px;
+    left: 250px;
+    top:65px;
     z-index:1;
     margin: 0px;
     padding:0px;

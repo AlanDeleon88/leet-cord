@@ -74,12 +74,12 @@ const EditServerForm = ({server, setShowModal}) =>{
         else if(!serverUpdate.name && inputtedName){
             err.push('name field is required')
         }
-        if(serverUpdate.description || inputtedDesc){
+        if((serverUpdate.description && err.length === 0)|| inputtedDesc){
             dispatch(updateServerDesc(serverUpdate, user.id)).then((res)=>{
                 err.push(res)
             })
         }
-        if(serverUpdate.server_icon){
+        if(serverUpdate.server_icon && err.length === 0){
             dispatch(updateServerIcon(serverUpdate, user.id)).then((res)=>{
                 err.push(res)
             })
@@ -88,9 +88,11 @@ const EditServerForm = ({server, setShowModal}) =>{
         if(err.length > 0){
             setErrors(err)
             console.log(err);
+            err = [];
             // console.log('SUPER TEST!!!!!!!!!!!!!!');
         }
         else {
+            setErrors([])
             window.alert('settings saved')
         }
     }

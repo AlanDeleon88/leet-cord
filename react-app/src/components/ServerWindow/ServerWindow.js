@@ -7,6 +7,8 @@ import { getIdServer } from '../../store/focusServer';
 import MessageWindow from './MessageWindow';
 import ServerOptions from './ServerOptions';
 import {IoSettingsSharp} from 'react-icons/io5'
+import UserBox from '../UserBoxComponent';
+import User from '../User';
 const ServerWindow = () =>{
     const [isLoaded, setIsLoaded] = useState(false);
     const [myServer, setMyServer] = useState(false);
@@ -30,6 +32,9 @@ const ServerWindow = () =>{
             <div className='main-view'>
 
                 <Switch>
+                    <Route path={match.url} exact={true}>
+                        TESTING
+                    </Route>
                     <Route path={`${match.url}/channel`}>
                     <div className='channel-container'>
                         {isLoaded &&
@@ -46,23 +51,7 @@ const ServerWindow = () =>{
                                     <ChannelList id = {id}/>
 
                                     {/* make this userbox into a component..*/}
-                                    
-                                    <div className='user-box'>
-                                        <div className='user-info'>
-                                            <div className='profile-pic-container'>
-                                                <img src={user.profile_picture} className='profile-picture'/>
-                                            </div>
-                                            <div className='username-container'>
-                                                {user.username}
-
-                                            </div>
-                                        </div>
-                                        <div className='user-menu'>
-                                            <button>
-                                                <IoSettingsSharp />
-                                            </button>
-                                        </div>
-                                    </div>
+                                    <UserBox />
 
                                 </div>
 
