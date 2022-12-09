@@ -17,7 +17,7 @@ const DeleteServer = ({id, setShowDeleteModal}) => {
         dispatch(deleteServer(id))
 
         //! redirect to user page
-        history.push(`/${user.username}/dm`)
+        history.push('/')
     }
 
     const handleNo = e =>{
@@ -36,7 +36,7 @@ const DeleteServer = ({id, setShowDeleteModal}) => {
 
 
                 <div className="button-container">
-                    
+
                     <button className ='delete-yes delbutton' onClick={handleYes}>
                         Yes
                     </button>
