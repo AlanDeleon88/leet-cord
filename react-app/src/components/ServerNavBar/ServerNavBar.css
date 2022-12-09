@@ -4,6 +4,7 @@
     object-fit:cover;
     border-radius: 100%;
     margin: 5px;
+    transition: 0.3s;
 
 }
 
@@ -164,4 +165,5 @@
     background-color: #424549;
     color: whitesmoke;
     margin: 5px;
+    transition: 0.3s;
 }
