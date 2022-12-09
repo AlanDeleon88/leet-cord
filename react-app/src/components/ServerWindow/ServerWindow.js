@@ -32,8 +32,8 @@ const ServerWindow = () =>{
             <div className='main-view'>
 
                 <Switch>
-                    <Route path={match.url} exact={true}>
-                        TESTING
+                    <Route path={'/'} exact={true}>
+                        <UserBox />
                     </Route>
                     <Route path={`${match.url}/channel`}>
                     <div className='channel-container'>

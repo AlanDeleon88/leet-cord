@@ -68,7 +68,7 @@ function App() {
 
         {user ?
           (
-            <Route path= {`/${user.username}`} exact={true}>
+            <Route path= {`/`} exact={true}>
               <ServerWindow />
             </Route>
             // <Redirect to={`/${user.username}`}/>
