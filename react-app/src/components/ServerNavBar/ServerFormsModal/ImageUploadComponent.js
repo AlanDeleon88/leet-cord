@@ -34,7 +34,7 @@ const ImageUploadComponent = ({setServerIcon}) =>{
             // console.log(res);
             const error = []
             error.push('File not uploaded, an error occured')
-            setErrors(error)
+            // setErrors(error)
             window.alert(error[0])
             // a real app would probably use more advanced
             // error handling
@@ -58,7 +58,7 @@ const ImageUploadComponent = ({setServerIcon}) =>{
               <div data-tip={'upload an image'} data-for='image' data-place='center'>
               <button onClick={() =>{
                 document.getElementById('file').click();
-              }} style={{border:'none'}}>
+              }} style={{border:'none', backgroundColor:'transparent'}}>
                 <img src={prevImgUrl} alt="your image" className="prev-img" />
               </button>
 

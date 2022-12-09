@@ -63,6 +63,11 @@ const ServerForm = ({setShowModal, setShowMenu, setActiveClass}) =>{
                              Create a Server
 
                 </div>
+                <div>
+                        {errors.map((error, ind) => (
+                                <div key={ind} className='error'>{error}</div>
+                         ))}
+                        </div>
 
                 <div className="upload-img-container">
                     <ImageUploadComponent setServerIcon={setServerIcon}/>
@@ -72,11 +77,7 @@ const ServerForm = ({setShowModal, setShowMenu, setActiveClass}) =>{
                 <div className="server-form-container">
                     <form onSubmit={handleSubmit} className='server-form'>
                         <label> Server Name</label>
-                        <div>
-                        {errors.map((error, ind) => (
-                                <div key={ind} className='error'>{error}</div>
-                         ))}
-                        </div>
+
                         <input
                             type='text'
                             className="server-name-input"
