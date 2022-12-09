@@ -51,7 +51,7 @@ const EditServerForm = ({server, setShowModal}) =>{
         }
     })
 
-    const handleSave = (e) =>{
+    const handleSave = async (e) =>{
         const serverUpdate = {
             id: server.id,
             name: name,
@@ -61,17 +61,25 @@ const EditServerForm = ({server, setShowModal}) =>{
         console.log('SERVER UPDATE OBJ!!!',serverUpdate);
         let err = []
         if(serverUpdate.name){
-            dispatch(updateServerName(serverUpdate, user.id)).then((res)=>{
-                err.push(res)
-                // console.log(res);
-            })
+            const data = await dispatch(updateServerName(serverUpdate, user.id))
+
+            if(data){
+                err.push(data.errors[0])
+                // console.log(data.errors);
+                console.log('TESTING HERE');
+            }
+
+
         }
-        if(serverUpdate.description){
+        else if(!serverUpdate.name && inputtedName){
+            err.push('name field is required')
+        }
+        if((serverUpdate.description && err.length === 0)|| inputtedDesc){
             dispatch(updateServerDesc(serverUpdate, user.id)).then((res)=>{
                 err.push(res)
             })
         }
-        if(serverUpdate.server_icon){
+        if(serverUpdate.server_icon && err.length === 0){
             dispatch(updateServerIcon(serverUpdate, user.id)).then((res)=>{
                 err.push(res)
             })
@@ -79,9 +87,12 @@ const EditServerForm = ({server, setShowModal}) =>{
         // console.log('ERRORS', err);
         if(err.length > 0){
             setErrors(err)
-            // console.log(err);
+            console.log(err);
+            err = [];
+            // console.log('SUPER TEST!!!!!!!!!!!!!!');
         }
         else {
+            setErrors([])
             window.alert('settings saved')
         }
     }
@@ -126,6 +137,10 @@ const EditServerForm = ({server, setShowModal}) =>{
               //! temp dispatch, will implement it in the save button later.
 
             }
+            else if(res.status < 500){
+                window.alert('an error occured while trying to upload the image, file was not accepted.')
+                setImgLoading(false)
+            }
       }
 
     const updateImage = (e) =>{
@@ -136,6 +151,9 @@ const EditServerForm = ({server, setShowModal}) =>{
     return (
         <>
             <div className="server-info-container">
+            {errors.map((error, ind) => (
+                                <div key={ind} className='error'>{error}</div>
+                         ))}
 
                 <div className="sub-input-container">
                     <div className="icon-owner-container">
@@ -225,9 +243,6 @@ const EditServerForm = ({server, setShowModal}) =>{
 
                     </div>
                     <div className="name-desc-container">
-                        {errors.map((error, ind) => (
-                                <div key={ind}>{error}</div>
-                         ))}
                         <div className="edit-server name-input">
                             <label style={{color:'whitesmoke', fontSize:'40px'}}>
                                 Server name

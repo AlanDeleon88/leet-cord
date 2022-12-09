@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
@@ -27,6 +27,7 @@ function App() {
     })();
   }, [dispatch]);
 
+
   if (!loaded) {
     return null;
   }
@@ -36,7 +37,7 @@ function App() {
      <div className='main'>
      {/* {user && <NavBar />} code to only render nav bar when logged in*/}
 
-      <NavBar />
+      {/* <NavBar /> */}
       {user && <ServerNavBar />} {/* only show up if user is logged in*/}
       <Switch>
         <Route path='/server/:serverId'>
@@ -45,7 +46,7 @@ function App() {
         {user &&
         (
 
-          <Route path ={`/${user.username}/dm`}>
+          <Route path ={`/${user.username}`}>
               <ServerWindow />
           </Route>
 
@@ -64,9 +65,23 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
-        <Route path='/' exact={true} >
-          <SplashPage />
-        </Route>
+
+        {user ?
+          (
+            <Route path= {`/`} exact={true}>
+              <ServerWindow />
+            </Route>
+            //test merege
+            // <Redirect to={`/${user.username}`}/>
+          )
+          :
+          (
+            <Route path = '/' exact={true}>
+              <SplashPage />
+            </Route>
+          )
+
+        }
         <ProtectedRoute path= '/debug-forms' exact={true}>
           Add debuging forms here for creating servers/channels/messages/edit
           <DebugForms />

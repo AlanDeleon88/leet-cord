@@ -55,9 +55,11 @@ export const updateServerName = (server, userId) => async(dispatch) =>{
         dispatch(getServerAction(data))
         dispatch(getUserServers(userId))
         dispatch(getIdServer(server.id))
+        return null
     }
     else if(response.status < 500){
         const data = await response.json()
+        console.log('ERROR HANDLE THUINKK------------------------------', data);
         return data
     }
 

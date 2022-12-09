@@ -6,6 +6,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getIdServer } from '../../store/focusServer';
 import MessageWindow from './MessageWindow';
 import ServerOptions from './ServerOptions';
+import {IoSettingsSharp} from 'react-icons/io5'
+import UserBox from '../UserBoxComponent';
+import User from '../User';
 const ServerWindow = () =>{
     const [isLoaded, setIsLoaded] = useState(false);
     const [myServer, setMyServer] = useState(false);
@@ -29,6 +32,9 @@ const ServerWindow = () =>{
             <div className='main-view'>
 
                 <Switch>
+                    <Route path={'/'} exact={true}>
+                        <UserBox />
+                    </Route>
                     <Route path={`${match.url}/channel`}>
                     <div className='channel-container'>
                         {isLoaded &&
@@ -36,15 +42,19 @@ const ServerWindow = () =>{
                             <>
 
                                 <div className='server-title'>
-                                    <div className='server-text'>
-                                        {/* {server.name} */}
-                                    </div>
 
                                         <ServerOptions userId={user.id} serverId={server.id} server={server}/>
 
                                 </div>
 
-                                <ChannelList id = {id}/>
+                                <div className='channel-list-user-box'>
+                                    <ChannelList id = {id}/>
+
+                                    {/* make this userbox into a component..*/}
+                                    <UserBox />
+
+                                </div>
+
 
                             </>
 

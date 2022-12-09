@@ -28,7 +28,7 @@ const ChannelSettings = ({channel, setShowSettingModal, serverId}) =>{
     }
 
     const handleDelete = e =>{
-        
+
     }
 
     const handleSave = async e => {
@@ -102,13 +102,13 @@ const ChannelSettings = ({channel, setShowSettingModal, serverId}) =>{
                     Edit Channel
                     <div>
                     <div className="ch-del ch-edit" >
-                            <DeleteChannelModal serverId={serverId} channel={channel}/>
+                            <DeleteChannelModal serverId={serverId} channel={channel} setShowSettingModal={setShowSettingModal}/>
                         </div>
                     </div>
                 </div>
                 <div className="edit-channel-form-container">
                         {errors.map((error, ind) => (
-                            <div key={ind}>{error}</div>
+                            <div key={ind} className='error'>{error}</div>
                          ))}
                     <div className="ch-name-ipnut-container">
                         <label className="input-labels">Name</label>

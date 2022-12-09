@@ -1,13 +1,14 @@
 .add-server-container{
-    height: 400px;
+    height: 450px;
     width: 400px;
     border-radius: 2%;
-    border: blue solid 1px;
+    /* border: blue solid 1px; */
     object-fit: cover;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    background-color: #36393e;
 
 }
 
@@ -50,6 +51,7 @@
     width: 90px;
     border: black dashed 2px;
     border-radius: 100%;
+    /* background-color: #36393e; */
 }
 
 .img-place-holder:active{
@@ -73,7 +75,35 @@
     justify-content: center;
     height: 50px;
     width: 100%;
-    border: red solid 1px;
+    /* border: red solid 1px; */
     font-size: 45px;
+    color: whitesmoke
 }
 
+.server-form-buttons{
+    display: flex;
+    justify-content: space-around;
+    width:100%;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.serv-button{
+    height: 40px;
+    width: 100px;
+}
+
+.server-submit-button{
+    background-color: #7289da;
+    border:none;
+    color: whitesmoke;
+}
+
+.server-submit-button:hover{
+    background-color: #5e71b6;
+}
+
+.server-back-button:hover{
+    background-color: black;
+    color: whitesmoke;
+}

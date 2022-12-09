@@ -6,7 +6,7 @@ import { getChannel } from "../../store/channel"
 import './DeleteChannel.css'
 
 
-const DeleteChannel = ({serverId, channel, setShowModal}) => {
+const DeleteChannel = ({serverId, channel, setShowModal, setShowSettingModal}) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const user = useSelector(state => state.session.user)
@@ -23,6 +23,7 @@ const DeleteChannel = ({serverId, channel, setShowModal}) => {
         // history.push(`/server/${serverId}/channel/${server.channels[0].channel_id}`)
         dispatch(getChannel(server.channels[0].channel_id))
         setShowModal(false)
+        setShowSettingModal(false)
     }
 
     const handleNo = e =>{

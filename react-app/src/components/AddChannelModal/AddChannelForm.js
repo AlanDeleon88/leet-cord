@@ -52,7 +52,7 @@ const AddChannelForm = ({serverId, setShowModal}) =>{
                 <form onSubmit={handleSubmit} className='channel-form'>
                      <div>
                         {errors.map((error, ind) => (
-                                <div key={ind}>{error}</div>
+                                <div key={ind} className='error'>{error}</div>
                          ))}
                         </div>
                     <div className="channel-name input-container">

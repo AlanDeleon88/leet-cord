@@ -4,6 +4,7 @@
     object-fit:cover;
     border-radius: 100%;
     margin: 5px;
+    transition: 0.3s;
 
 }
 
@@ -121,7 +122,7 @@
 .nav-bar-container{
     background-color:	#1e2124;
     border: black solid 1px;
-    width : 100px;
+    width : 75px;
     height: 100%;
     /* position: absolute; */
     overflow: scroll;
@@ -164,4 +165,5 @@
     background-color: #424549;
     color: whitesmoke;
     margin: 5px;
+    transition: 0.3s;
 }

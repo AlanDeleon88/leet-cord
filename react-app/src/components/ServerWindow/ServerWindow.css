@@ -15,6 +15,17 @@
     border: blue solid 1px;
     /* overflow: scroll; */
     background-color: #282b30;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+}
+
+.channel-list-user-box{
+    height:100%;
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .channel-container ::-webkit-scrollbar{
@@ -37,3 +48,4 @@
 .server-text{
     text-overflow: ellipsis;
 }
+

@@ -74,7 +74,7 @@ const ServerForm = ({setShowModal, setShowMenu, setActiveClass}) =>{
                         <label> Server Name</label>
                         <div>
                         {errors.map((error, ind) => (
-                                <div key={ind}>{error}</div>
+                                <div key={ind} className='error'>{error}</div>
                          ))}
                         </div>
                         <input
@@ -94,11 +94,12 @@ const ServerForm = ({setShowModal, setShowMenu, setActiveClass}) =>{
 
                         />
                         <div className='server-form-buttons'>
-                            <button className="server-back-button" type='button' onClick={() =>{
+                            <button type="submit" className="server-submit-button serv-button" disabled={!name}>Create Server</button>
+                            <button className="server-back-button serv-button" type='button' onClick={() =>{
                                 setShowModal(false);
+                                setActiveClass(false);
                                 // setShowMenu(false);
                             }}> Back</button>
-                            <button type="submit" className="server-submit-button" disabled={!name}>Create Server</button>
 
                         </div>
                     </form>

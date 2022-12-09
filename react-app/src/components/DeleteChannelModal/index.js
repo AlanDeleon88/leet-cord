@@ -5,7 +5,7 @@ import { RiDeleteBin5Fill} from "react-icons/ri";
 
 
 
-const DeleteChannelModal = ({serverId, channel}) => {
+const DeleteChannelModal = ({serverId, channel, setShowSettingModal}) => {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -25,7 +25,7 @@ const DeleteChannelModal = ({serverId, channel}) => {
 
           }
           }>
-          <DeleteChannel onClose={() => setShowModal(false)} setShowModal={setShowModal} serverId={serverId} channel={channel}/>
+          <DeleteChannel onClose={() => setShowModal(false)} setShowModal={setShowModal} serverId={serverId} channel={channel} setShowSettingModal={setShowSettingModal}/>
         </Modal>
       )}
     </>
