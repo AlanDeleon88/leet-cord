@@ -31,7 +31,7 @@ export const getIdServer = (id) => async (dispatch) => {
     if(response.ok){
         const data = await response.json()
         // console.log('in thunk for id server!==============', data);
-        // dispatch(getServerAction(data))
+        dispatch(getServerAction(data))
         return data
 
     }

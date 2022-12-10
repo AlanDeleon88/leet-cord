@@ -177,6 +177,7 @@ const EditServerForm = ({server, setShowModal}) =>{
                                         document.getElementById('file').click()
                                     }}>
                                     <HiPencilSquare />
+                                    {/* button */}
                                  </button>
 
                                 {myServer && (
