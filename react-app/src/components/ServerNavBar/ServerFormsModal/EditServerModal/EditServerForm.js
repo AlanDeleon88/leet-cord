@@ -112,7 +112,7 @@ const EditServerForm = ({server, setShowModal}) =>{
     const handleSubmit = async (image) =>{
         // e.preventDefault();
 
-        console.log(image);
+        // console.log(image);
           const formData = new FormData();
               // aws uploads can be a bit slow—displaying
               // some sort of loading message is a good idea

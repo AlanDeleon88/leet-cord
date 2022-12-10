@@ -71,7 +71,7 @@ def edit_channel_name(id):
     form = EditChannel()
     form['csrf_token'].data = request.cookies['csrf_token']
 
-    print('DEBUG--------------------------------------------', form.data)
+    # print('DEBUG--------------------------------------------', form.data)
 
     if form.validate_on_submit():
         if form.data['name']:
