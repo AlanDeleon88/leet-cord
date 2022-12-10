@@ -2,7 +2,7 @@
     width:100%;
     height: 100%;
     background-color: #1e2124;
-    border: red solid 1px;
+    /* border: red solid 1px; */
     /* margin-top: 30px; */
     display:flex;
 
@@ -12,9 +12,9 @@
 .channel-container{
     width:250px;
     height: 100%;
-    border: blue solid 1px;
+    /* border: blue solid 1px; */
     /* overflow: scroll; */
-    background-color: #282b30;
+    background-color: rgb(47,49,54);
     display: flex;
     flex-direction: column;
     /* justify-content: space-between; */
@@ -34,7 +34,8 @@
 
 .server-title{
     color: white;
-    border: pink solid 1px;
+    /* border: pink solid 1px; */
+    border-bottom: #1e2124 solid 2px;
     font-size: 25px;
     width: 240px;
     height: 50px;
@@ -48,4 +49,3 @@
 .server-text{
     text-overflow: ellipsis;
 }
-

@@ -1,7 +1,8 @@
 .user-box{
     display: flex;
     flex-direction: column;
-    border: solid 1px white;
+    /* border: solid 1px white; */
+    background-color: rgb(41, 43, 47);
     height: 60px;
     color: whitesmoke;
     align-items: center;
