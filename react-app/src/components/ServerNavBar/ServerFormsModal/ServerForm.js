@@ -95,7 +95,7 @@ const ServerForm = ({setShowModal, setShowMenu, setActiveClass}) =>{
 
                         />
                         <div className='server-form-buttons'>
-                            <button type="submit" className="server-submit-button serv-button" disabled={!name}>Create Server</button>
+                            <button type="submit" className="server-submit-button serv-button">Create Server</button>
                             <button className="server-back-button serv-button" type='button' onClick={() =>{
                                 setShowModal(false);
                                 setActiveClass(false);
