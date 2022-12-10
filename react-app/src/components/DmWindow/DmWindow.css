@@ -1,0 +1,45 @@
+.main-view{
+    width:100%;
+    height: 100%;
+    background-color: #1e2124;
+    /* border: red solid 1px; */
+    /* margin-top: 30px; */
+    display:flex;
+
+}
+.dm-list-container{
+    width:250px;
+    height: 100%;
+    /* border: blue solid 1px; */
+    /* overflow: scroll; */
+    background-color: rgb(47,49,54);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* padding: 0px; */
+}
+.dm-list-user-box{
+    height:100%;
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.dm-title{
+    color: white;
+    /* border: pink solid 1px; */
+    border-bottom: #1e2124 solid 2px;
+    font-size: 25px;
+    width: 240px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-overflow: ellipsis;
+    padding: 5px;
+}
+
+.dm-lists{
+    /* height:100%; */
+}

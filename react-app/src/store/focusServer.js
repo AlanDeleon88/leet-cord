@@ -30,7 +30,7 @@ export const getIdServer = (id) => async (dispatch) => {
 
     if(response.ok){
         const data = await response.json()
-        console.log('in thunk for id server!==============', data);
+        // console.log('in thunk for id server!==============', data);
         dispatch(getServerAction(data))
         return data
 
@@ -38,7 +38,7 @@ export const getIdServer = (id) => async (dispatch) => {
 }
 
 export const updateServerName = (server, userId) => async(dispatch) =>{
-    console.log('IN THUNK------------------------', server);
+    // console.log('IN THUNK------------------------', server);
     const response = await fetch(`/api/servers/${server.id}/name`, {
         method : 'PUT',
         headers:{
@@ -59,7 +59,7 @@ export const updateServerName = (server, userId) => async(dispatch) =>{
     }
     else if(response.status < 500){
         const data = await response.json()
-        console.log('ERROR HANDLE THUINKK------------------------------', data);
+        // console.log('ERROR HANDLE THUINKK------------------------------', data);
         return data
     }
 

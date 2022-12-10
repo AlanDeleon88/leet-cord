@@ -13,7 +13,7 @@ const ChannelList = ({id}) =>{
     useEffect(() => {
         dispatch(getIdServer(id)).then(() =>{
             setIsLoaded(true)
-            console.log('IM THE ONE');
+            // console.log('IM THE ONE');
         })
 
     },[dispatch])

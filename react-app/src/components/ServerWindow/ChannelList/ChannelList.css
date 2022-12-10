@@ -1,6 +1,6 @@
 .channel-name-box{
     color: lightgrey;
-    background-color: #282b30;
+    background-color: transparent;
     font-size: 17px;
     border: none;
     height : 30px;
@@ -63,7 +63,7 @@
 .channel-text{
     display: flex;
     align-items: center;
-    /* background-color: red; */
+    background-color: transparent;
     color: lightgrey;
     border-bottom: #424549 solid 1px;
 }

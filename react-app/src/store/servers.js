@@ -26,7 +26,7 @@ export const getServers = () => async (dispatch) => {
 
     if(response.ok){
         const data = await response.json()
-        console.log('in thunk ---------------------------', data);
+        // console.log('in thunk ---------------------------', data);
         dispatch(get_server_action(data.servers))
 
     }
@@ -108,7 +108,7 @@ export default function serverReducer(state = {}, action) {
 
         case ADD_SERVER:
             newState = {...state}
-            console.log('MORE TESTING CLOGSSS');
+            // console.log('MORE TESTING CLOGSSS');
             newState[action.payload.id] = action.payload
             return newState;
         case DELETE_SERVER:

@@ -121,7 +121,7 @@
 
 .nav-bar-container{
     background-color:	#1e2124;
-    border: black solid 1px;
+    /* border: black solid 1px; */
     width : 75px;
     height: 100%;
     /* position: absolute; */

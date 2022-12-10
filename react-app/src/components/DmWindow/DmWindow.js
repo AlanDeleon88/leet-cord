@@ -29,7 +29,9 @@ const DmWindow = () =>{
 
                                 <div className='dm-title'>
 
-
+                                    <div>
+                                        DM
+                                    </div>
 
                                 </div>
 
@@ -37,6 +39,9 @@ const DmWindow = () =>{
 
 
                                     {/*User list of dms will go here...*/}
+                                    <div className='dm-lists'>
+
+                                    </div>
                                     <UserBox />
 
                                 </div>
