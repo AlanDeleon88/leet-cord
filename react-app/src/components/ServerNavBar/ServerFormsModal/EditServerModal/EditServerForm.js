@@ -58,7 +58,7 @@ const EditServerForm = ({server, setShowModal}) =>{
             description: description,
             server_icon : serverIcon
         }
-        console.log('SERVER UPDATE OBJ!!!',serverUpdate);
+        // console.log('SERVER UPDATE OBJ!!!',serverUpdate);
         let err = []
         if(serverUpdate.name){
             const data = await dispatch(updateServerName(serverUpdate, user.id))
@@ -66,7 +66,7 @@ const EditServerForm = ({server, setShowModal}) =>{
             if(data){
                 err.push(data.errors[0])
                 // console.log(data.errors);
-                console.log('TESTING HERE');
+                // console.log('TESTING HERE');
             }
 
 
@@ -87,7 +87,7 @@ const EditServerForm = ({server, setShowModal}) =>{
         // console.log('ERRORS', err);
         if(err.length > 0){
             setErrors(err)
-            console.log(err);
+            // console.log(err);
             err = [];
             // console.log('SUPER TEST!!!!!!!!!!!!!!');
         }

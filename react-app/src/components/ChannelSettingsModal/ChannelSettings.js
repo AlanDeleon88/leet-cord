@@ -72,7 +72,7 @@ const ChannelSettings = ({channel, setShowSettingModal, serverId}) =>{
                 name: formatName,
                 description: formatDesc
             }
-            console.log('TEST TO SEE DESC--------------------------------',updateChannel);
+            // console.log('TEST TO SEE DESC--------------------------------',updateChannel);
             const data = await dispatch(editChannel(updateChannel, serverId))
             if(data){
                 let errors = []

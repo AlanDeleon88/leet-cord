@@ -48,7 +48,7 @@ const DebugForms = () =>{
             description: serverDesc,
             server_icon : serverIcon
         }
-        console.log('HERE!!!');
+        // console.log('HERE!!!');
         //TODO create thunk action for adding a new post. OR just do a fetch here..
         const response = await fetch('/api/servers/', {
             method : 'POST',
@@ -88,7 +88,7 @@ const DebugForms = () =>{
             let data = await response.json()
             //!temp way to update servers on the server list
             dispatch(getServers())
-            console.log(data);
+            // console.log(data);
             setEditServerName('')
         }
     }
@@ -109,7 +109,7 @@ const DebugForms = () =>{
             let data = await response.json()
             //!temp way to update servers on the server list
             dispatch(getServers())
-            console.log(data);
+            // console.log(data);
             setEditServerDesc('')
         }
     }
@@ -130,7 +130,7 @@ const DebugForms = () =>{
             let data = await response.json()
             //!temp way to update servers on the server list
             dispatch(getServers())
-            console.log(data);
+            // console.log(data);
             setEditServerIcon('')
         }
     }

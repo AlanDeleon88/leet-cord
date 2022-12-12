@@ -140,7 +140,7 @@ export const addChannel = (serverId, channel) => async (dispatch) =>{
 }
 
 export const editChannel = (channel, serverId) => async dispatch =>{
-    console.log('thunk!---------------', channel);
+    // console.log('thunk!---------------', channel);
     const response = await fetch(`/api/channels/${channel.id}`,{
         method: 'PUT',
         headers:{
