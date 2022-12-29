@@ -9,6 +9,8 @@ import ServerOptions from './ServerOptions';
 import {IoSettingsSharp} from 'react-icons/io5'
 import UserBox from '../UserBoxComponent';
 import User from '../User';
+import ChannelHeader from './ChannelHeader';
+
 const ServerWindow = () =>{
     const [isLoaded, setIsLoaded] = useState(false);
     const [myServer, setMyServer] = useState(false);
@@ -16,6 +18,7 @@ const ServerWindow = () =>{
     let id = Number(serverId);
     const server = useSelector(state => state.focusServer)
     const user = useSelector(state=>state.session.user)
+    const channel = useSelector(state => state.channel)
     const dispatch = useDispatch();
     const match = useRouteMatch();
 
@@ -34,33 +37,51 @@ const ServerWindow = () =>{
             <div className='main-view'>
                 <Switch>
                     <Route path={`${match.url}/channel`}>
-                    <div className='channel-container'>
-                        {isLoaded &&
-                            (
-                            <>
+                    <div className='main-window'>
 
-                                <div className='server-title'>
+                        <div className='channel-container'>
+                            {isLoaded &&
+                                (
+                                <>
 
-                                        <ServerOptions userId={user.id} serverId={server.id} server={server}/>
+                                    <div className='server-title'>
 
-                                </div>
+                                            <ServerOptions userId={user.id} serverId={server.id} server={server}/>
 
-                                <div className='channel-list-user-box'>
-                                    <ChannelList id = {id}/>
+                                    </div>
 
-                                    {/* make this userbox into a component..*/}
-                                    <UserBox />
+                                    <div className='channel-list-user-box'>
+                                        <ChannelList id = {id}/>
 
-                                </div>
+                                        {/* make this userbox into a component..*/}
+                                        <UserBox />
+
+                                    </div>
 
 
-                            </>
+                                </>
 
-                            )
-                        }
+                                )
+                            }
+                        </div>
+                        <div className='header-message'>
+                            <div className='channel-header'>
+                                {channel &&
+                                    (
+                                        <ChannelHeader channel={channel}/>
+
+                                    )
+                                }
+                            </div>
+                            <div className='channel-message'>
+                                <MessageWindow type={'channel'}/>
+
+                            </div>
+
+                        </div>
+
                     </div>
 
-                        <MessageWindow type={'channel'}/>
                     </Route>
                 </Switch>
             </div>

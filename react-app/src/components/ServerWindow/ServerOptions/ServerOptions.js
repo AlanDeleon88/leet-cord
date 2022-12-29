@@ -39,7 +39,7 @@ const ServerOptions = ({userId, serverId, server}) =>{
 
     return (
     <>
-    <div>
+    <div className='option-container'>
             <button onClick={handleClick} className='dropdown-arrow'>
                 <div className='serv-title'>
                     {server.name}

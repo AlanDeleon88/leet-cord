@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getChannel } from '../../../store/channel';
+import ChannelHeader from '../ChannelHeader/ChannelHeader';
 
 const MessageWindow = ({type}) =>{
 
@@ -25,11 +26,14 @@ const MessageWindow = ({type}) =>{
         <>
             <div className="message-container">
                 { type === 'channel' &&
-                    <div>
+                    <div className='channel-header'>
                         {
                             channel && (
                                 <>
-                                    {channel.name}
+                                    <div className='channel-header-container'>
+                                        {/* <ChannelHeader channel={channel}/> */}
+
+                                    </div>
 
                                 </>
                             )

@@ -34,7 +34,14 @@ export const ChannelListElement = ({channel, serverId}) =>{
             <button className="channel-name-box" onClick={onChannelClick}>
                 {/* Change color of the text when the link is active.. eventually make this element a nav link */}
 
-                    # {channel.name}
+                    <div style={{'paddingRight' : '4px'}}>
+                        #
+                    </div>
+                    <div>
+
+                        {` ${channel.name}`}
+
+                    </div>
 
             </button>
             {server.owner_id == user.id &&

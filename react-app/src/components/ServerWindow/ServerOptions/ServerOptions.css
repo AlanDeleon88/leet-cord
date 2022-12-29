@@ -4,11 +4,11 @@
     justify-content: center;
     align-items: center;
     background-color: transparent;
-    font-size: 30px;
+    font-size: 20px;
     /* position: absolute; */
     position: relative;
     border: none;
-    height: 58px;
+    height: 40px;
     width: 249px;
     color: whitesmoke;
     right: 5px;
@@ -17,7 +17,7 @@
 }
 .serv-title{
     width:249px;
-    height: 35px;
+    /* height: 30px; */
     text-overflow: ellipsis;
     overflow: hidden;
 
@@ -75,7 +75,7 @@
     position: absolute;
     width:220px;
     left: 250px;
-    top:65px;
+    top:40px;
     z-index:1;
     margin: 0px;
     padding:0px;

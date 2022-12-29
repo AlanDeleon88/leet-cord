@@ -9,6 +9,17 @@
 
 }
 
+.main-window{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.header-message{
+    width:100%;
+    /* border:1px solid white */
+}
+
 .channel-container{
     width:250px;
     height: 100%;
@@ -38,7 +49,7 @@
     border-bottom: #1e2124 solid 2px;
     font-size: 25px;
     width: 240px;
-    height: 50px;
+    height: 30px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -48,4 +59,8 @@
 
 .server-text{
     text-overflow: ellipsis;
+}
+
+.header-message{
+    width:100%;
 }
