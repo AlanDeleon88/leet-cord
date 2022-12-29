@@ -29,11 +29,13 @@ def get_channel(id):
     if not channel:
         return {'error' : 'channel could not be found with that id'}
     channel_dict = channel.to_dict()
+    #! might turn this into a method later
     for message in channel_dict['server_messages']:
         message['my_message'] = False
         if message['sender_id'] == current_user.id:
             message['my_message'] = True
     return channel_dict
+
 
 @channel_routes.route('/<int:id>', methods=['POST'])
 @login_required

@@ -2,6 +2,7 @@
     color: whitesmoke;
     padding-bottom: 5px;
     padding-left: 10px;
+    margin-right: 5px;
     border-right: #1e2124 solid 2px;
     /* border: green solid 3px; */
     /* background-color: pink; */
@@ -13,7 +14,7 @@
 .header-desc{
     color: grey;
     font-size: 15px;
-    padding-bottom: 5px;
+    padding-bottom: 3px;
     padding-left: 10px;
     overflow: hidden;
     text-overflow: ellipsis;

@@ -5,13 +5,15 @@ import serverReducer from './servers';
 import focusServerReducer from './focusServer';
 import channelReducer from './channel';
 import userReducer from './user';
+import channelMessageReducer from './channelMessage';
 
 const rootReducer = combineReducers({
   session,
   servers : serverReducer,
   focusServer : focusServerReducer,
   channel : channelReducer,
-  serverUser : userReducer
+  serverUser : userReducer,
+  channelMessages : channelMessageReducer
 });
 
 

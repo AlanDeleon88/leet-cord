@@ -3,22 +3,25 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getChannel } from '../../../store/channel';
+import { getChannelMessages } from '../../../store/channelMessage';
 import ChannelHeader from '../ChannelHeader/ChannelHeader';
 
-const MessageWindow = ({type}) =>{
+
+const MessageWindow = ({type, channelId}) =>{
 
     const [isLoaded, setIsLoaded] = useState(false)
     const dispatch = useDispatch()
     const channel = useSelector(state => state.channel)
+    const messages = Object.values(useSelector(state=>state.channelMessages))
 
 
 
 
-    // useEffect(() =>{
-    //     dispatch(getChannel(id)).then(() =>{
-    //         setIsLoaded(true)
-    //     })
-    // },[dispatch])
+    useEffect(() =>{
+        dispatch(getChannelMessages(channelId)).then(() =>{
+            setIsLoaded(true)
+        })
+    },[dispatch])
 
 
 
@@ -26,18 +29,18 @@ const MessageWindow = ({type}) =>{
         <>
             <div className="message-container">
                 { type === 'channel' &&
-                    <div className='channel-header'>
-                        {
-                            channel && (
-                                <>
-                                    <div className='channel-header-container'>
-                                        {/* <ChannelHeader channel={channel}/> */}
-
-                                    </div>
-
-                                </>
-                            )
-                        }
+                    <div>
+                        {isLoaded && (
+                            <>
+                                {messages.map(el =>{
+                                    return(
+                                        <div>
+                                            {el.body}
+                                        </div>
+                                    )
+                                })}
+                            </>
+                        )}
 
                     </div>
                 }

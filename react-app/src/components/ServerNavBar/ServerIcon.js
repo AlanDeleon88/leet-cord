@@ -6,6 +6,7 @@ import { useState } from "react";
 import './ServerNavBar.css'
 import { getChannel } from "../../store/channel";
 import { useEffect } from "react";
+import { getChannelMessages } from "../../store/channelMessage";
 
 const ServerIcon = ({server}) => {
     const [hovered, setHovered] = useState(false)
@@ -37,6 +38,7 @@ const ServerIcon = ({server}) => {
     const handleServerClick = () =>{
         dispatch(getIdServer(server.id))
         dispatch(getChannel(server.channels[0].channel_id))
+        dispatch(getChannelMessages(server.channels[0].channel_id))
 
     }
 

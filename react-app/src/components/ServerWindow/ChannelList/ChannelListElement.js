@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Modal } from '../../../context/Modal';
 import ChannelSettings from '../../ChannelSettingsModal/ChannelSettings';
+import { getChannelMessages } from '../../../store/channelMessage';
 
 
 export const ChannelListElement = ({channel, serverId}) =>{
@@ -20,6 +21,7 @@ export const ChannelListElement = ({channel, serverId}) =>{
 
     const onChannelClick = () =>{
         dispatch(getChannel(channel.channel_id))
+        dispatch(getChannelMessages(channel.channel_id))
     }
 
     const handleSettings = e =>{

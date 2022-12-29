@@ -74,8 +74,7 @@ const ServerWindow = () =>{
                                 }
                             </div>
                             <div className='channel-message'>
-                                <MessageWindow type={'channel'}/>
-
+                                <MessageWindow type={'channel'} channelId={channel.id}/>
                             </div>
 
                         </div>
