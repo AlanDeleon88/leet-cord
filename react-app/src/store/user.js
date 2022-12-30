@@ -27,7 +27,7 @@ export default function userReducer(state = {}, action) {
     let newState;
     switch (action.type) {
       case SET_USER:
-        newState = {... action.payload}
+        newState = {...action.payload}
         return newState
       default:
         return state;

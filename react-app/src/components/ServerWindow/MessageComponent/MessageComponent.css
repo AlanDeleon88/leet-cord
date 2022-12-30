@@ -1,0 +1,36 @@
+.user-pic{
+    border-radius: 100%;
+    height:45px;
+    width:45px;
+}
+
+.message-bundle-container{
+    display: flex;
+    align-items: center;
+    padding:10px;
+    color: whitesmoke;
+    overflow: hidden;
+}
+
+.message-bundle{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.username-bundle-container{
+    display: flex;
+}
+
+.username-container{
+    padding-right: 5px;
+    /* padding-left:0px; */
+}
+
+.user-pic-container{
+    padding-right: 10px;
+}
+
+.message-body-container{
+    padding:5px;
+}

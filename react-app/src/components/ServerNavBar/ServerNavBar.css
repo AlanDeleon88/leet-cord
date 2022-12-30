@@ -14,12 +14,13 @@
     color: rgb(59, 165, 93);
     width: 50px;
     height: 50px;
-    font-size: 50px;
+    font-size: 20px;
     font-weight: lighter;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 5px;
+    transition: 0.3s;
 }
 
 .add-server-button:hover{

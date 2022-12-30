@@ -76,6 +76,9 @@ const ServerWindow = () =>{
                             <div className='channel-message'>
                                 <MessageWindow type={'channel'} channelId={channel.id}/>
                             </div>
+                            <div className='msg-input-container'>
+                                <input type='text'/>
+                            </div>
 
                         </div>
 

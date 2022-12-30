@@ -27,5 +27,7 @@ def get_server_message(id):
         return {'error' : 'message with that id could not be found'}, 404
 
     message_dict = message.to_dict();
-
+    message_dict['my_message'] = False;
+    if message_dict['sender_id'] == current_user.id:
+        message_dict['my_message'] = True
     return message_dict
