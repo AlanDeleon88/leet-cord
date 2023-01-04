@@ -11,6 +11,8 @@
     overflow: hidden;
     text-overflow: ellipsis;
     width:250px;
+    border-radius: 5%;
+    /* border: solid 1px pink */
 
 }
 
@@ -28,6 +30,12 @@
 
 .channel-button-container{
     display: flex;
+    width: 95%;
+    /* border:1px solid green; */
+    margin-top: 5px;
+    margin-left:5px;
+    border-radius: 10px;
+    /* margin-right:20px; */
 }
 
 .channel-button-container:hover button {
@@ -59,6 +67,8 @@
 .channel-list{
     padding : 0px;
     width:250px;
+
+
 }
 
 .channel-text{

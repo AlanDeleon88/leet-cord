@@ -10,6 +10,7 @@ import {IoSettingsSharp} from 'react-icons/io5'
 import UserBox from '../UserBoxComponent';
 import User from '../User';
 import ChannelHeader from './ChannelHeader';
+import MessageInputComponent from './MessageInputComponent';
 
 const ServerWindow = () =>{
     const [isLoaded, setIsLoaded] = useState(false);
@@ -77,7 +78,7 @@ const ServerWindow = () =>{
                                 <MessageWindow type={'channel'} channelId={channel.id}/>
                             </div>
                             <div className='msg-input-container'>
-                                <input type='text'/>
+                                <MessageInputComponent channelId={channel.id}/>
                             </div>
 
                         </div>

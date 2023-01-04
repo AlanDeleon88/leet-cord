@@ -1,0 +1,17 @@
+.message-input-box{
+    background-color: red;
+    width: 98%;
+    margin-top: 10px;
+    margin-left: 15px;
+    height: 35px;
+    border-radius: 10px;
+}
+
+.input-wrapper{
+    width:100%;
+    /* padding:20px; */
+}
+
+.msg-form-container{
+    width:100%;
+}

@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, session, request
-from app.models import User, Server, Channel, ServerMember, db
+from app.models import User, Server, Channel, ServerMember, db, ServerMessage
 from app.forms import CreateServerMessage, EditChannel
 from flask_login import current_user, login_user, logout_user, login_required
 from app.utils import buildServerDict
@@ -48,7 +48,7 @@ def post_to_channel(id):
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        new_msg = CreateServerMessage(
+        new_msg = ServerMessage(
             sender_id = current_user.id,
             channel_id = id,
             body = form.data['body'],
@@ -56,7 +56,12 @@ def post_to_channel(id):
         )
         db.session.add(new_msg)
         db.session.commit()
-        return new_msg.to_dict()
+        #! might need to make a util function to add my message = true or false to this return
+
+        new_msg_dict = new_msg.to_dict()
+        new_msg_dict['my_message'] = True;
+
+        return new_msg_dict
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 @channel_routes.route('/<int:id>', methods=['PUT'])
