@@ -1,6 +1,6 @@
 import './MessageWindow.css'
 import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getChannel } from '../../../store/channel';
 import { getChannelMessages } from '../../../store/channelMessage';
@@ -10,13 +10,20 @@ import MessageComponent from '../MessageComponent';
 
 const MessageWindow = ({type, channelId}) =>{
 
+    const messageEl = useRef(null)
     const [isLoaded, setIsLoaded] = useState(false)
     const dispatch = useDispatch()
     const channel = useSelector(state => state.channel)
     const messages = Object.values(useSelector(state=>state.channelMessages))
 
-
-
+    useEffect(() =>{
+       if(messageEl){
+        messageEl.current.addEventListener('DOMNodeInserted', event =>{
+            const {currentTarget: target} = event;
+            target.scroll({top : target.scrollHeight, behavior : 'smooth'});
+        })
+       }
+    },[])
 
     useEffect(() =>{
         dispatch(getChannelMessages(channelId)).then(() =>{
@@ -30,7 +37,7 @@ const MessageWindow = ({type, channelId}) =>{
 
     return(
         <>
-            <div className="message-container">
+            <div className="message-container" ref={messageEl}>
                 { type === 'channel' &&
                     <>
 
