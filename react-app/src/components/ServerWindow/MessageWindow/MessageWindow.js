@@ -61,9 +61,9 @@ const MessageWindow = ({type, channelId}) =>{
                             </>
                         )}
 
-                    </div>
-                    <div ref={messageEl}>
+                        <div ref={messageEl}>
 
+                        </div>
                     </div>
 
                     </>
