@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom"
 import { addUserServer } from "../../../store/servers"
 import { getIdServer } from "../../../store/focusServer"
 import { getChannel } from "../../../store/channel"
+import { getChannelMessages } from "../../../store/channelMessage"
 
 const ServerForm = ({setShowModal, setShowMenu, setActiveClass}) =>{
     const [name, setName] = useState('')
@@ -32,7 +33,9 @@ const ServerForm = ({setShowModal, setShowMenu, setActiveClass}) =>{
                     setActiveClass(false);
                     // dispatch(getIdServer(res.id))
                     // dispatch(getChannel(res.channels[0].channel_id))
+                    dispatch(getChannelMessages(res.channels[0].channel_id))
                     history.push(`/server/${res.id}/channel/${res.channels[0].channel_id}`)
+
                 }
                 else{
 
