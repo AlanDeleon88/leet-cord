@@ -18,8 +18,14 @@ const MessageInputComponent = ({channelId}) =>{
             'body' : body,
             'img' : img
         }
-        console.log('TESTING POST MSG', newMsg);
-        dispatch(postNewMessage(channelId, newMsg))
+        // console.log('TESTING POST MSG', newMsg);
+        if(!newMsg.body && !newMsg.img){
+            //NOP
+        }
+        else{
+            dispatch(postNewMessage(channelId, newMsg))
+
+        }
     }
 
     return(

@@ -69,14 +69,15 @@
 }
 
 .channel-message{
-    height:85%
+    height:87%
 }
 
 .msg-input-container{
     /* border: 1px solid green; */
-    height: 11%;
+    height: 9%;
     display: flex;
     align-items: center;
+    justify-content: center;
     background-color: #424549;
     width: 100%;
 }

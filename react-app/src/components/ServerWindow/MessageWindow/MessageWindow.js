@@ -16,14 +16,19 @@ const MessageWindow = ({type, channelId}) =>{
     const channel = useSelector(state => state.channel)
     const messages = Object.values(useSelector(state=>state.channelMessages))
 
+    //!depreciated. had a bug with trying to render an options component for each message, would scroll to bottom on hover.
+    // useEffect(() =>{
+    //    if(messageEl){
+    //     messageEl.current.addEventListener('DOMNodeInserted', event =>{
+    //         const {currentTarget: target} = event;
+    //         target.scroll({top : target.scrollHeight, behavior : 'smooth'});
+    //     })
+    //    }
+    // },[])
+
     useEffect(() =>{
-       if(messageEl){
-        messageEl.current.addEventListener('DOMNodeInserted', event =>{
-            const {currentTarget: target} = event;
-            target.scroll({top : target.scrollHeight, behavior : 'smooth'});
-        })
-       }
-    },[])
+        messageEl.current?.scrollIntoView({behavior : 'smooth'})
+    }, [messages])
 
     useEffect(() =>{
         dispatch(getChannelMessages(channelId)).then(() =>{
@@ -37,7 +42,7 @@ const MessageWindow = ({type, channelId}) =>{
 
     return(
         <>
-            <div className="message-container" ref={messageEl}>
+            <div className="message-container">
                 { type === 'channel' &&
                     <>
 
@@ -55,6 +60,9 @@ const MessageWindow = ({type, channelId}) =>{
                                 })}
                             </>
                         )}
+
+                    </div>
+                    <div ref={messageEl}>
 
                     </div>
 

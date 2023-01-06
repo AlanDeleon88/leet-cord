@@ -46,7 +46,7 @@ def post_to_channel(id):
         return {'error' : 'channel could not be found with that id'}
     form = CreateServerMessage()
     form['csrf_token'].data = request.cookies['csrf_token']
-
+    #! could use some backend validation for if body or img is null
     if form.validate_on_submit():
         new_msg = ServerMessage(
             sender_id = current_user.id,

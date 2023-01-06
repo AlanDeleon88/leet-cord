@@ -10,6 +10,11 @@
     padding:10px;
     color: whitesmoke;
     overflow: hidden;
+
+}
+
+.message-bundle-container:hover{
+    background-color: #2e3134;
 }
 
 .message-bundle{
