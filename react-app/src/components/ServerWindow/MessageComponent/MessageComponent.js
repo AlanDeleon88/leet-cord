@@ -12,12 +12,12 @@ const MessageComponent = ({message}) => {
 
     const mouseLeave = (e) =>{
         setShowMenu(false)
-        console.log('mouse left falsE');
+        // console.log('mouse left falsE');
     }
 
     const mouseEnter = (e) =>{
         setShowMenu(true)
-        console.log('mouse enter TRUEEEEEE');
+        // console.log('mouse enter TRUEEEEEE');
     }
 
     return(
@@ -35,27 +35,42 @@ const MessageComponent = ({message}) => {
                             {message.sender_username}
 
                         </div>
-                        <div className="date-continaer">
-                            {message.updated_at}
-                        </div>
-                    </div>
-                    <div className="message-body-container">
-                        {message.body}
-                    </div>
+                        <div className="date-container">
 
-                </div>
-                {
-                    showMenu &&
+                                {message.updated_at}
+
+
+                    {
+                    true &&
                     <>
                         {message.my_message &&
                             <>
-                                test
+                                <div className='msg-option-container'>
+                                    test
+                                </div>
                             </>
 
                         }
 
                     </>
                 }
+                        </div>
+                    </div>
+                    <div className="message-body-container">
+                        {message.img &&
+                            <div className='mgs-img-container'>
+                                <img src={message.img} className='msg-img'/>
+                            </div>
+                        }
+                        <div className='msg-body'>
+                            {message.body}
+                        </div>
+
+
+                    </div>
+
+                </div>
+
 
             </div>
 

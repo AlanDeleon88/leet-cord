@@ -27,7 +27,7 @@ const MessageWindow = ({type, channelId}) =>{
     // },[])
 
     useEffect(() =>{
-        messageEl.current?.scrollIntoView({behavior : 'smooth'})
+        messageEl.current?.scrollIntoView({behavior : 'auto'})
     }, [messages])
 
     useEffect(() =>{

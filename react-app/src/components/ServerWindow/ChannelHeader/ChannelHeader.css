@@ -1,6 +1,6 @@
 .channel-name-header{
     color: whitesmoke;
-    padding-bottom: 5px;
+    padding-bottom: 1px;
     padding-left: 10px;
     margin-right: 5px;
     border-right: #1e2124 solid 1px;
@@ -13,8 +13,8 @@
 
 .header-desc{
     color: grey;
-    font-size: 15px;
-    padding-bottom: 3px;
+    font-size: 20px;
+    padding-bottom: 1px;
     padding-left: 10px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -25,7 +25,7 @@
     align-items: center;
     /* border: solid 1px black; */
     border-bottom: #1e2124 solid 2px;
-    height: 40px;
+    height: 61px;
     font-size: 20px;
     background-color: #424549;
     overflow: hidden;

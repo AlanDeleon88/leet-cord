@@ -1,7 +1,8 @@
 .message-container{
     /* border: greenyellow solid 1px; */
     /* width: 99.9%; */
-    height: 99.7%;
+    height: 100%;
+    width:100%;
     background-color: #424549;
     display: flex;
     flex-direction: column;
