@@ -9,6 +9,7 @@
     margin: 0px;
     background-color: #282b30;
     box-shadow: 3px 3px 5px black;
+    border-radius: 5px;
     z-index: 20;
     /* padding: 4px; */
 }
@@ -20,6 +21,8 @@
     font-size: 20px;
     height:100%;
     width:100%;
+    border-radius: 5px;
+    cursor:pointer;
 }
 
 .edit-msg-button-container:hover{
@@ -33,4 +36,10 @@
     font-size: 20px;
     height:100%;
     width:100%;
+    border-radius: 5px;
+    cursor:pointer;
+}
+
+.delete-button-container:hover{
+    background-color: #454a52;
 }

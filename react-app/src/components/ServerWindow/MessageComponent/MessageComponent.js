@@ -2,43 +2,34 @@ import './MessageComponent.css'
 import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import MessageOptionComponent from './MessageOptionComponent/MessageOptionComponent'
+import formatDate from './formatDate'
 const MessageComponent = ({message}) => {
     const [showMenu, setShowMenu] = useState(false);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
-    const [editMessage, setEditMessage] = useState(false);
-    const user = useSelector(state => state.session.user);
+    const [showEditMessage, setShowEditMessage] = useState(false);
+    const [editMessage, setEditMessage] = useState(message.body);
 
-    //! look into mouseover event to see if i can get option menu to show up.
-    //! may need to look into how to set showmenu to false
-    console.log(message.updated_at.split(' '));
-    //! function to format date will move to another file.
-    const formatDate = (date) =>{
-        const monthObj ={
-            'Jan' : 1,
-            'Feb' : 2,
-            'Mar' : 3,
-            'Apr' : 4,
-            'May' : 5,
-            'Jun' : 6,
-            'Jul' : 7,
-            'Aug' : 8,
-            'Sep' : 9,
-            'Oct' : 10,
-            'Nov' : 11,
-            'Dec' : 12,
-        }
-        const dateArr = date.split(' ')
+    const mouseLeave = (e) => {
 
-    }
-
-    const mouseLeave = (e) =>{
         setShowMenu(false)
         // console.log('mouse left falsE');
-    }
 
+    }
     const mouseEnter = (e) =>{
         setShowMenu(true)
         // console.log('mouse enter TRUEEEEEE');
+    }
+
+    const updateEdit = (e) =>{
+        setEditMessage(e.target.value)
+    }
+
+    const handleCancel = (e) =>{
+        setShowEditMessage(false)
+    }
+
+    const handleUpdate = e =>{
+        
     }
 
     return(
@@ -64,12 +55,12 @@ const MessageComponent = ({message}) => {
 
 
                     {
-                    true &&
+                    showMenu &&
                     <>
                         {message.my_message &&
                             <>
                                 <div className='msg-option-container'>
-                                    <MessageOptionComponent />
+                                    <MessageOptionComponent setShowEditMessage={setShowEditMessage} setShowDeleteModal={setShowDeleteModal}/>
                                 </div>
                             </>
 
@@ -86,7 +77,27 @@ const MessageComponent = ({message}) => {
                             </div>
                         }
                         <div className='msg-body'>
-                            {message.body}
+                            {showEditMessage ?
+                                (
+                                    <>
+                                        <div className='edit-msg-input-container'>
+                                            <form onSubmit={handleUpdate}>
+                                                <input type='text' onChange={updateEdit} value={editMessage}/>
+
+                                            </form>
+                                            <button onClick={handleCancel}>Cancel</button>
+                                        </div>
+                                    </>
+                                )
+                                :
+                                (
+                                    <>
+                                         {message.body}
+                                    </>
+                                )
+
+                            }
+
                         </div>
 
 
