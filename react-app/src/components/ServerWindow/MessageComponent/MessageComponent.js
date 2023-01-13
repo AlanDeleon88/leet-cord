@@ -1,14 +1,16 @@
 import './MessageComponent.css'
 import { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import MessageOptionComponent from './MessageOptionComponent/MessageOptionComponent'
 import MessageDeleteModal from './MessageDeleteModal'
 import { Modal } from '../../../context/Modal'
+import { editChMessage } from '../../../store/channelMessage'
 import formatDate from './formatDate'
 const MessageComponent = ({message}) => {
     const [showMenu, setShowMenu] = useState(false);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [showEditMessage, setShowEditMessage] = useState(false);
+    const dispatch = useDispatch();
     const [editMessage, setEditMessage] = useState(message.body);
 
     const mouseLeave = (e) => {
@@ -30,7 +32,26 @@ const MessageComponent = ({message}) => {
         setShowEditMessage(false)
     }
 
-    const handleUpdate = e =>{
+    const handleUpdate = async e =>{
+        e.preventDefault();
+        let editedMessage = {
+            id:message.message_id,
+            body: editMessage
+        }
+         console.log(editedMessage);
+        if(!editedMessage.body){
+            //? open up delete modal to confirm delete
+        }
+        else{
+
+            const data = await dispatch(editChMessage(editedMessage))
+            if(data){
+                //!error handle here
+            }
+            else{
+                setShowEditMessage(false);
+            }
+        }
 
     }
 

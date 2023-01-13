@@ -47,6 +47,7 @@ def edit_server_message(id):
         db.session.commit();
         message_dict = message.to_dict();
         message_dict['my_message'] = True;
+        message_dict['message_id'] = message.id;
         return message_dict
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
