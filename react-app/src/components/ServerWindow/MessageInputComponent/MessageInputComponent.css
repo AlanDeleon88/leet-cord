@@ -1,7 +1,7 @@
 .message-input-box{
     background-color: #63686e;
     width: 90%;
-    margin-top: 10px;
+    /* margin-top: 10px; */
     margin-left: 15px;
     height: 35px;
     border-radius: 10px;
@@ -38,7 +38,7 @@
 
     position: relative;
     left: 25px;
-    top: 5px;
+    /* top: 5px; */
     background-color: #63686e;
     color: whitesmoke;
     height: 37px;

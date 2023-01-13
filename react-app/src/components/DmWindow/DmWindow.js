@@ -19,7 +19,7 @@ const DmWindow = () =>{
 
     return (
         <>
-            <div className='main-view'>
+            <div className='main-view-dm'>
                 <Switch>
                     <Route path={`${match.url}`}>
                     <div className='dm-list-container'>
