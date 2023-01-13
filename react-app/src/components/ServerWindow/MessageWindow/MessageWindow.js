@@ -11,6 +11,7 @@ import MessageComponent from '../MessageComponent';
 const MessageWindow = ({type, channelId}) =>{
 
     const messageEl = useRef(null)
+
     const [isLoaded, setIsLoaded] = useState(false)
     const dispatch = useDispatch()
     const channel = useSelector(state => state.channel)
@@ -27,7 +28,8 @@ const MessageWindow = ({type, channelId}) =>{
     // },[])
 
     useEffect(() =>{
-        messageEl.current?.scrollIntoView({behavior : 'auto'})
+        messageEl.current?.scrollIntoView({behavior : 'auto', block:'end'})
+
     }, [messages])
 
     useEffect(() =>{
@@ -56,13 +58,16 @@ const MessageWindow = ({type, channelId}) =>{
                                 {messages.map(el =>{
                                     return(
                                         <MessageComponent message={el} />
+
                                     )
                                 })}
                             </>
                         )}
 
-                        <div ref={messageEl}>
 
+                        <div className='placeholder' ref={messageEl} id='scroll'>
+                            {/*bug here, whenever this div has a ref property, it causes the channel list to shift up. */}
+                            {/* I seemed to narrowed it down to the scrollIntoView method. */}
                         </div>
                     </div>
 

@@ -24,7 +24,7 @@
 
 .channel-container{
     width:250px;
-    height: 103%;
+    height: 100%;
     /* border: blue solid 1px; */
     /* overflow: scroll; */
     background-color: rgb(47,49,54);
@@ -34,16 +34,16 @@
 }
 
 .channel-list-user-box{
-    height:110%;
+    height:100%;
     /* background-color: red; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.channel-container ::-webkit-scrollbar{
+/* .channel-container ::-webkit-scrollbar{
     display: none;
-}
+} */
 
 .server-title{
     color: white;
@@ -57,7 +57,7 @@
     justify-content: space-between;
     text-overflow: ellipsis;
     padding: 5px;
-    margin-top: 20px;
+    margin-top: -5px;
 }
 
 .server-text{
@@ -71,7 +71,7 @@
 }
 
 .channel-message{
-    height:87%
+    height:86%;
 }
 
 .msg-input-container{

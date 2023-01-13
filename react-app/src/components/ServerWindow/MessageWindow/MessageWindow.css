@@ -1,7 +1,7 @@
 .message-container{
     /* border: greenyellow solid 1px; */
     /* width: 99.9%; */
-    height: 100%;
+    height:100%;
     width:100%;
     background-color: #424549;
     display: flex;
@@ -10,4 +10,8 @@
     overflow: scroll;
     overflow-y: visible;
 
+}
+
+.placeholder{
+    /* display: none; */
 }
