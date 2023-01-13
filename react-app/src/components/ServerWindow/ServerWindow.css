@@ -24,7 +24,7 @@
 
 .channel-container{
     width:250px;
-    height: 101.5%;
+    height: 103%;
     /* border: blue solid 1px; */
     /* overflow: scroll; */
     background-color: rgb(47,49,54);
@@ -57,7 +57,7 @@
     justify-content: space-between;
     text-overflow: ellipsis;
     padding: 5px;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .server-text{
