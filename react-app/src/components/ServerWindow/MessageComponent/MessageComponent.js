@@ -1,6 +1,7 @@
 import './MessageComponent.css'
 import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
+import MessageOptionComponent from './MessageOptionComponent/MessageOptionComponent'
 const MessageComponent = ({message}) => {
     const [showMenu, setShowMenu] = useState(false);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -9,6 +10,26 @@ const MessageComponent = ({message}) => {
 
     //! look into mouseover event to see if i can get option menu to show up.
     //! may need to look into how to set showmenu to false
+    console.log(message.updated_at.split(' '));
+    //! function to format date will move to another file.
+    const formatDate = (date) =>{
+        const monthObj ={
+            'Jan' : 1,
+            'Feb' : 2,
+            'Mar' : 3,
+            'Apr' : 4,
+            'May' : 5,
+            'Jun' : 6,
+            'Jul' : 7,
+            'Aug' : 8,
+            'Sep' : 9,
+            'Oct' : 10,
+            'Nov' : 11,
+            'Dec' : 12,
+        }
+        const dateArr = date.split(' ')
+
+    }
 
     const mouseLeave = (e) =>{
         setShowMenu(false)
@@ -36,8 +57,10 @@ const MessageComponent = ({message}) => {
 
                         </div>
                         <div className="date-container">
+                            <div className='msg-date'>
 
                                 {message.updated_at}
+                            </div>
 
 
                     {
@@ -46,7 +69,7 @@ const MessageComponent = ({message}) => {
                         {message.my_message &&
                             <>
                                 <div className='msg-option-container'>
-                                    test
+                                    <MessageOptionComponent />
                                 </div>
                             </>
 

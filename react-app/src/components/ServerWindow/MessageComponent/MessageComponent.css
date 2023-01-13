@@ -9,7 +9,7 @@
     align-items: center;
     padding:10px;
     color: whitesmoke;
-    overflow: hidden;
+    /* overflow: hidden; */
     width:100%;
 
 }
@@ -27,6 +27,7 @@
 
 .username-bundle-container{
     display: flex;
+    align-items: center;
     width:100%;
 }
 
@@ -50,8 +51,20 @@
 .msg-option-container{
     position: relative;
     /* can use some fine tuning with position here*/
-    /* bottom: 20px; */
-    /* left: 200%; */
+    bottom: 25px;
+    /* left: 70%; */
+    width:70%;
+    display: flex;
+    justify-content: flex-end;
+    margin-right:50px;
+    z-index: 3;
+}
+
+@media only screen and (max-width: 1200px){
+    div.msg-option-container{
+        position: relative;
+        /* left:30% */
+    }
 }
 
 .msg-img{
@@ -62,5 +75,11 @@
 
 .date-container{
     display: flex;
+    align-items: center;
     width: 100%;
+}
+
+.msg-date{
+    font-size: 12px;
+    color:#757d85
 }

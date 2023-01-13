@@ -1,0 +1,36 @@
+.options-container{
+    display: flex;
+    /* height: 100px; */
+    width: 70px;
+    height: 30px;
+    /* border: solid 1px black; */
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px;
+    background-color: #282b30;
+    box-shadow: 3px 3px 5px black;
+    z-index: 20;
+    /* padding: 4px; */
+}
+
+.edit-msg-button-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    height:100%;
+    width:100%;
+}
+
+.edit-msg-button-container:hover{
+    background-color: #454a52;
+}
+
+.delete-button-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    height:100%;
+    width:100%;
+}

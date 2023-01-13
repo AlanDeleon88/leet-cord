@@ -21,6 +21,7 @@
     align-items: center;
     /* background-color: red; */
     margin-left:60px;
+    margin-bottom: 10px;
 }
 
 .msg-form-container{
@@ -78,8 +79,8 @@
     position: absolute;
     height: 150px;
     width: 150px;
-    bottom: 75px;
-    left: 350px;
+    bottom: 50px;
+    left: 400px;
     /* border: solid 1px red; */
     border-radius: 10px;
     background-color: #63686e;
