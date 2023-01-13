@@ -9,3 +9,4 @@ from .edit_server_desc_form import EditServerDescription
 from .edit_channel_form import EditChannel
 from .create_channel_form import CreateChannel
 from .create_server_message import CreateServerMessage
+from .edit_server_message_form import EditServerMessage
