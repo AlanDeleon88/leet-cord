@@ -2,6 +2,8 @@ import './MessageComponent.css'
 import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import MessageOptionComponent from './MessageOptionComponent/MessageOptionComponent'
+import MessageDeleteModal from './MessageDeleteModal'
+import { Modal } from '../../../context/Modal'
 import formatDate from './formatDate'
 const MessageComponent = ({message}) => {
     const [showMenu, setShowMenu] = useState(false);
@@ -29,7 +31,7 @@ const MessageComponent = ({message}) => {
     }
 
     const handleUpdate = e =>{
-        
+
     }
 
     return(
@@ -107,6 +109,17 @@ const MessageComponent = ({message}) => {
 
 
             </div>
+            {showDeleteModal &&
+                <>
+                <Modal onClose={() =>{
+                setShowDeleteModal(false)
+                }}>
+                    <MessageDeleteModal />
+                </Modal>
+
+                </>
+
+            }
 
         </>
     )

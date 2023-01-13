@@ -28,6 +28,7 @@ const MessageWindow = ({type, channelId}) =>{
     // },[])
 
     useEffect(() =>{
+        //* this solved my bug with the channel list shifting up. the block option to end seemed to fix it.
         messageEl.current?.scrollIntoView({behavior : 'auto', block:'end'})
 
     }, [messages])
@@ -68,6 +69,7 @@ const MessageWindow = ({type, channelId}) =>{
                         <div className='placeholder' ref={messageEl} id='scroll'>
                             {/*bug here, whenever this div has a ref property, it causes the channel list to shift up. */}
                             {/* I seemed to narrowed it down to the scrollIntoView method. */}
+
                         </div>
                     </div>
 
