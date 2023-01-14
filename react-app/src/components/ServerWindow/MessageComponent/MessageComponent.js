@@ -30,6 +30,7 @@ const MessageComponent = ({message}) => {
 
     const handleCancel = (e) =>{
         setShowEditMessage(false)
+        setEditMessage(message.body)
     }
 
     const handleUpdate = async e =>{
@@ -104,11 +105,11 @@ const MessageComponent = ({message}) => {
                                 (
                                     <>
                                         <div className='edit-msg-input-container'>
-                                            <form onSubmit={handleUpdate}>
-                                                <input type='text' onChange={updateEdit} value={editMessage}/>
+                                            <form onSubmit={handleUpdate} style={{width: '100%'}}>
+                                                <input type='text' onChange={updateEdit} value={editMessage} className='edit-msg-input'/>
 
                                             </form>
-                                            <button onClick={handleCancel}>Cancel</button>
+                                            <button onClick={handleCancel} className='edit-msg-cancel-btn'>Cancel</button>
                                         </div>
                                     </>
                                 )

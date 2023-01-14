@@ -11,6 +11,9 @@
     color: whitesmoke;
     /* overflow: hidden; */
     width:100%;
+    /* height:100px; */
+
+
 
 }
 
@@ -46,6 +49,7 @@
     flex-direction: column;
     align-items: flex-start;
     padding:5px;
+    width:100%;
 }
 
 .msg-option-container{
@@ -73,6 +77,10 @@
     width:200px;
 }
 
+.msg-body{
+    width:100%;
+}
+
 .date-container{
     display: flex;
     align-items: center;
@@ -82,4 +90,37 @@
 .msg-date{
     font-size: 12px;
     color:#757d85
+}
+
+.edit-msg-input-container{
+    display: flex;
+    width: 95%;
+    justify-content: space-between;
+}
+
+.edit-msg-input{
+    width: 98%;
+    /* resize: none; */
+    background-color: #63686e;
+    padding:10px;
+    border-radius: 10px;
+    color: whitesmoke;
+    outline: none;
+    border:none;
+    font-size:15px;
+}
+
+.edit-msg-cancel-btn{
+    border:none;
+    background-color: red;
+    color: whitesmoke;
+    border-radius: 10px;
+}
+
+.edit-msg-cancel-btn:hover{
+    background-color: rgb(249, 79, 79);
+}
+
+.edit-msg-cancel-btn:active{
+    background-color: rgb(148, 1, 1);
 }
