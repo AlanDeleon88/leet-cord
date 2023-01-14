@@ -41,7 +41,7 @@ function App() {
       {/* <NavBar /> */}
       {user && <ServerNavBar />} {/* only show up if user is logged in*/}
       <Switch>
-        <Route path='/server/:serverId'>
+        <Route path='/server/:serverId/'>
         {user && <ServerWindow />}
         </Route>
         {user &&

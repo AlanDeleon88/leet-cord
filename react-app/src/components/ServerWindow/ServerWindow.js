@@ -15,7 +15,7 @@ import MessageInputComponent from './MessageInputComponent';
 const ServerWindow = () =>{
     const [isLoaded, setIsLoaded] = useState(false);
     const [myServer, setMyServer] = useState(false);
-    let {serverId} = useParams();
+    let { serverId } = useParams();
     let id = Number(serverId);
     const server = useSelector(state => state.focusServer)
     const user = useSelector(state=>state.session.user)
@@ -37,7 +37,7 @@ const ServerWindow = () =>{
         <>
             <div className='main-view'>
                 <Switch>
-                    <Route path={`${match.url}/channel`}>
+                    <Route path={`${match.url}/channel/:channelId/`}>
                     <div className='main-window'>
 
                         <div className='channel-container'>

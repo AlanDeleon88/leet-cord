@@ -21,6 +21,7 @@ export const ChannelListElement = ({channel, serverId}) =>{
 
     const onChannelClick = () =>{
         dispatch(getChannel(channel.channel_id))
+        // console.log('DEBUG PLACE2===============================', channel.channel_id)
         dispatch(getChannelMessages(channel.channel_id))
     }
 

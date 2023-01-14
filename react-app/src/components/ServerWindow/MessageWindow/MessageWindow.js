@@ -8,10 +8,11 @@ import ChannelHeader from '../ChannelHeader/ChannelHeader';
 import MessageComponent from '../MessageComponent';
 
 
-const MessageWindow = ({type, channelId}) =>{
+const MessageWindow = ({type}) =>{
 
     const messageEl = useRef(null)
-
+    const {channelId} = useParams();
+    const id = Number(channelId)
     const [isLoaded, setIsLoaded] = useState(false)
     const dispatch = useDispatch()
     const channel = useSelector(state => state.channel)
@@ -34,10 +35,14 @@ const MessageWindow = ({type, channelId}) =>{
     }, [messages])
 
     useEffect(() =>{
-        dispatch(getChannelMessages(channelId)).then(() =>{
 
-            // console.log(isLoaded);
-        })
+        if(channelId){
+            // console.log('DEBUG PLACE3===============================', channel.id, id)
+            dispatch(getChannelMessages(id)).then(() =>{
+
+                // console.log(isLoaded);
+            })
+        }
         setIsLoaded(true)
     },[dispatch])
 

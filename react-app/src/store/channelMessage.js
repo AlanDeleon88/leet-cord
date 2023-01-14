@@ -1,6 +1,6 @@
 const GET_CH_MSG = 'channelMessage/GET_CH_MSG'
 const ADD_CH_MSG = 'channelMessage/ADD_CH_MSG'
-const EDIT_CH_MSG = 'channelMessage/EDIT_CH_MSG'
+const DELETE_CH_MSG = 'channelMessage/DELETE_CH_MSG'
 
 const getChannelMsgAction = (messages) =>({
     type:GET_CH_MSG,
@@ -12,9 +12,16 @@ const addMessageAction = (message) =>({
     payload: message
 })
 
+const deleteChMsgAction = (id) => ({
+    type:DELETE_CH_MSG,
+    payload: id
+})
+
 
 export const getChannelMessages = (id) => async (dispatch) =>{
     const response = await fetch(`/api/channels/${id}`)
+    console.log('TEST THUINKK-------------------------------------',id);
+
     if(response.ok){
         const data = await response.json()
 
@@ -84,6 +91,20 @@ export const editChMessage = (message) => async dispatch =>{
     }
 }
 
+export const deleteChMessage = (id) => async dispatch =>{
+    const response = await fetch(`/api/server_messages/${id}`)
+
+    if(response.ok){
+        const data = await response.json()
+        dispatch(deleteChMsgAction(id))
+        return null
+    }
+    else if (response.status < 500){
+        const data = await response.json()
+        return data
+    }
+}
+
 export default function channelMessageReducer(state = {}, action){
     let newState;
     switch(action.type){
@@ -103,6 +124,11 @@ export default function channelMessageReducer(state = {}, action){
             newState[action.payload.id]['message_id'] = action.payload.id
 
             return newState
+        case DELETE_CH_MSG:
+            newState = {...state}
+            delete newState[action.payload]
+            return newState
+
         default:
             return state
     }

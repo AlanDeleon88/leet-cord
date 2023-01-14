@@ -2,6 +2,7 @@ import { useDispatch,useSelector } from "react-redux"
 import { useState } from "react"
 import { useHistory } from "react-router-dom"
 import { deleteChannel } from "../../store/focusServer"
+import { getChannelMessages } from "../../store/channelMessage"
 import { getChannel } from "../../store/channel"
 import './DeleteChannel.css'
 
@@ -22,6 +23,7 @@ const DeleteChannel = ({serverId, channel, setShowModal, setShowSettingModal}) =
         //! redirect to first channel of server IE /server/server.id/server.channels[0].channel_id
         // history.push(`/server/${serverId}/channel/${server.channels[0].channel_id}`)
         dispatch(getChannel(server.channels[0].channel_id))
+        dispatch(getChannelMessages(server.channels[0].channel_id))
         setShowModal(false)
         setShowSettingModal(false)
     }

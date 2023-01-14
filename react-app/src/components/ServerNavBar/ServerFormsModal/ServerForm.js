@@ -34,6 +34,7 @@ const ServerForm = ({setShowModal, setShowMenu, setActiveClass}) =>{
                     // dispatch(getIdServer(res.id))
                     // dispatch(getChannel(res.channels[0].channel_id))
                     dispatch(getChannelMessages(res.channels[0].channel_id))
+                    // console.log('DEBUG PLACE1===============================', res.channels[0].channel_id);
                     history.push(`/server/${res.id}/channel/${res.channels[0].channel_id}`)
 
                 }
