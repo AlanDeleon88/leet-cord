@@ -92,7 +92,13 @@ export const editChMessage = (message) => async dispatch =>{
 }
 
 export const deleteChMessage = (id) => async dispatch =>{
-    const response = await fetch(`/api/server_messages/${id}`)
+    const response = await fetch(`/api/server_messages/${id}`,{
+        method:'DELETE',
+        headers:{
+            'Content-Type' : 'application/json'
+        },
+
+    })
 
     if(response.ok){
         const data = await response.json()

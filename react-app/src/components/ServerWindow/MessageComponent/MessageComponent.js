@@ -84,7 +84,7 @@ const MessageComponent = ({message}) => {
                         {message.my_message &&
                             <>
                                 <div className='msg-option-container'>
-                                    <MessageOptionComponent setShowEditMessage={setShowEditMessage} setShowDeleteModal={setShowDeleteModal}/>
+                                    <MessageOptionComponent setShowEditMessage={setShowEditMessage} setShowDeleteModal={setShowDeleteModal} message={message}/>
                                 </div>
                             </>
 

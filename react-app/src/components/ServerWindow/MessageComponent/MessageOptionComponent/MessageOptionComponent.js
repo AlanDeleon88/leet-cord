@@ -2,15 +2,21 @@ import { useState } from "react"
 import './MessageOptionComponent.css'
 import { MdOutlineModeEditOutline } from "react-icons/md";
 import { RiDeleteBin5Fill} from "react-icons/ri";
+import { useDispatch } from "react-redux";
+import { deleteChMessage } from "../../../../store/channelMessage";
 
 
 const MessageOptionComponent = ({message, setShowEditMessage, setShowDeleteModal}) =>{
+    const dispatch = useDispatch();
+
     const handleEdit = () =>{
         setShowEditMessage(true)
     }
 
     const handleDelete = () =>{
-        setShowDeleteModal(true)
+        // setShowDeleteModal(true)
+        dispatch(deleteChMessage(message.message_id))
+        // console.log(message);
     }
 
     return(
