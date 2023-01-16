@@ -19,5 +19,5 @@ class Channel(db.Model):
             'name' : self.name,
             'description' : self.description,
             'server_id' : self.server_id,
-            'server_messages' : [{'message_id' : message.id, 'sender_id' : message.sender_id, 'body' : message.body, 'img' : message.img, 'sender_username' : message.users.username, 'sender_icon' : message.users.profile_picture, 'updated_at' : message.updated_at} for message in self.server_messages]
+            'server_messages' : [{'message_id' : message.id, 'sender_id' : message.sender_id, 'body' : message.body, 'img' : message.img, 'sender_username' : message.users.username, 'sender_icon' : message.users.profile_picture, 'updated_at' : message.updated_at, 'channel_id' : message.channel_id} for message in self.server_messages]
         }

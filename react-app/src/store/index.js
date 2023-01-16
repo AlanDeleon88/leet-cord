@@ -6,6 +6,8 @@ import focusServerReducer from './focusServer';
 import channelReducer from './channel';
 import userReducer from './user';
 import channelMessageReducer from './channelMessage';
+import focusChMessageReducer from './focusChMessage';
+
 
 const rootReducer = combineReducers({
   session,
@@ -13,7 +15,8 @@ const rootReducer = combineReducers({
   focusServer : focusServerReducer,
   channel : channelReducer,
   serverUser : userReducer,
-  channelMessages : channelMessageReducer
+  channelMessages : channelMessageReducer,
+  focusChMessage: focusChMessageReducer
 });
 
 

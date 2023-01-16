@@ -1,17 +1,26 @@
 import './MessageComponent.css'
 import { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch,useSelector } from 'react-redux'
 import MessageOptionComponent from './MessageOptionComponent/MessageOptionComponent'
 import MessageDeleteModal from './MessageDeleteModal'
 import { Modal } from '../../../context/Modal'
 import { editChMessage } from '../../../store/channelMessage'
+import { getMessageId } from '../../../store/focusChMessage'
 import formatDate from './formatDate'
-const MessageComponent = ({message}) => {
+const MessageComponent = ({message, channelId}) => {
     const [showMenu, setShowMenu] = useState(false);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [showEditMessage, setShowEditMessage] = useState(false);
     const dispatch = useDispatch();
-    const [editMessage, setEditMessage] = useState(message.body);
+    //!issue with not being insync with the message channels data for
+    //! editing message. need to look into this.
+    //! i think the dispatch for getting the messages is happening too late
+    //! so when this renders the use state data is stale.
+    //! i think use state is saving the previous state from the last message maybe?
+    const [editMessage, setEditMessage] = useState('');
+    // console.log(editMessage, message.body);
+
+
 
     const mouseLeave = (e) => {
 
@@ -21,6 +30,7 @@ const MessageComponent = ({message}) => {
     }
     const mouseEnter = (e) =>{
         setShowMenu(true)
+        dispatch(getMessageId(message.message_id))
         // console.log('mouse enter TRUEEEEEE');
     }
 
@@ -106,7 +116,7 @@ const MessageComponent = ({message}) => {
                                     <>
                                         <div className='edit-msg-input-container'>
                                             <form onSubmit={handleUpdate} style={{width: '100%'}}>
-                                                <input type='text' onChange={updateEdit} value={editMessage} className='edit-msg-input'/>
+                                                <input type='text' onChange={updateEdit} value={editMessage ? editMessage : message.body} className='edit-msg-input'/>
 
                                             </form>
                                             <button onClick={handleCancel} className='edit-msg-cancel-btn'>Cancel</button>

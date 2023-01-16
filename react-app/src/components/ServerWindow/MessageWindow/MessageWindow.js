@@ -36,13 +36,13 @@ const MessageWindow = ({type}) =>{
 
     useEffect(() =>{
 
-        if(channelId){
+
             // console.log('DEBUG PLACE3===============================', channel.id, id)
             dispatch(getChannelMessages(id)).then(() =>{
 
                 // console.log(isLoaded);
             })
-        }
+
         setIsLoaded(true)
     },[dispatch])
 
@@ -63,7 +63,7 @@ const MessageWindow = ({type}) =>{
                                 {/*make message component later, pass message into component..*/}
                                 {messages.map(el =>{
                                     return(
-                                        <MessageComponent message={el} />
+                                        <MessageComponent message={el}/>
 
                                     )
                                 })}

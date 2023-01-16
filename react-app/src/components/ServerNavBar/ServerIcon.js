@@ -39,13 +39,13 @@ const ServerIcon = ({server}) => {
         dispatch(getIdServer(server.id)).then(res => {
 
             dispatch(getChannel(server.channels[0].channel_id))
+            dispatch(getChannelMessages(server.channels[0].channel_id))
 
         })
         .then((res) =>{
             // console.log('WHATS MY ID ---------------------------', server.channels[0].channel_id);
         })
         .then((res) =>{
-            dispatch(getChannelMessages(server.channels[0].channel_id))
         })
 
     }

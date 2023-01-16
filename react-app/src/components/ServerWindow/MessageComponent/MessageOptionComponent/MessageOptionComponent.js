@@ -4,13 +4,15 @@ import { MdOutlineModeEditOutline } from "react-icons/md";
 import { RiDeleteBin5Fill} from "react-icons/ri";
 import { useDispatch } from "react-redux";
 import { deleteChMessage } from "../../../../store/channelMessage";
+// import { getMessageId } from "../../../../store/focusChMessage";
 
 
-const MessageOptionComponent = ({message, setShowEditMessage, setShowDeleteModal}) =>{
+const MessageOptionComponent = ({message, setShowEditMessage, setShowDeleteModal, channelId}) =>{
     const dispatch = useDispatch();
 
     const handleEdit = () =>{
         setShowEditMessage(true)
+        // dispatch(getMessageId(message.message_id))
     }
 
     const handleDelete = () =>{
