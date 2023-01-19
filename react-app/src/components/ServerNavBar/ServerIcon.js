@@ -40,6 +40,10 @@ const ServerIcon = ({server}) => {
 
             dispatch(getChannel(server.channels[0].channel_id))
             dispatch(getChannelMessages(server.channels[0].channel_id))
+            let cancel = document.getElementById('cancel-button')
+            if(cancel){
+                cancel.click();
+            }
 
         })
         .then((res) =>{

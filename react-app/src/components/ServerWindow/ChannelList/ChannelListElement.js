@@ -23,6 +23,11 @@ export const ChannelListElement = ({channel, serverId}) =>{
         dispatch(getChannel(channel.channel_id))
         // console.log('DEBUG PLACE2===============================', channel.channel_id)
         dispatch(getChannelMessages(channel.channel_id))
+        let cancel = document.getElementById('cancel-button')
+        if(cancel){
+            cancel.click();
+        }
+
     }
 
     const handleSettings = e =>{

@@ -16,8 +16,8 @@ const MessageOptionComponent = ({message, setShowEditMessage, setShowDeleteModal
     }
 
     const handleDelete = () =>{
-        // setShowDeleteModal(true)
-        dispatch(deleteChMessage(message.message_id))
+        setShowDeleteModal(true)
+        // dispatch(deleteChMessage(message.message_id))
         // console.log(message);
     }
 

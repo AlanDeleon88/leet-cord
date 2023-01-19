@@ -1,6 +1,6 @@
 import { useState } from "react"
 import './MessageInputComponent.css'
-import { useDispatch } from "react-redux"
+import { useDispatch,useSelector } from "react-redux"
 import { postNewMessage } from "../../../store/channelMessage"
 import {BsPlusLg} from 'react-icons/bs'
 import {MdOutlineCancel} from 'react-icons/md'
@@ -8,6 +8,7 @@ const MessageInputComponent = ({channelId}) =>{
     const [body, setBody] = useState('')
     const [img, setImg] = useState('')
     const [imgName, setImgName] = useState('')
+    const channel = useSelector(state => state.channel)
     const dispatch = useDispatch()
 
     const updateBody = (e) =>{
@@ -57,7 +58,7 @@ const MessageInputComponent = ({channelId}) =>{
             'img' : img
         }
         // console.log('TESTING POST MSG', newMsg);
-        if(!newMsg.body && !newMsg.img){
+        if(!newMsg.body.trim() && !newMsg.img.trim()){
             //NOP
         }
         else{
@@ -100,7 +101,7 @@ const MessageInputComponent = ({channelId}) =>{
                     <input type= 'file' accept="image/*" style={{display: 'none'}} id='msg-img-file' onChange={handleImg} onClick={(e) => e.target.value = null}/>
                     <form onSubmit={submitMessage} className='msg-form-container'>
 
-                            <input  type='text' className="message-input-box" value={body} onChange={updateBody}/>
+                            <input  type='text' className="message-input-box" value={body} onChange={updateBody} placeholder={`Message # ${channel.name}`}/>
 
                     </form>
                 </div>

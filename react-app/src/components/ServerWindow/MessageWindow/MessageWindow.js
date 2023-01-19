@@ -63,7 +63,7 @@ const MessageWindow = ({type}) =>{
                                 {/*make message component later, pass message into component..*/}
                                 {messages.map(el =>{
                                     return(
-                                        <MessageComponent message={el}/>
+                                        <MessageComponent message={el} showEdit={false}/>
 
                                     )
                                 })}

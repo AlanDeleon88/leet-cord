@@ -7,10 +7,11 @@ import { Modal } from '../../../context/Modal'
 import { editChMessage } from '../../../store/channelMessage'
 import { getMessageId } from '../../../store/focusChMessage'
 import formatDate from './formatDate'
-const MessageComponent = ({message, channelId}) => {
+const MessageComponent = ({message, channelId, preview, showEdit}) => {
     const [showMenu, setShowMenu] = useState(false);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
-    const [showEditMessage, setShowEditMessage] = useState(false);
+    //!instead of using a use state, maybe do a useSelector with a redux store.
+    const [showEditMessage, setShowEditMessage] = useState(showEdit);
     const dispatch = useDispatch();
     //!issue with not being insync with the message channels data for
     //! editing message. need to look into this.
@@ -20,17 +21,24 @@ const MessageComponent = ({message, channelId}) => {
     const [editMessage, setEditMessage] = useState('');
     // console.log(editMessage, message.body);
 
-
+    useEffect(() =>{
+        setShowEditMessage(false);
+    },[showEdit])
 
     const mouseLeave = (e) => {
+        if(!preview){
+            setShowMenu(false)
 
-        setShowMenu(false)
+        }
         // console.log('mouse left falsE');
 
     }
     const mouseEnter = (e) =>{
-        setShowMenu(true)
-        dispatch(getMessageId(message.message_id))
+        if(!preview){
+            setShowMenu(true)
+
+        }
+        // dispatch(getMessageId(message.message_id))
         // console.log('mouse enter TRUEEEEEE');
     }
 
@@ -40,7 +48,7 @@ const MessageComponent = ({message, channelId}) => {
 
     const handleCancel = (e) =>{
         setShowEditMessage(false)
-        setEditMessage(message.body)
+        setEditMessage('');
     }
 
     const handleUpdate = async e =>{
@@ -68,14 +76,14 @@ const MessageComponent = ({message, channelId}) => {
 
     return(
         <>
-            <div className="message-bundle-container" onMouseLeave={mouseLeave} onMouseOver = {mouseEnter}>
+            <div className={preview ? 'prev-message-bundle-container' : "message-bundle-container"} onMouseLeave={mouseLeave} onMouseOver = {mouseEnter}>
                 <div className="user-pic-container">
 
                     <img src={message.sender_icon} className='user-pic'/>
 
                 </div>
 
-                <div className="message-bundle">
+                <div className={preview ? 'prev-message-bundle' : "message-bundle"}>
                     <div className="username-bundle-container">
                         <div className="username-container">
                             {message.sender_username}
@@ -110,7 +118,7 @@ const MessageComponent = ({message, channelId}) => {
                                 <img src={message.img} className='msg-img'/>
                             </div>
                         }
-                        <div className='msg-body'>
+                        <div className={preview? 'prev-msg-body':'msg-body'}>
                             {showEditMessage ?
                                 (
                                     <>
@@ -119,7 +127,7 @@ const MessageComponent = ({message, channelId}) => {
                                                 <input type='text' onChange={updateEdit} value={editMessage ? editMessage : message.body} className='edit-msg-input'/>
 
                                             </form>
-                                            <button onClick={handleCancel} className='edit-msg-cancel-btn'>Cancel</button>
+                                            <button onClick={handleCancel} className='edit-msg-cancel-btn' id='cancel-button'>Cancel</button>
                                         </div>
                                     </>
                                 )
@@ -146,7 +154,7 @@ const MessageComponent = ({message, channelId}) => {
                 <Modal onClose={() =>{
                 setShowDeleteModal(false)
                 }}>
-                    <MessageDeleteModal />
+                    <MessageDeleteModal setShowDeleteModal={setShowDeleteModal} message={message}/>
                 </Modal>
 
                 </>
