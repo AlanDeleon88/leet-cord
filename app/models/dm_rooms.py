@@ -19,7 +19,9 @@ class DmRoom(db.Model):
     def to_dict(self):
         return{
             'id': self.id,
-            'user1_id' : self.user1_id,
-            'user2_id' : self.user2_id,
+            'user_one' : {'id' : self.user_one.id, 'username' : self.user_one.username, 'profile_picture' : self.user_one.profile_picture},
+            'user_two' : {'id' : self.user_two.id, 'username' : self.user_two.username, 'profile_picture' : self.user_two.profile_picture},
+            'user1_active' : self.user1_active,
+            'user2_active' : self.user2_active,
             'direct_messages' : [{'id': message.id, 'sender_id' : message.sender_id, 'body' : message.body, 'img' : message.img} for message in self.direct_messages]
         }

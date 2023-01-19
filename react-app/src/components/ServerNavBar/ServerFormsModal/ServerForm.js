@@ -87,7 +87,9 @@ const ServerForm = ({setShowModal, setShowMenu, setActiveClass}) =>{
                             className="server-name-input"
                             placeholder="Server name"
                             value={name}
-                            onChange={updateName}/>
+                            onChange={updateName}
+
+                            />
 
                         <label>Server Description</label>
                         <input
@@ -98,8 +100,12 @@ const ServerForm = ({setShowModal, setShowMenu, setActiveClass}) =>{
                             onChange={updateDescription}
 
                         />
+                    </form>
+
+
+                </div>
                         <div className='server-form-buttons'>
-                            <button type="submit" className="server-submit-button serv-button">Create Server</button>
+                            <button onClick={handleSubmit} type="submit" className="server-submit-button serv-button">Create Server</button>
                             <button className="server-back-button serv-button" type='button' onClick={() =>{
                                 setShowModal(false);
                                 setActiveClass(false);
@@ -107,10 +113,6 @@ const ServerForm = ({setShowModal, setShowMenu, setActiveClass}) =>{
                             }}> Back</button>
 
                         </div>
-                    </form>
-
-
-                </div>
 
             </div>
 

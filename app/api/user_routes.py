@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, DmRoom, db
-from app.utils import buildUserDict
+from app.utils import buildUserDict, buildDmRoomDict
 from app.forms import EditProfilePicture
 from app.forms import EditUsername
 from app.utils import queryUtils
@@ -92,6 +92,22 @@ def edit_username(id):
         return user_dict
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
+@user_routes.route('/<int:id>/dm', methods=['GET'])
+@login_required
+def getUserDmRooms(id):
+    '''
+        from logged in users, returns all dm rooms that user is in with in single object. includes other users name and icon
+    '''
+    user = User.query.get(id)
+
+    dm_arr = buildDmRoomDict(user)
+
+    user_dict = user.to_dict()
+
+    return {'dms' : dm_arr}
+
+    # return {'dm_1' : user_dict['dm_rooms1'], 'dm_2' : user_dict['dm_rooms2'], 'marnie' : user.dm_left[0].user_two.to_dict(), 'demo' : user_dict['direct_messages'] }
+
 #! still need to test
 @user_routes.route('/<int:id>/dm', methods=['POST'])
 @login_required
@@ -101,7 +117,7 @@ def createDmRoom(id) :
     '''
     user_to_dm = User.query.get(id)
     if not user_to_dm:
-        return {'error' : 'User could not be found wit that id'}
+        return {'error' : 'User could not be found with that id'}
     #! query for dm rooms. look for any combination of the 2 ids in either first or second dm slot.
     dm_rooms = DmRoom.query.all()
 
@@ -111,20 +127,24 @@ def createDmRoom(id) :
                 #! we found the pair that exists, now we just set either user1_active or user2_active to true
                 if current_user.id == dm_room.user1_id:
                     dm_room.user1_active = True
-                    db.commit()
+                    db.session.commit()
                     return dm_room.to_dict()
+                    # return {'TEST' : 'ROOM FOUND UPDATE'}
                 elif current_user.id == dm_room.user2_id:
                     dm_room.user2_active = True
                     db.session.commit()
                     return dm_room.to_dict()
-        else:
-            #! there were no combos in ids found in the dm table, therefore create a new table.
-            newDmRoom = DmRoom(
-                user1_id = current_user.id,
-                user2_id = id,
-                user1_active = True,
-                user2_active = True,
-            )
-            db.session.add(newDmRoom)
-            db.session.commit()
-            return newDmRoom.to_dict()
+                    # return {'TEST' : 'ROOM2 FOUND UPDATE'}
+
+    #! there were no combos in ids found in the dm table, therefore create a new table.
+    newDmRoom = DmRoom(
+        user1_id = current_user.id,
+        user2_id = id,
+        user1_active = True,
+        user2_active = True,
+    )
+    db.session.add(newDmRoom)
+    db.session.commit()
+    return newDmRoom.to_dict()
+    # return {'TEST' : 'NEW ROOM NO MATCH'}
+    # return {'dms' :  [dm.to_dict() for dm in dm_rooms]}
