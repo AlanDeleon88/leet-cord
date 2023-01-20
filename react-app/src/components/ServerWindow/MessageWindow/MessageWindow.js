@@ -38,12 +38,13 @@ const MessageWindow = ({type}) =>{
 
 
             // console.log('DEBUG PLACE3===============================', channel.id, id)
-            dispatch(getChannelMessages(id)).then(() =>{
+            if(!type){
+                dispatch(getChannelMessages(id)).then(() =>{
+               // console.log(isLoaded);
+                })
+            }
+            setIsLoaded(true)
 
-                // console.log(isLoaded);
-            })
-
-        setIsLoaded(true)
     },[dispatch])
 
 

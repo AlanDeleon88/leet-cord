@@ -7,6 +7,7 @@ import channelReducer from './channel';
 import userReducer from './user';
 import channelMessageReducer from './channelMessage';
 import focusChMessageReducer from './focusChMessage';
+import dmRoomsReducer from './dmRooms';
 
 
 const rootReducer = combineReducers({
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
   channel : channelReducer,
   serverUser : userReducer,
   channelMessages : channelMessageReducer,
-  focusChMessage: focusChMessageReducer
+  focusChMessage : focusChMessageReducer,
+  dmRooms : dmRoomsReducer
 });
 
 

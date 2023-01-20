@@ -4,7 +4,7 @@ import { useDispatch,useSelector } from "react-redux"
 import { postNewMessage } from "../../../store/channelMessage"
 import {BsPlusLg} from 'react-icons/bs'
 import {MdOutlineCancel} from 'react-icons/md'
-const MessageInputComponent = ({channelId}) =>{
+const MessageInputComponent = ({channelId, dmId}) =>{
     const [body, setBody] = useState('')
     const [img, setImg] = useState('')
     const [imgName, setImgName] = useState('')
