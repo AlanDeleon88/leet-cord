@@ -1,12 +1,14 @@
 import './DmListElement.css'
 
 const DmListElement = ({dm}) =>{
+    const handleClick = () =>{
 
+    }
 
     return(
         <>
 
-            <div className='dm-el-container'>
+            <div className='dm-el-container' onClick={handleClick}>
                 <div className='dm-el-icon-container'>
                     <img className="dm-el-icon" src={dm.other_user_icon}/>
                 </div>

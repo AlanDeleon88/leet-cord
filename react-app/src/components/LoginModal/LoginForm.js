@@ -22,7 +22,7 @@ const LoginForm = () => {
     }
     else{
         // history.push(`/${data.username}`)
-        history.push('/')
+        history.push('/dm')
     }
   };
 

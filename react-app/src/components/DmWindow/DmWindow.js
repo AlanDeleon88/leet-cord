@@ -6,6 +6,7 @@ import MessageWindow from '../ServerWindow/MessageWindow';
 import {IoSettingsSharp} from 'react-icons/io5'
 import UserBox from '../UserBoxComponent';
 import { getUserDmRooms } from '../../store/dmRooms';
+import MessageInputComponent from '../ServerWindow/MessageInputComponent';
 import DmList from './DmList';
 
 const DmWindow = () =>{
@@ -22,8 +23,6 @@ const DmWindow = () =>{
     return (
         <>
             <div className='main-view-dm'>
-                <Switch>
-                    <Route path={`${match.url}`}>
                     <div className='dm-list-container'>
                         {user &&
                             (
@@ -55,8 +54,15 @@ const DmWindow = () =>{
                             )
                         }
                     </div>
-
+                <Switch>
+                    <Route path={`${match.url}/:dmId`}>
                         <MessageWindow type={'dm'}/>
+                        {/* <div className='msg-input-container'>
+                                <MessageInputComponent />
+                        </div> */}
+                    </Route>
+                    <Route path={`${match.url}`}>
+                        Place holder for log window
                     </Route>
                 </Switch>
             </div>

@@ -69,7 +69,7 @@ function App() {
 
         {user ?
           (
-            <Route path= {`/`} exact={true}>
+            <Route path= {`/dm`}>
               <DmWindow />
             </Route>
             //test merege

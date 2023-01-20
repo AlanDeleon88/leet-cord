@@ -12,11 +12,15 @@ const MessageWindow = ({type}) =>{
 
     const messageEl = useRef(null)
     const {channelId} = useParams();
-    const id = Number(channelId)
+    const {dmId} = useParams();
+    const dId = Number(dmId)
+    const id = Number(channelId);
     const [isLoaded, setIsLoaded] = useState(false)
     const dispatch = useDispatch()
     const channel = useSelector(state => state.channel)
     const messages = Object.values(useSelector(state=>state.channelMessages))
+
+    console.log(dId);
 
     //!depreciated. had a bug with trying to render an options component for each message, would scroll to bottom on hover.
     // useEffect(() =>{

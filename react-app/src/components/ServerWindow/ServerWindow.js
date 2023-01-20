@@ -86,6 +86,9 @@ const ServerWindow = () =>{
                     </div>
 
                     </Route>
+                    <Route>
+
+                    </Route>
                 </Switch>
             </div>
 
