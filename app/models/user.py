@@ -48,5 +48,6 @@ class User(db.Model, UserMixin):
             'server_messages' : [{'id' : message.id, 'channel_id' : message.channel_id, 'body' : message.body, 'img' : message.img} for message in self.server_messages],
             'direct_messages' : [{'id' : message.id, 'dm_room_id' : message.dm_room_id,'body' : message.body, 'img' : message.img} for message in self.direct_messages],
             'dm_rooms1' : [{'id' : dm_room.id, 'user2_id' : dm_room.user2_id, 'user1_active' : dm_room.user1_active, 'user2_active' : dm_room.user2_active} for dm_room in self.dm_left],
-            'dm_rooms2' : [{'id' : dm_room.id, 'user1_id' : dm_room.user1_id, 'user1_active' : dm_room.user1_active, 'user2_active' : dm_room.user2_active} for dm_room in self.dm_right]
+            'dm_rooms2' : [{'id' : dm_room.id, 'user1_id' : dm_room.user1_id, 'user1_active' : dm_room.user1_active, 'user2_active' : dm_room.user2_active} for dm_room in self.dm_right],
+            'created_at' : self.created_at
         }

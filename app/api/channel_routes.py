@@ -27,7 +27,7 @@ def get_channel(id):
     channel = Channel.query.get(id)
 
     if not channel:
-        return {'error' : 'channel could not be found with that id'}
+        return {'error' : 'channel could not be found with that id'}, 404
     channel_dict = channel.to_dict()
     #! might turn this into a method later
     for message in channel_dict['server_messages']:
@@ -43,7 +43,7 @@ def post_to_channel(id):
     channel = Channel.query.get(id)
 
     if not channel:
-        return {'error' : 'channel could not be found with that id'}
+        return {'error' : 'channel could not be found with that id'}, 404
     form = CreateServerMessage()
     form['csrf_token'].data = request.cookies['csrf_token']
     #! could use some backend validation for if body or img is null
@@ -85,7 +85,7 @@ def edit_channel_name(id):
             channel.name = form.data['name']
         channel.description = form.data['description']
         if not form.data['name'] and not form.data['description']:
-            return {'error' : 'both fields cannot be empty!'}
+            return {'error' : 'both fields cannot be empty!'}, 401
         db.session.commit()
         channel_dict = channel.to_dict()
         return channel_dict

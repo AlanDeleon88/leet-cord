@@ -19,6 +19,7 @@ const setUser = (user) => ({
     if (response.ok) {
         let data = await response.json()
         dispatch(setUser(data))
+        return null
 
     }
   };

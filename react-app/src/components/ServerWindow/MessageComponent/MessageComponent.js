@@ -6,21 +6,18 @@ import MessageDeleteModal from './MessageDeleteModal'
 import { Modal } from '../../../context/Modal'
 import { editChMessage } from '../../../store/channelMessage'
 import { getMessageId } from '../../../store/focusChMessage'
-import formatDate from './formatDate'
-const MessageComponent = ({message, channelId, preview, showEdit}) => {
+import UserCard from '../../UserCardModal'
+import formatDate from '../../../utils/formatDate'
+const MessageComponent = ({message, channelId, preview, showEdit, type}) => {
     const [showMenu, setShowMenu] = useState(false);
+    const [showUserCard, setShowUserCard] = useState(false);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
-    //!instead of using a use state, maybe do a useSelector with a redux store.
     const [showEditMessage, setShowEditMessage] = useState(showEdit);
     const dispatch = useDispatch();
-    //!issue with not being insync with the message channels data for
-    //! editing message. need to look into this.
-    //! i think the dispatch for getting the messages is happening too late
-    //! so when this renders the use state data is stale.
-    //! i think use state is saving the previous state from the last message maybe?
     const [editMessage, setEditMessage] = useState('');
+    const date = formatDate(message.updated_at, true)
     // console.log(editMessage, message.body);
-
+    // console.log(message.updated_at.split(' '));
     useEffect(() =>{
         setShowEditMessage(false);
     },[showEdit])
@@ -62,16 +59,25 @@ const MessageComponent = ({message, channelId, preview, showEdit}) => {
             //? open up delete modal to confirm delete
         }
         else{
-
-            const data = await dispatch(editChMessage(editedMessage))
-            if(data){
-                //!error handle here
+            //* need conditional for Dm messages
+            if(!type){
+                const data = await dispatch(editChMessage(editedMessage))
+                if(data){
+                    //!error handle here
+                }
+                else{
+                    setShowEditMessage(false);
+                }
             }
-            else{
-                setShowEditMessage(false);
+            else if(type === 'dm'){
+                //! dm dispatch to edit message
             }
         }
 
+    }
+
+    const clickIcon = (e) =>{
+        setShowUserCard(true)
     }
 
     return(
@@ -79,7 +85,7 @@ const MessageComponent = ({message, channelId, preview, showEdit}) => {
             <div className={preview ? 'prev-message-bundle-container' : "message-bundle-container"} onMouseLeave={mouseLeave} onMouseOver = {mouseEnter}>
                 <div className="user-pic-container">
 
-                    <img src={message.sender_icon} className='user-pic'/>
+                    <img src={message.sender_icon} className='user-pic' onClick={clickIcon}/>
 
                 </div>
 
@@ -92,7 +98,7 @@ const MessageComponent = ({message, channelId, preview, showEdit}) => {
                         <div className="date-container">
                             <div className='msg-date'>
 
-                                {message.updated_at}
+                                {date}
                             </div>
 
 
@@ -154,8 +160,36 @@ const MessageComponent = ({message, channelId, preview, showEdit}) => {
                 <Modal onClose={() =>{
                 setShowDeleteModal(false)
                 }}>
-                    <MessageDeleteModal setShowDeleteModal={setShowDeleteModal} message={message}/>
+
+                   {type ?
+                   (
+                        <>
+                            {/* Message Delete modal for dm here*/}
+                        </>
+                   )
+                   :
+                   (
+                        <>
+                            <MessageDeleteModal setShowDeleteModal={setShowDeleteModal} message={message}/>
+
+                        </>
+                   )
+
+                   }
+
                 </Modal>
+
+                </>
+
+            }
+            {showUserCard &&
+                <>
+                    <Modal onClose={() =>{
+                    setShowUserCard(false)
+                }}>
+                        <UserCard userId={message.sender_id}/>
+
+                    </Modal>
 
                 </>
 

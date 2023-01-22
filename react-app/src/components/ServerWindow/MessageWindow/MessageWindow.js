@@ -47,6 +47,9 @@ const MessageWindow = ({type}) =>{
                // console.log(isLoaded);
                 })
             }
+            else if(type === 'dm'){
+                //!dispatch for dm message heres
+            }
             setIsLoaded(true)
 
     },[dispatch])
@@ -77,8 +80,6 @@ const MessageWindow = ({type}) =>{
 
 
                         <div className='placeholder' ref={messageEl} id='scroll'>
-                            {/*bug here, whenever this div has a ref property, it causes the channel list to shift up. */}
-                            {/* I seemed to narrowed it down to the scrollIntoView method. */}
 
                         </div>
                     </div>
@@ -94,6 +95,7 @@ const MessageWindow = ({type}) =>{
 
                         <div>
                             DM messages will go here.
+                            <div className='placeholder' ref={messageEl} id='scroll'></div>
                         </div>
 
                     </>

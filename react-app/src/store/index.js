@@ -15,7 +15,7 @@ const rootReducer = combineReducers({
   servers : serverReducer,
   focusServer : focusServerReducer,
   channel : channelReducer,
-  serverUser : userReducer,
+  focusUser : userReducer,
   channelMessages : channelMessageReducer,
   focusChMessage : focusChMessageReducer,
   dmRooms : dmRoomsReducer

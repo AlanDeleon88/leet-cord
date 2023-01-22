@@ -7,6 +7,7 @@ const MessageDeleteModal = ({setShowDeleteModal, message}) =>{
     const dispatch = useDispatch();
 
     const handleDelete = (e) =>{
+        //*need conditional for dm message dispatch
         dispatch(deleteChMessage(message.message_id))
         setShowDeleteModal(false);
     }

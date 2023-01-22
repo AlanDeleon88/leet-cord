@@ -1,0 +1,93 @@
+.user-card-container{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 20px;
+    height: 355px;
+    width: 350px;
+    background-color: #424549;
+}
+
+.user-card-icon-container{
+    /* border:solid 1px pink; */
+    width: 100%;
+
+}
+
+.user-card-icon{
+    width:75px;
+    height:75px;
+    border-radius: 100%;
+    margin-left: 30px;
+    border: solid 8px rgb(43, 40, 40);
+}
+
+.user-card-username-container{
+    color: whitesmoke;
+    font-size: 25px;
+    border-bottom: solid 1px white;
+    /* padding-bottom: 10px; */
+    /* padding: 10px; */
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-bottom: 10px;
+    width: 95%;
+
+}
+
+.username-input-bundle{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    /* border:1px solid green; */
+    height: 65%;
+    width: 90%;
+    background-color: #252628;
+    border-radius: 10px;
+}
+
+.user-card-input-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:90%;
+}
+
+.user-card-input-container{
+    display:flex;
+    align-items: center;
+    justify-content: flex-start
+
+}
+
+.user-card-input{
+    margin-left: 10px;
+    color:whitesmoke;
+    background-color: #252628;
+    width: 120%;
+    height: 20px;
+    border-radius: 5px;
+    padding: 10px;
+    outline: none;
+    border: solid 1px gray;
+    margin-bottom: 15px;
+}
+
+.user-card-placeholder{
+    background-color: #252628;
+    /* width: 120%; */
+    height: 20px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.user-card-member-since{
+    color: whitesmoke;
+}
+
+.user-card-date{
+    color: grey;
+}

@@ -23,5 +23,5 @@ class DmRoom(db.Model):
             'user_two' : {'id' : self.user_two.id, 'username' : self.user_two.username, 'profile_picture' : self.user_two.profile_picture},
             'user1_active' : self.user1_active,
             'user2_active' : self.user2_active,
-            'direct_messages' : [{'id': message.id, 'sender_id' : message.sender_id, 'body' : message.body, 'img' : message.img} for message in self.direct_messages]
+            'direct_messages' : [{'message_id' : message.id, 'sender_id' : message.sender_id, 'body' : message.body, 'img' : message.img, 'sender_username' : message.users.username, 'sender_icon' : message.users.profile_picture, 'updated_at' : message.updated_at, 'dm_room_id' : message.dm_room_id} for message in self.direct_messages]
         }

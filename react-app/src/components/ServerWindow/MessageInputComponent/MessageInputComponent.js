@@ -62,7 +62,13 @@ const MessageInputComponent = ({channelId, dmId}) =>{
             //NOP
         }
         else{
-            dispatch(postNewMessage(channelId, newMsg))
+            if(channelId){
+                dispatch(postNewMessage(channelId, newMsg))
+
+            }
+            else if(dmId){
+                //! dispatch for posting dm message here.
+            }
             setImg('')
             setImgName('')
 
@@ -71,7 +77,7 @@ const MessageInputComponent = ({channelId, dmId}) =>{
 
     return(
         <>
-            {channelId &&
+
                 <>
                     {img &&
                     <div className="demo-img-container">
@@ -108,7 +114,7 @@ const MessageInputComponent = ({channelId, dmId}) =>{
 
                 </>
 
-            }
+
 
 
         </>

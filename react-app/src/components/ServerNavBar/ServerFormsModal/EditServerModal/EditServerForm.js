@@ -7,7 +7,7 @@ import { updateServerIcon, updateServerName, updateServerDesc } from "../../../.
 
 const EditServerForm = ({server, setShowModal}) =>{
     const user = useSelector(state => state.session.user)
-    const owner = useSelector(state => state.serverUser)
+    const owner = useSelector(state => state.focusUser)
     const [name, setName] = useState('')
     const [inputtedName, setInputtedName] = useState(false)
 

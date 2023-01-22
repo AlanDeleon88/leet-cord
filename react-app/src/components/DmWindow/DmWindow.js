@@ -56,10 +56,15 @@ const DmWindow = () =>{
                     </div>
                 <Switch>
                     <Route path={`${match.url}/:dmId`}>
-                        <MessageWindow type={'dm'}/>
-                        {/* <div className='msg-input-container'>
+                        <div className='header-message'>
+
+                            <div className='channel-message'>
+                                <MessageWindow type={'dm'}/>
+                            </div>
+                            <div className='msg-input-container'>
                                 <MessageInputComponent />
-                        </div> */}
+                            </div>
+                        </div>
                     </Route>
                     <Route path={`${match.url}`}>
                         Place holder for log window

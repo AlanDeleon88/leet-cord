@@ -49,3 +49,17 @@
     justify-content: center;
     overflow: scroll;
 }
+
+.msg-input-container{
+    /* border: 1px solid green; */
+    height: 8%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #424549;
+    width: 100%;
+}
+
+.channel-message{
+    height:86%;
+}
