@@ -13,6 +13,7 @@ const MessageComponent = ({message, channelId, preview, showEdit, type}) => {
     const [showUserCard, setShowUserCard] = useState(false);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [showEditMessage, setShowEditMessage] = useState(showEdit);
+    const [hasEdited, setHasEdited] = useState(false)
     const dispatch = useDispatch();
     const [editMessage, setEditMessage] = useState('');
     const date = formatDate(message.updated_at, true)
@@ -41,10 +42,12 @@ const MessageComponent = ({message, channelId, preview, showEdit, type}) => {
 
     const updateEdit = (e) =>{
         setEditMessage(e.target.value)
+        setHasEdited(true)
     }
 
     const handleCancel = (e) =>{
         setShowEditMessage(false)
+        setHasEdited(false);
         setEditMessage('');
     }
 
@@ -130,7 +133,7 @@ const MessageComponent = ({message, channelId, preview, showEdit, type}) => {
                                     <>
                                         <div className='edit-msg-input-container'>
                                             <form onSubmit={handleUpdate} style={{width: '100%'}}>
-                                                <input type='text' onChange={updateEdit} value={editMessage ? editMessage : message.body} className='edit-msg-input'/>
+                                                <input type='text' onChange={updateEdit} value={editMessage||hasEdited ? editMessage : message.body} className='edit-msg-input'/>
 
                                             </form>
                                             <button onClick={handleCancel} className='edit-msg-cancel-btn' id='cancel-button'>Cancel</button>

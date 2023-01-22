@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request
 from flask_login import current_user, login_required
 from app.models import User, DmRoom, db, DirectMessage
 from app.utils import buildUserDict, buildDmRoomDict
-from app.forms import create_server_message, edit_server_message_form
+from app.forms import CreateServerMessage, EditServerMessage
 
 from app.utils import queryUtils
 
@@ -21,7 +21,7 @@ def validation_errors_to_error_messages(validation_errors):
 
 @dm_routes.route('/<int:id>')
 @login_required
-def getDmRoomMessage(id):
+def getDmRoomMessages(id):
     dm_room = DmRoom.query.get(id);
     if not dm_room:
         return {'error' : 'dm room with that id not found'}, 404
@@ -32,3 +32,30 @@ def getDmRoomMessage(id):
             message['my_message'] = True
 
     return dm_dict
+
+@dm_routes.route('/<int:id>', methods=['POST'])
+@login_required
+def postDmRoomMessage(id):
+    dm_room = DmRoom.query.get(id)
+    if not dm_room:
+        return {'error' : 'dm room with that id not found'}, 404
+    form = CreateServerMessage();
+    form['csrf_token'].data = request.cookies['csrf_token']
+    #! could use some backend validation for if body or img is null
+    if form.validate_on_submit():
+        new_msg = DirectMessage(
+            sender_id = current_user.id,
+            dm_room_id = id,
+            body = form.data['body'],
+            img = form.data['img']
+        )
+
+        db.session.add(new_msg)
+        db.session.commit()
+        #! might need to make a util function to add my message = true or false to this return
+
+        new_msg_dict = new_msg.to_dict()
+        new_msg_dict['my_message'] = True;
+
+        return new_msg_dict
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
