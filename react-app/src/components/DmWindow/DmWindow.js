@@ -6,17 +6,23 @@ import MessageWindow from '../ServerWindow/MessageWindow';
 import {IoSettingsSharp} from 'react-icons/io5'
 import UserBox from '../UserBoxComponent';
 import { getUserDmRooms } from '../../store/dmRooms';
+import { getDmRoom } from '../../store/focusDm';
 import MessageInputComponent from '../ServerWindow/MessageInputComponent';
+import ChannelHeader from '../ServerWindow/ChannelHeader';
 import DmList from './DmList';
 
 const DmWindow = () =>{
     const [isLoaded, setIsLoaded] = useState(false);
     const user = useSelector(state=>state.session.user)
-    const dms = Object.values(useSelector(state=>state.dmRooms))
+    const dispatch = useDispatch()
+    // const dms = Object.values(useSelector(state=>state.dmRooms))
+    const dm = useSelector(state=>state.focusDm)
     const match = useRouteMatch();
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
-
+    useEffect(() =>{
+        // dispatch(getDmRoom)
+    },[dispatch])
 
     //!use props to thread through message window maybe.
 
@@ -57,12 +63,20 @@ const DmWindow = () =>{
                 <Switch>
                     <Route path={`${match.url}/:dmId`}>
                         <div className='header-message'>
+                            <div className='channel-header'>
+                                    {dm &&
+                                        (
+                                            <ChannelHeader dm={dm}/>
+
+                                        )
+                                    }
+                                </div>
 
                             <div className='channel-message'>
                                 <MessageWindow type={'dm'}/>
                             </div>
                             <div className='msg-input-container'>
-                                <MessageInputComponent />
+                                <MessageInputComponent dmId={dm.id}/>
                             </div>
                         </div>
                     </Route>

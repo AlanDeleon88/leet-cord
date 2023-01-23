@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getChannel } from '../../../store/channel';
 import { getChannelMessages } from '../../../store/channelMessage';
 import ChannelHeader from '../ChannelHeader/ChannelHeader';
+import { getDmMsg } from '../../../store/dmMessages';
 import MessageComponent from '../MessageComponent';
 
 
@@ -19,6 +20,7 @@ const MessageWindow = ({type}) =>{
     const dispatch = useDispatch()
     const channel = useSelector(state => state.channel)
     const messages = Object.values(useSelector(state=>state.channelMessages))
+    const direct_messages = Object.values(useSelector(state=>state.directMessages))
 
     console.log(dId);
 
@@ -49,6 +51,7 @@ const MessageWindow = ({type}) =>{
             }
             else if(type === 'dm'){
                 //!dispatch for dm message heres
+                dispatch(getDmMsg(dId))
             }
             setIsLoaded(true)
 
@@ -71,7 +74,8 @@ const MessageWindow = ({type}) =>{
                                 {/*make message component later, pass message into component..*/}
                                 {messages.map(el =>{
                                     return(
-                                        <MessageComponent message={el} showEdit={false}/>
+
+                                        <MessageComponent message={el} showEdit={false} />
 
                                     )
                                 })}
@@ -93,8 +97,20 @@ const MessageWindow = ({type}) =>{
                         {/*place holder div*/}
                         </div>
 
+
                         <div>
-                            DM messages will go here.
+                        {isLoaded && (
+                            <>
+                                {/*make message component later, pass message into component..*/}
+                                {direct_messages.map(el =>{
+                                    return(
+                                        <MessageComponent message={el} showEdit={false} type='dm'/>
+
+                                    )
+                                })}
+                            </>
+                        )}
+
                             <div className='placeholder' ref={messageEl} id='scroll'></div>
                         </div>
 

@@ -8,6 +8,8 @@ import userReducer from './user';
 import channelMessageReducer from './channelMessage';
 import focusChMessageReducer from './focusChMessage';
 import dmRoomsReducer from './dmRooms';
+import directMessageReducer from './dmMessages';
+import focusDmRoomReducer from './focusDm';
 
 
 const rootReducer = combineReducers({
@@ -18,7 +20,9 @@ const rootReducer = combineReducers({
   focusUser : userReducer,
   channelMessages : channelMessageReducer,
   focusChMessage : focusChMessageReducer,
-  dmRooms : dmRoomsReducer
+  dmRooms : dmRoomsReducer,
+  directMessages : directMessageReducer,
+  focusDm: focusDmRoomReducer
 });
 
 

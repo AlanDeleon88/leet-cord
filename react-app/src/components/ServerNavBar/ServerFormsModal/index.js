@@ -15,7 +15,7 @@ const ServerFormsModal = ({server, setActiveClass}) => {
         className="icon-buttons side-step"
         onClick={() =>{
 
-          setShowModal(!showModal)
+          setShowModal(true)
           setActiveClass(true)
 
         }

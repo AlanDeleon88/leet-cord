@@ -4,6 +4,7 @@ import { useDispatch,useSelector } from "react-redux"
 import { postNewMessage } from "../../../store/channelMessage"
 import {BsPlusLg} from 'react-icons/bs'
 import {MdOutlineCancel} from 'react-icons/md'
+import { postDmMsg } from "../../../store/dmMessages"
 const MessageInputComponent = ({channelId, dmId}) =>{
     const [body, setBody] = useState('')
     const [img, setImg] = useState('')
@@ -68,6 +69,7 @@ const MessageInputComponent = ({channelId, dmId}) =>{
             }
             else if(dmId){
                 //! dispatch for posting dm message here.
+                dispatch(postDmMsg(dmId, newMsg))
             }
             setImg('')
             setImgName('')

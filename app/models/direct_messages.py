@@ -20,5 +20,8 @@ class DirectMessage(db.Model):
             'sender_id' : self.sender_id,
             'dm_room_id' : self.dm_room_id,
             'body' : self.body,
-            'img' : self.img
+            'img' : self.img,
+            'sender_icon' : self.users.profile_picture,
+            'sender_username' : self.users.username,
+            'updated_at' : self.updated_at
         }

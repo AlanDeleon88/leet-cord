@@ -21,6 +21,23 @@ def validation_errors_to_error_messages(validation_errors):
 
 @dm_routes.route('/<int:id>')
 @login_required
+def getDmRoom(id):
+    dm_room = DmRoom.query.get(id)
+    dm_dict = dm_room.to_dict()
+    #! might turn this into a method later
+    for message in dm_dict['direct_messages']:
+        message['my_message'] = False
+        if message['sender_id'] == current_user.id:
+            message['my_message'] = True
+    if dm_dict['user_one']['id'] == current_user.id:
+        dm_dict['other_user'] = dm_dict['user_two']
+    if dm_dict['user_two']['id'] == current_user.id:
+        dm_dict['other_user'] = dm_dict['user_one']
+        
+    return dm_dict
+
+@dm_routes.route('/<int:id>/messages')
+@login_required
 def getDmRoomMessages(id):
     dm_room = DmRoom.query.get(id);
     if not dm_room:

@@ -20,7 +20,7 @@ const deleteChMsgAction = (id) => ({
 
 export const getChannelMessages = (id) => async (dispatch) =>{
     const response = await fetch(`/api/channels/${id}`)
-    console.log('TEST THUINKK-------------------------------------',id);
+    // console.log('TEST THUINKK-------------------------------------',id);
 
     if(response.ok){
         const data = await response.json()
