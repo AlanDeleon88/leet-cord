@@ -22,7 +22,7 @@ const MessageWindow = ({type}) =>{
     const messages = Object.values(useSelector(state=>state.channelMessages))
     const direct_messages = Object.values(useSelector(state=>state.directMessages))
 
-    console.log(dId);
+    // console.log(dId);
 
     //!depreciated. had a bug with trying to render an options component for each message, would scroll to bottom on hover.
     // useEffect(() =>{
@@ -45,6 +45,9 @@ const MessageWindow = ({type}) =>{
 
             // console.log('DEBUG PLACE3===============================', channel.id, id)
             if(!type){
+                //! if no redux store for saved channel id, then use the url param maybe?
+                //! OR could do a history push with the redux id in the url on the dmIcon
+                //! still need a place holder page if dm list is empty.
                 dispatch(getChannelMessages(id)).then(() =>{
                // console.log(isLoaded);
                 })

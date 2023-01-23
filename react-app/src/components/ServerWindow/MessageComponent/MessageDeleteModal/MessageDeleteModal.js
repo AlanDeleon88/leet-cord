@@ -3,7 +3,7 @@ import MessageComponent from '../MessageComponent';
 import { useDispatch } from 'react-redux';
 import { deleteChMessage } from '../../../../store/channelMessage';
 
-const MessageDeleteModal = ({setShowDeleteModal, message}) =>{
+const MessageDeleteModal = ({setShowDeleteModal, message, type}) =>{
     const dispatch = useDispatch();
 
     const handleDelete = (e) =>{

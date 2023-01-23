@@ -168,6 +168,7 @@ const MessageComponent = ({message, channelId, preview, showEdit, type}) => {
                    (
                         <>
                             {/* Message Delete modal for dm here*/}
+                            <MessageDeleteModal setShowDeleteModal={setShowDeleteModal} message={message} type='dm'/>
                         </>
                    )
                    :

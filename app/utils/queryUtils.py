@@ -85,7 +85,7 @@ def buildDmRoomDict(user):
             'other_user_id' : other_user['id'],
             'other_user_icon' : other_user['profile_picture'],
             'other_username' : other_user['username'],
-            'active' : dm.user1_active
+            'active' : dm.user2_active
 
         }
         dm_arr.append(dm_dict)
