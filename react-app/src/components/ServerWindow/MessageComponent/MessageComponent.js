@@ -8,6 +8,7 @@ import { editChMessage } from '../../../store/channelMessage'
 import { getMessageId } from '../../../store/focusChMessage'
 import UserCard from '../../UserCardModal'
 import formatDate from '../../../utils/formatDate'
+import { editDmMessage } from '../../../store/dmMessages'
 const MessageComponent = ({message, channelId, preview, showEdit, type}) => {
     const [showMenu, setShowMenu] = useState(false);
     const [showUserCard, setShowUserCard] = useState(false);
@@ -17,6 +18,7 @@ const MessageComponent = ({message, channelId, preview, showEdit, type}) => {
     const dispatch = useDispatch();
     const [editMessage, setEditMessage] = useState('');
     const date = formatDate(message.updated_at, true)
+    // console.log('DM MESG', message.message_id);
     // console.log(editMessage, message.body);
     // console.log(message.updated_at.split(' '));
     useEffect(() =>{
@@ -57,7 +59,7 @@ const MessageComponent = ({message, channelId, preview, showEdit, type}) => {
             id:message.message_id,
             body: editMessage
         }
-         console.log(editedMessage);
+        //  console.log(editedMessage);
         if(!editedMessage.body){
             //? open up delete modal to confirm delete
         }
@@ -74,6 +76,14 @@ const MessageComponent = ({message, channelId, preview, showEdit, type}) => {
             }
             else if(type === 'dm'){
                 //! dm dispatch to edit message
+                // console.log(editedMessage);
+                const data = await dispatch(editDmMessage(editedMessage))
+                if(data){
+                    //! error handle here
+                }
+                else{
+                    setShowEditMessage(false)
+                }
             }
         }
 

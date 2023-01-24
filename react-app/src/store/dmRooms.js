@@ -1,4 +1,5 @@
 const GET_DM_ROOMS = 'dmRooms/GET_DM_ROOMS'
+const SET_DM_ROOMS = 'dmRooms/SET_DM_ROOMS'
 
 
 const getUserDmRoomsAction = (dmRooms) => ({

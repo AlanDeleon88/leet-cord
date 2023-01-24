@@ -33,7 +33,7 @@ def getDmRoom(id):
         dm_dict['other_user'] = dm_dict['user_two']
     if dm_dict['user_two']['id'] == current_user.id:
         dm_dict['other_user'] = dm_dict['user_one']
-        
+
     return dm_dict
 
 @dm_routes.route('/<int:id>/messages')
@@ -73,6 +73,7 @@ def postDmRoomMessage(id):
 
         new_msg_dict = new_msg.to_dict()
         new_msg_dict['my_message'] = True;
+        new_msg_dict['message_id'] = new_msg_dict['id']
 
         return new_msg_dict
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401

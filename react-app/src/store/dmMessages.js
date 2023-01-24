@@ -1,6 +1,6 @@
 const GET_DM_MSG = 'dmMessages/GET_DM_MSG'
 const SET_DM_MSG = 'dmMessages/SET_DM_MSG'
-
+const DELETE_DM_MSG = 'dmMessages/DELETE_DM_MSG'
 
 const getDmMsgAction = (messages) => ({
     type:GET_DM_MSG,
@@ -10,6 +10,12 @@ const getDmMsgAction = (messages) => ({
 const setDmMsgAction = (message) => ({
     type:SET_DM_MSG,
     payload: message
+})
+
+const deleteDmMsgAction = (id) => ({
+    type: DELETE_DM_MSG,
+    payload: id
+
 })
 
 export const getDmMsg = (dmId) => async dispatch => {
@@ -50,6 +56,49 @@ export const postDmMsg = (dmId, message) => async dispatch =>{
 
 }
 
+export const deleteDmMessage = (id) => async (dispatch) =>{
+    const response = await fetch(`/api/direct_messages/${id}`,{
+        method : 'DELETE',
+        headers:{
+            'Content-Type' : 'application/json'
+        },
+
+    })
+    if(response.ok){
+        const data = await response.json()
+        dispatch(deleteDmMsgAction(data.id))
+        return null
+    }
+    else if(response.status < 500){
+        const data = await response.json()
+        return data
+    }
+}
+
+export const editDmMessage = (message) => async dispatch =>{
+    const response = await fetch(`/api/direct_messages/${message.id}`,{
+        method : 'PUT',
+        headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            body: message.body,
+          }),
+    })
+
+    if(response.ok){
+        const data = await response.json();
+        dispatch(setDmMsgAction(data))
+        return null
+    }
+    else if (response.status < 500){
+        const data = response.json();
+        return data
+    }
+}
+
+
+
 export default function directMessageReducer(state = {}, action){
     let newState = {}
     switch(action.type){
@@ -63,6 +112,11 @@ export default function directMessageReducer(state = {}, action){
             newState = {...state}
             newState[action.payload.id] = action.payload
             return newState
+
+        case DELETE_DM_MSG:
+            newState = {...state}
+            delete newState[action.payload]
+            return newState;
 
         default:
             return state

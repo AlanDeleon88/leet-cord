@@ -22,7 +22,7 @@ const UserCard = ({userId}) => {
         dispatch(getUserId(userId)).then((res) =>{
 
             // date = formatDate(user.created_at, false)
-            console.log(date);
+            // console.log(date);
             setIsLoaded(true)
         })
 

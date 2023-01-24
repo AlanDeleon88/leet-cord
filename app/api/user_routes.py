@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, DmRoom, db
-from app.utils import buildUserDict, buildDmRoomDict
+from app.utils import buildUserDict, buildDmRoomDict, buildPostDmRoomDict
 from app.forms import EditProfilePicture
 from app.forms import EditUsername
 from app.utils import queryUtils
@@ -102,7 +102,7 @@ def getUserDmRooms(id):
 
     dm_arr = buildDmRoomDict(user)
 
-    user_dict = user.to_dict()
+    # user_dict = user.to_dict()
 
     return {'dms' : dm_arr}
 
@@ -127,13 +127,17 @@ def createDmRoom(id) :
                 #! we found the pair that exists, now we just set either user1_active or user2_active to true
                 if current_user.id == dm_room.user1_id:
                     dm_room.user1_active = True
+                    dm_room.user2_active = True
                     db.session.commit()
-                    return dm_room.to_dict()
+                    dm_room_dict = buildPostDmRoomDict(dm_room)
+                    return dm_room_dict
                     # return {'TEST' : 'ROOM FOUND UPDATE'}
                 elif current_user.id == dm_room.user2_id:
                     dm_room.user2_active = True
+                    dm_room.user1_active = True
                     db.session.commit()
-                    return dm_room.to_dict()
+                    dm_room_dict = buildPostDmRoomDict(dm_room)
+                    return dm_room_dict
                     # return {'TEST' : 'ROOM2 FOUND UPDATE'}
 
     #! there were no combos in ids found in the dm table, therefore create a new table.
@@ -145,6 +149,7 @@ def createDmRoom(id) :
     )
     db.session.add(newDmRoom)
     db.session.commit()
-    return newDmRoom.to_dict()
+    dm_room_dict = buildPostDmRoomDict(newDmRoom)
+    return dm_room_dict
     # return {'TEST' : 'NEW ROOM NO MATCH'}
     # return {'dms' :  [dm.to_dict() for dm in dm_rooms]}

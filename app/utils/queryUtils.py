@@ -1,4 +1,5 @@
 from app.models import User, Server, Permission, DmRoom
+from flask_login import current_user
 
 def buildUserDict(user):
     #! probably dont need to do more queries, can access the users from model attribute instead. If i need to I will revise it to do so later.
@@ -91,3 +92,29 @@ def buildDmRoomDict(user):
         dm_arr.append(dm_dict)
 
     return dm_arr
+
+def buildPostDmRoomDict(dm):
+
+    if current_user.id == dm.user1_id:
+        other_user_dict = dm.user_two.to_dict()
+
+        res_dm_dict = {
+            'other_user_icon' : other_user_dict['profile_picture'],
+            'other_user_id' : other_user_dict['id'],
+            'other_username' : other_user_dict['username'],
+            'dm_id' : dm.id,
+            'active' : dm.user1_active,
+        }
+        return res_dm_dict
+
+    elif current_user.id == dm.user2_id:
+        other_user_dict = dm.user_one.to_dict()
+
+        res_dm_dict = {
+            'other_user_icon' : other_user_dict['profile_picture'],
+            'other_user_id' : other_user_dict['id'],
+            'other_username' : other_user_dict['username'],
+            'dm_id' : dm.id,
+            'active' : dm.user1_active,
+        }
+        return res_dm_dict

@@ -2,13 +2,19 @@ import './MessageDeleteModal.css'
 import MessageComponent from '../MessageComponent';
 import { useDispatch } from 'react-redux';
 import { deleteChMessage } from '../../../../store/channelMessage';
+import { deleteDmMessage } from '../../../../store/dmMessages';
 
 const MessageDeleteModal = ({setShowDeleteModal, message, type}) =>{
     const dispatch = useDispatch();
 
     const handleDelete = (e) =>{
         //*need conditional for dm message dispatch
-        dispatch(deleteChMessage(message.message_id))
+        if(!type){
+            dispatch(deleteChMessage(message.message_id))
+        }
+        else if(type === 'dm'){
+            dispatch(deleteDmMessage(message.message_id))
+        }
         setShowDeleteModal(false);
     }
 
