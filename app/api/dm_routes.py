@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import current_user, login_required
 from app.models import User, DmRoom, db, DirectMessage
-from app.utils import buildUserDict, buildDmRoomDict
+from app.utils import buildUserDict, buildDmRoomDict, buildPostDmRoomDict
 from app.forms import CreateServerMessage, EditServerMessage
 
 from app.utils import queryUtils
@@ -77,3 +77,21 @@ def postDmRoomMessage(id):
 
         return new_msg_dict
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+@dm_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+def hideDmRoom(id):
+    dm_room = DmRoom.query.get(id);
+    if not dm_room:
+        return {'error':'dm room with that id could not be found'},404
+    if current_user.id == dm_room.user1_id:
+        dm_room.user1_active = False
+        db.session.commit()
+        dm_dict = buildPostDmRoomDict(dm_room)
+        return dm_dict
+
+    if current_user.id == dm_room.user2_id:
+        dm_room.user2_active = False
+        db.session.commit()
+        dm_dict = buildPostDmRoomDict(dm_room)
+        return dm_dict

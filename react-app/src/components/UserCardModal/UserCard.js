@@ -4,6 +4,8 @@ import { useHistory } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { getUserId } from '../../store/user'
 import formatDate from '../../utils/formatDate'
+import { addUserDmRoom } from '../../store/dmRooms'
+import { postDmMsg } from '../../store/dmMessages'
 
 const UserCard = ({userId}) => {
     const dispatch = useDispatch();
@@ -34,6 +36,32 @@ const UserCard = ({userId}) => {
 
     const handleSubmit = (e) =>{
         e.preventDefault();
+        let dm_msg = {
+            body: dmMessage,
+
+        }
+        if(dm_msg.body.trim()){
+            dispatch(addUserDmRoom(userId)).then(res =>{
+                if(res.dm_id){
+                    let dmId = res.dm_id;
+                    dispatch(postDmMsg(res.dm_id, dm_msg)).then( res =>{
+                        if(!res){
+                            history.push(`/dm/${dmId}`)
+                        }
+                        else{
+                            console.log('TEST ERROR FROM DM MESSAGE');
+                        }
+                    })
+                }
+                else{
+                    console.log('TEST ERROR');
+                }
+
+            })
+        }
+        else{
+            //No-Op
+        }
         /*
             dispatch to create a dm room or set it to active -> dispatch posting message to dm room -> history push to dm channel.
         */
@@ -56,7 +84,7 @@ const UserCard = ({userId}) => {
                         </div>
                         <div className ='user-card-member-date-container'>
                             <div className = 'user-card-member-since'>
-                                DISCORD MEMBER SINCE
+                                LEET-CORD MEMBER SINCE
                             </div>
                             <div className = 'user-card-date'>
                                 {formatDate(user.created_at, false)}

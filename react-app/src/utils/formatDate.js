@@ -14,7 +14,7 @@
             formattedDate = formattedDate.toLocaleDateString('en-us', {year:'numeric', month: 'short', day: 'numeric'})
         }
         else{
-            formattedDate = formattedDate.toLocaleString('en-us',{timeZone : 'PST'})
+            formattedDate = formattedDate.toLocaleString('en-us',{timeZone : 'UTC'})
         }
         return formattedDate
 

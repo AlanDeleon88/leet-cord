@@ -19,6 +19,8 @@
 .channel-settings-button{
     border:none;
     background-color: transparent;
+    border-top-right-radius: 5%;
+    border-bottom-right-radius: 5%;
     opacity: 0;
     color: whitesmoke;
     font-size: 20px;

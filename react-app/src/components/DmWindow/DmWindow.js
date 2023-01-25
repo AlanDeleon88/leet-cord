@@ -3,13 +3,12 @@ import { Switch, useParams,Route, useRouteMatch, NavLink} from 'react-router-dom
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import MessageWindow from '../ServerWindow/MessageWindow';
-import {IoSettingsSharp} from 'react-icons/io5'
 import UserBox from '../UserBoxComponent';
-import { getUserDmRooms } from '../../store/dmRooms';
-import { getDmRoom } from '../../store/focusDm';
 import MessageInputComponent from '../ServerWindow/MessageInputComponent';
 import ChannelHeader from '../ServerWindow/ChannelHeader';
 import DmList from './DmList';
+import DmPage from './DmPage';
+
 
 const DmWindow = () =>{
     const [isLoaded, setIsLoaded] = useState(false);
@@ -81,7 +80,7 @@ const DmWindow = () =>{
                         </div>
                     </Route>
                     <Route path={`${match.url}`}>
-                        Place holder for log window
+                        <DmPage />
                     </Route>
                 </Switch>
             </div>

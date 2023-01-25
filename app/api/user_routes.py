@@ -108,7 +108,7 @@ def getUserDmRooms(id):
 
     # return {'dm_1' : user_dict['dm_rooms1'], 'dm_2' : user_dict['dm_rooms2'], 'marnie' : user.dm_left[0].user_two.to_dict(), 'demo' : user_dict['direct_messages'] }
 
-#! still need to test
+
 @user_routes.route('/<int:id>/dm', methods=['POST'])
 @login_required
 def createDmRoom(id) :

@@ -86,14 +86,8 @@ const ServerWindow = () =>{
                     </div>
 
                     </Route>
-                    <Route path={`${match.url}/:dmId`}>
-                        <MessageWindow type={'dm'}/>
-                        {/* <div className='msg-input-container'>
-                                <MessageInputComponent />
-                        </div> */}
-                    </Route>
                     <Route path={`${match.url}`}>
-                        Place holder for log window
+                        Place holder for log windows
                     </Route>
                 </Switch>
             </div>

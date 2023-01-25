@@ -115,6 +115,6 @@ def buildPostDmRoomDict(dm):
             'other_user_id' : other_user_dict['id'],
             'other_username' : other_user_dict['username'],
             'dm_id' : dm.id,
-            'active' : dm.user1_active,
+            'active' : dm.user2_active,
         }
         return res_dm_dict

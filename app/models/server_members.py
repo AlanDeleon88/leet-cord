@@ -22,5 +22,5 @@ class ServerMember(db.Model):
             'id' : self.id,
             'user_id' : self.user_id,
             'server_id' : self.server_id,
-            'permission' : self.permission_id #! replace with the relation later.
+            'permission' : self.permissions.permission #! replace with the relation later.
         }

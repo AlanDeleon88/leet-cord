@@ -104,7 +104,7 @@ const MessageComponent = ({message, channelId, preview, showEdit, type}) => {
 
                 <div className={preview ? 'prev-message-bundle' : "message-bundle"}>
                     <div className="username-bundle-container">
-                        <div className="username-container">
+                        <div className="username-container" onClick={clickIcon}>
                             {message.sender_username}
 
                         </div>
