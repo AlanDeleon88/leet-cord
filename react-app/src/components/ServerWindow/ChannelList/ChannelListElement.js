@@ -39,27 +39,34 @@ export const ChannelListElement = ({channel, serverId}) =>{
     return(
         <>
         <div className='channel-button-container'>
-            <button className="channel-name-box" onClick={onChannelClick}>
+            <NavLink to={`${match.url}/${channel.channel_id}`} className="channel-name-box" activeClassName='active-name-box' onClick={onChannelClick}>
                 {/* Change color of the text when the link is active.. eventually make this element a nav link */}
+                <div className='channel-el-name-container'>
 
-                    <div style={{'paddingRight' : '4px'}}>
-                        #
+                    <div className='channel-el-name'>
+                        <div style={{'paddingRight' : '4px'}}>
+                            #
+                        </div>
+                        <div>
+
+                            {` ${channel.name}`}
+
+                        </div>
                     </div>
-                    <div>
 
-                        {` ${channel.name}`}
-
-                    </div>
-
-            </button>
+                </div>
             {server.owner_id == user.id &&
+
             (
-                <button className='channel-settings-button' onClick={handleSettings}>
-                <IoSettingsSharp />
-                </button>
+                <div className='channel-setting-container'>
+                    <button className='channel-settings-button' onClick={handleSettings}>
+                    <IoSettingsSharp />
+                    </button>
+                </div>
             )
 
-            }
+        }
+        </NavLink>
             {
                 showSettingModal &&
                 (

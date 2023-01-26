@@ -17,7 +17,7 @@ const DeleteServer = ({id, setShowDeleteModal}) => {
         dispatch(deleteServer(id))
 
         //! redirect to user page
-        history.push('/')
+        history.push('/dm')
     }
 
     const handleNo = e =>{

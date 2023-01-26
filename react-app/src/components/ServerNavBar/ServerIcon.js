@@ -64,7 +64,7 @@ const ServerIcon = ({server}) => {
             {true &&
 
                 (<>
-                    <NavLink to={`/server/${server.id}/channel/${server.channels[0].channel_id}`} exact={true} className ='circle' activeClassName="square" onClick={handleServerClick}>
+                    <NavLink to={`/server/${server.id}/channel/${server.channels[0].channel_id}`} exact={false} className ='circle' activeClassName="square" onClick={handleServerClick}>
 
                         <div data-tip={server.name} data-for='serverName' data-place='right'>
                         {server.server_icon ?

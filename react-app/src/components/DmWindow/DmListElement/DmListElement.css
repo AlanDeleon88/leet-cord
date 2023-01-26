@@ -2,12 +2,25 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding:5px;
+    padding:3px;
     width:89%;
     border-radius: 10px;
     color: grey;
     cursor: pointer;
 
+}
+a{
+    color: grey;
+}
+.nav-inactive{
+    width:100%;
+    border-radius: 10px;
+    padding:5px;
+}
+
+.nav-active{
+    background-color: rgb(81, 84, 92);
+    color: whitesmoke;
 }
 
 .dm-el-container:hover{

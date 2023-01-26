@@ -85,7 +85,9 @@ const ExploreServerCard = ({server}) => {
                                 :
                                 (
                                     <>
-                                        <button className='server-card-join-server-btn'>Join server</button>
+                                        <button className='server-card-join-server-btn'>
+                                            Join server
+                                        </button>
                                     </>
                                 )
 

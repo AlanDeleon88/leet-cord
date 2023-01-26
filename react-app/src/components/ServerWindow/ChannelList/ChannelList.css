@@ -15,6 +15,15 @@
     /* border: solid 1px pink */
 
 }
+.channel-el-name-container{
+    display:  flex;
+    justify-content: space-between;
+    overflow: hidden;
+    width: 100%;
+}
+.channel-el-name{
+    display: flex;
+}
 
 .channel-settings-button{
     border:none;
@@ -24,10 +33,14 @@
     opacity: 0;
     color: whitesmoke;
     font-size: 20px;
+    /* margin-left: 140px; */
 }
 
 .channel-settings-button:active{
     color: black;
+}
+.channel-setting-container{
+    background-color: transparent;
 }
 
 .channel-button-container{
@@ -58,8 +71,18 @@
     width: 230px;
 }
 
+
 .channel-button-container:hover .channel-name-box{
     background-color: #424549;
+}
+
+.channel-setting-container:hover{
+    background-color: #424549;
+}
+
+.active-name-box {
+    background-color: #424549;
+
 }
 
 .channel-button-container:hover button{
