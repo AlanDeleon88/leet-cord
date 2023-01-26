@@ -92,6 +92,8 @@
 
 .circle:hover > div .explore{
     border-radius: 30%;
+    background-color: rgb(59, 165, 93);
+    color: whitesmoke;
 }
 
 .circle:hover > div .server-marker{
@@ -118,6 +120,12 @@
 
 .circle.square .default-icon{
     border-radius: 30%;
+}
+
+.circle.square .explore{
+    border-radius: 30%;
+    background-color: rgb(59, 165, 93);
+    color: whitesmoke;
 }
 
 .circle.square .server-marker{

@@ -1,8 +1,10 @@
 import './ExploreServerCard.css'
 import { useState } from 'react'
+import { useSelector } from 'react-redux'
 
 const ExploreServerCard = ({server}) => {
     const [showButton, setShowButton] = useState(false)
+    const servers = Object.values(useSelector(state=>state.servers))
     const mouseEnter = e =>{
         setShowButton(true)
 
@@ -62,8 +64,35 @@ const ExploreServerCard = ({server}) => {
                     </div>
                     <div className='server-card-join-server-btn-container'>
                         {showButton &&
+                        <>
+                            {
+                                servers.filter(el =>{
+                                    {if(el.name === server.name){
+                                        return true
+                                    }
+                                    else{
+                                        return false
+                                    }
+                                }
+                                }).length > 0 ?
+                                (
+                                    <>
+                                        <div className='server-card-joined'>
+                                            Server joined
+                                        </div>
+                                    </>
+                                )
+                                :
+                                (
+                                    <>
+                                        <button className='server-card-join-server-btn'>Join server</button>
+                                    </>
+                                )
 
-                            <button className='server-card-join-server-btn'>Join server</button>
+                            }
+
+
+                        </>
                         }
                     </div>
 

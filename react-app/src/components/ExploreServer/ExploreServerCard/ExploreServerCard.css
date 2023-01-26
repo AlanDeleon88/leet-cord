@@ -131,6 +131,16 @@
     color: whitesmoke;
 }
 
+.server-card-joined{
+    background-color: grey;
+    position: relative;
+    bottom: 5px;
+    border-radius: 10px;
+    padding: 10px;
+    border: none;
+    color: whitesmoke;
+}
+
 .server-card-join-server-btn:hover{
     background-color: rgb(7, 211, 68);
 }

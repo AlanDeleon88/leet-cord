@@ -57,7 +57,7 @@ const ServerNavBar = () =>{
                                 <NavLink exact={true} to='/explore' className='circle' activeClassName='square'>
                                 <div className='server-icon-container'>
                                 <div className='server-marker'></div>
-                                <div className='default-icon explore' >
+                                <div className='explore' >
                                     <RiCompass3Fill />
                                 </div>
                                 {/* Add a div element to act as a marker on which server is active, use nav links active class to select it*/}
