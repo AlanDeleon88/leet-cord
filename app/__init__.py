@@ -14,6 +14,7 @@ from .api.img_routes import img_routes
 from .api.server_message_routes import server_message_routes
 from .api.direct_message_routes import direct_message_routes
 from .api.dm_routes import dm_routes
+from .api.server_member_routes import server_member_routes
 
 from .seeds import seed_commands
 
@@ -43,6 +44,7 @@ app.register_blueprint(img_routes, url_prefix='/api/img')
 app.register_blueprint(server_message_routes, url_prefix='/api/server_messages')
 app.register_blueprint(direct_message_routes, url_prefix='/api/direct_messages')
 app.register_blueprint(dm_routes, url_prefix='/api/dm')
+app.register_blueprint(server_member_routes, url_prefix='/api/server_members')
 db.init_app(app)
 Migrate(app, db)
 
