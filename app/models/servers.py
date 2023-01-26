@@ -23,5 +23,6 @@ class Server(db.Model):
             'owner_id' : self.owner_id,
             'server_icon' : self.server_icon,
             'description' : self.description,
-            'channels' : [{'channel_id' : channel.id, 'name' : channel.name, 'description' : channel.description} for channel in self.channels]
+            'channels' : [{'channel_id' : channel.id, 'name' : channel.name, 'description' : channel.description} for channel in self.channels],
+            'members' : [{'username': member.users.username, 'profile_picture' : member.users.profile_picture, 'permission' :member.permissions.permission} for member in self.server_members]
         }

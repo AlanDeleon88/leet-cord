@@ -21,7 +21,8 @@ def validation_errors_to_error_messages(validation_errors):
 @server_routes.route('/')
 @login_required
 def get_all_servers():
-    servers = Server.query.all()
+    servers = Server.query.paginate(1, 9, error_out=False).items
+    # print(servers)
     return {'servers' : [server.to_dict() for server in servers]}
 
 @server_routes.route('/<int:id>')

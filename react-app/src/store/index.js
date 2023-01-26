@@ -10,6 +10,7 @@ import focusChMessageReducer from './focusChMessage';
 import dmRoomsReducer from './dmRooms';
 import directMessageReducer from './dmMessages';
 import focusDmRoomReducer from './focusDm';
+import { exploreServerReducer } from './exploreServer';
 
 
 const rootReducer = combineReducers({
@@ -22,7 +23,8 @@ const rootReducer = combineReducers({
   focusChMessage : focusChMessageReducer,
   dmRooms : dmRoomsReducer,
   directMessages : directMessageReducer,
-  focusDm: focusDmRoomReducer
+  focusDm: focusDmRoomReducer,
+  exploreServers: exploreServerReducer
 });
 
 

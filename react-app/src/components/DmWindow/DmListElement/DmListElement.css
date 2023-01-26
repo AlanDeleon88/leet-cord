@@ -51,3 +51,7 @@
     font-weight: bold;
     margin-top: 4px;
 }
+
+.dm-el-close-button:hover{
+    color: white;
+}

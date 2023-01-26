@@ -15,6 +15,7 @@ import MessageWindow from './components/ServerWindow/MessageWindow';
 import DmWindow from './components/DmWindow';
 import {useSelector} from 'react-redux'
 import SplashPage from './components/SplashPage';
+import ExploreServer from './components/ExploreServer';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -36,42 +37,21 @@ function App() {
   return (
     <BrowserRouter>
      <div className='main'>
-     {/* {user && <NavBar />} code to only render nav bar when logged in*/}
-
-      {/* <NavBar /> */}
       {user && <ServerNavBar />} {/* only show up if user is logged in*/}
       <Switch>
-        <Route path='/server/:serverId/'>
+        <ProtectedRoute path='/server/:serverId/'>
         {user && <ServerWindow />}
-        </Route>
-        {user &&
-        (
-
-          <Route path ={`/${user.username}`}>
-              <ServerWindow />
-          </Route>
-
-        )
-
-        }
-        <Route path='/login' exact={true}>
-          <LoginForm />
-        </Route>
-        <Route path='/sign-up' exact={true}>
-          <SignUpForm />
-        </Route>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
         </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
+        <ProtectedRoute path='/explore'>
+            <ExploreServer />
         </ProtectedRoute>
+
 
         {user ?
           (
-            <Route path= {`/dm`}>
+            <ProtectedRoute path= {`/dm`}>
               <DmWindow />
-            </Route>
+            </ProtectedRoute>
             //test merege
             // <Redirect to={`/${user.username}`}/>
           )
@@ -88,16 +68,9 @@ function App() {
           <DebugForms />
 
         </ProtectedRoute>
-        {/* code needed here to redirect to a log in page if user not signed in. change to main page later. maybe redirect the user to dm message window if they are new user. */}
-        {/* {user ? (
-          <Route path="/" exact={true}>
-            <HomeFeed />
-          </Route>
-        ) : (
-          <Route path="/" exact={true}>
-            <LoginPage />
-          </Route>
-        )} */}
+        <Route path='/'>
+          404 not found!
+        </Route>
       </Switch>
 
      </div>

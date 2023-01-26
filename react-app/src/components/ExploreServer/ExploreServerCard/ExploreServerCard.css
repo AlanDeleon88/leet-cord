@@ -1,0 +1,136 @@
+.server-card-main-container{
+    /* border:1px solid pink; */
+    height: 350px;
+    width: 300px;
+    border-radius: 15px;
+    background-color: #282b30;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: whitesmoke;
+}
+
+.server-card-main-container:hover{
+    background-color: #1a1c1f;
+    box-shadow: 1px 1px 7px black;
+}
+
+.server-card-cover-img{
+    height: 150px;
+    width:300px;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.server-card-cover-img-container{
+    /* border:1px solid green; */
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+}
+
+.server-card-cover-background{
+    height:150px;
+    width:300px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    /* border:1px solid green; */
+    background-color: #7289da;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: whitesmoke;
+    font-size:100px;
+}
+
+.server-card-icon-container{
+    position: relative;
+    bottom: 40px;
+    right: 110px;
+    height: 40px;
+}
+
+.server-card-icon{
+    height:50px;
+    width: 50px;
+    border-radius: 20%;
+    border: 5px solid #282b30;
+}
+
+.server-card-default-icon{
+    border:5px solid #282b30;
+    height:50px;
+    width:50px;
+    border-radius: 20%;
+    background-color: #36393e;
+    color: white;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.server-card-desc-container{
+    color: grey;
+    /* overflow: hidden; */
+    text-overflow: ellipsis;
+    margin-left:15px;
+    /* border: solid 1px green; */
+    height: 50px;
+    overflow: scroll;
+    text-overflow: ellipsis;
+
+}
+
+.server-card-title-container{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 25px;
+    margin-left: 30px;
+    height: 40px;
+    width:100%;
+    /* background-color: red; */
+}
+
+.server-card-desc-member-container{
+    /* border: 1px solid green; */
+    width:100%;
+    height: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.server-card-members-container{
+    position: relative;
+    bottom: 10px;
+    /* left: 5px; */
+    width: 100%;
+    /* border: solid 1px green; */
+    display: flex;
+    justify-content: center;
+}
+
+.server-card-join-server-btn-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.server-card-join-server-btn{
+    background-color: rgb(4, 186, 58);
+    position: relative;
+    bottom: 5px;
+    border-radius: 10px;
+    padding: 10px;
+    border: none;
+    color: whitesmoke;
+}
+
+.server-card-join-server-btn:hover{
+    background-color: rgb(7, 211, 68);
+}
