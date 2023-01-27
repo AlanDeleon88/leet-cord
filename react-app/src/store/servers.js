@@ -96,6 +96,26 @@ export const joinServer = (id) => async (dispatch) =>{
     }
 }
 
+export const leaveServer = (id) => async dispatch =>{
+    const response = await fetch(`/api/server_members/${id}`,{
+        method: 'DELETE',
+        headers: {
+            "Content-Type": "application/json",
+          },
+
+    })
+
+    if(response.ok){
+        const data = await response.json()
+        dispatch(delete_server_action(data.server_id))
+        return null
+    }
+    else if(response.status < 500){
+        const data = await response.json()
+        return data
+    }
+}
+
 export const deleteServer = (id) => async (dispatch) =>{
     const response = await fetch(`/api/servers/${id}`,{
         method : 'DELETE'

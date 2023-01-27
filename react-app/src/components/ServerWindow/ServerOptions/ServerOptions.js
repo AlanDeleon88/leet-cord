@@ -5,6 +5,7 @@ import { RiDeleteBin5Fill} from "react-icons/ri";
 import {BsArrowLeftCircleFill} from 'react-icons/bs'
 import EditServerForm from '../../ServerNavBar/ServerFormsModal/EditServerModal/EditServerForm';
 import DeleteServer from '../../DeleteServerModal/DeleteServer';
+import LeaveServerWindow from '../../LeaveServerModal';
 
 import './ServerOptions.css'
 import { Modal } from '../../../context/Modal';
@@ -13,6 +14,7 @@ const ServerOptions = ({userId, serverId, server}) =>{
     const [showMenu, setShowMenu] = useState(false)
     const [showDeleteModal, setShowDeleteModal] = useState(false)
     const [showModal, setShowModal] = useState(false)
+    const [showLeaveModal, setShowLeaveModal] = useState(false)
 
 
     const handleClick = () => {
@@ -25,6 +27,10 @@ const ServerOptions = ({userId, serverId, server}) =>{
 
     const clickShowDeleteModal = e =>{
         setShowDeleteModal(!showModal)
+    }
+
+    const clickShowLeaveModal = e =>{
+        setShowLeaveModal(true)
     }
 
     useEffect(() => {
@@ -66,7 +72,7 @@ const ServerOptions = ({userId, serverId, server}) =>{
                         )
                         :
                         (
-                            <li className='server-options-item leave-server'>Leave Server <BsArrowLeftCircleFill/> </li>
+                            <li className='server-options-item leave-server' onClick={clickShowLeaveModal}> Leave Server <BsArrowLeftCircleFill/> </li>
                         )
                         }
 
@@ -90,6 +96,14 @@ const ServerOptions = ({userId, serverId, server}) =>{
                     <DeleteServer id={server.id} setShowDeleteModal={setShowDeleteModal}/>
                 </Modal>
             )}
+            {showLeaveModal &&
+                <Modal onClose={()=>{
+                    setShowLeaveModal(false)
+                }}>
+                    <LeaveServerWindow server={server} setShowLeaveModal={setShowLeaveModal}/>
+                </Modal>
+
+            }
     </div>
 
 

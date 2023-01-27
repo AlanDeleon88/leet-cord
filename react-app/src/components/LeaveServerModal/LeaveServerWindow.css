@@ -1,0 +1,72 @@
+.leave-main-container{
+    width: 450px;
+    height:200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #36393e;
+    border-radius: 20px;
+}
+
+.leave-header-container{
+    width:90%;
+    display: flex;
+    justify-content: flex-start;
+    color: white;
+    font-size: 25px;
+    padding: 15px;
+}
+
+.leave-prompt-container{
+    width:90%;
+    display: flex;
+    justify-content: flex-start;
+    color: whitesmoke;
+    padding-bottom: 10px;
+    position: relative;
+    bottom: 15px;
+}
+
+.leave-buttons-container{
+    width: 100%;
+    /* border:solid 1px green; */
+    height: 70px;
+    display: flex;
+    justify-content: flex-end;
+    background-color: #282b30;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.leave-buttons{
+    height: 40px;
+    width: 100px;
+    border-radius: 5px;
+    border:none;
+    /* padding: 10px; */
+    margin: 10px;
+    margin-right:15px;
+    margin-top: 15px;
+}
+
+.leave-confirm{
+    background-color: red;
+    color: whitesmoke;
+    font-size: 15px;
+}
+
+.leave-confirm:hover{
+    background-color: rgb(237, 56, 56);
+}
+
+.leave-cancel{
+    font-size: 15px;
+    /* background-color: transparent; */
+    color: black
+}
+
+.leave-cancel:hover{
+    text-decoration: underline;
+    background-color: rgb(197, 202, 207);
+}
