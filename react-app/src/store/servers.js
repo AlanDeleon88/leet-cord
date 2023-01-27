@@ -74,6 +74,28 @@ export const addUserServer = (server) => async (dispatch) =>{
     }
 }
 
+export const joinServer = (id) => async (dispatch) =>{
+    const response = await fetch(`/api/server_members/${id}`,{
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+          },
+
+    })
+    if(response.ok){
+        const data = await response.json()
+        dispatch(getIdServer(data.id))
+        dispatch(getChannel(data.channels[0].channel_id))
+
+        dispatch(add_server_action(data))
+        return data
+    }
+    else if(response.status < 500){
+        const data = await response.json()
+        if(data.errors) return data.errors
+    }
+}
+
 export const deleteServer = (id) => async (dispatch) =>{
     const response = await fetch(`/api/servers/${id}`,{
         method : 'DELETE'
@@ -95,6 +117,7 @@ export const deleteServer = (id) => async (dispatch) =>{
 
 
 }
+
 export default function serverReducer(state = {}, action) {
     let newState;
     switch(action.type){

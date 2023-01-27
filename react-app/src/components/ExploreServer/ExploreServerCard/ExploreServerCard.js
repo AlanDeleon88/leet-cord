@@ -1,10 +1,15 @@
 import './ExploreServerCard.css'
 import { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector,useDispatch } from 'react-redux'
+import { joinServer } from '../../../store/servers'
+import { useHistory } from 'react-router-dom'
 
 const ExploreServerCard = ({server}) => {
     const [showButton, setShowButton] = useState(false)
     const servers = Object.values(useSelector(state=>state.servers))
+    const dispatch = useDispatch();
+    const history = useHistory();
+
     const mouseEnter = e =>{
         setShowButton(true)
 
@@ -12,6 +17,17 @@ const ExploreServerCard = ({server}) => {
 
     const mouseLeave = e =>{
         setShowButton(false)
+    }
+
+    const handleJoinServer = e =>{
+        dispatch(joinServer(server.id)).then(res=>{
+            if(res.id){
+                history.push(`/server/${res.id}/channel/${res.channels[0].channel_id}`)
+            }
+            else{
+                window.alert('an error has occured. could not retrieve the servers data.')
+            }
+        })
     }
 
     return(
@@ -85,7 +101,7 @@ const ExploreServerCard = ({server}) => {
                                 :
                                 (
                                     <>
-                                        <button className='server-card-join-server-btn'>
+                                        <button className='server-card-join-server-btn' onClick={handleJoinServer}>
                                             Join server
                                         </button>
                                     </>
