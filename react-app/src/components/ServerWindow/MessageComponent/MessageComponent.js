@@ -17,6 +17,7 @@ const MessageComponent = ({message, channelId, preview, showEdit, type}) => {
     const [hasEdited, setHasEdited] = useState(false)
     const dispatch = useDispatch();
     const [editMessage, setEditMessage] = useState('');
+    const user = useSelector(state=>state.session.user)
     const date = formatDate(message.updated_at, true)
     // console.log('DM MESG', message.message_id);
     // console.log(editMessage, message.body);
@@ -118,7 +119,7 @@ const MessageComponent = ({message, channelId, preview, showEdit, type}) => {
                     {
                     showMenu &&
                     <>
-                        {message.my_message &&
+                        {message.sender_id === user.id &&
                             <>
                                 <div className='msg-option-container'>
                                     <MessageOptionComponent setShowEditMessage={setShowEditMessage} setShowDeleteModal={setShowDeleteModal} message={message}/>

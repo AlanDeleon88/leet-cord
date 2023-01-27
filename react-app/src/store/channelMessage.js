@@ -1,6 +1,7 @@
 const GET_CH_MSG = 'channelMessage/GET_CH_MSG'
 const ADD_CH_MSG = 'channelMessage/ADD_CH_MSG'
 const DELETE_CH_MSG = 'channelMessage/DELETE_CH_MSG'
+const CLEAR_CH_MSG = 'channelMessage/CLEAR_CH_MSG'
 
 const getChannelMsgAction = (messages) =>({
     type:GET_CH_MSG,
@@ -17,6 +18,9 @@ const deleteChMsgAction = (id) => ({
     payload: id
 })
 
+const clearChMsgAction =() =>({
+    type:CLEAR_CH_MSG
+})
 
 export const getChannelMessages = (id) => async (dispatch) =>{
     const response = await fetch(`/api/channels/${id}`)
@@ -27,12 +31,12 @@ export const getChannelMessages = (id) => async (dispatch) =>{
 
         const messages = data.server_messages;
 
-        console.log(messages);
+        // console.log(messages);
 
         dispatch(getChannelMsgAction(messages))
 
 
-        return null
+        return messages
     }
     else{
         const data = await response.json()
@@ -59,7 +63,7 @@ export const postNewMessage = (id, message) => async dispatch =>{
 
         dispatch(addMessageAction(data))
 
-        return null
+        return data
 
     }
     else if (response.status < 500){
@@ -111,6 +115,10 @@ export const deleteChMessage = (id) => async dispatch =>{
     }
 }
 
+export const clearChMessages = () => async dispatch =>{
+    dispatch(clearChMsgAction())
+}
+
 export default function channelMessageReducer(state = {}, action){
     let newState;
     switch(action.type){
@@ -133,6 +141,9 @@ export default function channelMessageReducer(state = {}, action){
         case DELETE_CH_MSG:
             newState = {...state}
             delete newState[action.payload]
+            return newState
+        case CLEAR_CH_MSG:
+            newState = {}
             return newState
 
         default:

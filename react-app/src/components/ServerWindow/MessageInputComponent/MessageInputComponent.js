@@ -5,7 +5,9 @@ import { postNewMessage } from "../../../store/channelMessage"
 import {BsPlusLg} from 'react-icons/bs'
 import {MdOutlineCancel} from 'react-icons/md'
 import { postDmMsg } from "../../../store/dmMessages"
-const MessageInputComponent = ({channelId, dmId}) =>{
+import { getChannel } from "../../../store/channel"
+import { getMessageId } from "../../../store/focusChMessage"
+const MessageInputComponent = ({channelId, dmId, socket, currRoom}) =>{
     const [body, setBody] = useState('')
     const [img, setImg] = useState('')
     const [imgName, setImgName] = useState('')
@@ -64,7 +66,17 @@ const MessageInputComponent = ({channelId, dmId}) =>{
         }
         else{
             if(channelId){
-                dispatch(postNewMessage(channelId, newMsg))
+                dispatch(postNewMessage(channelId, newMsg)).then(newMessage =>{
+                    if(newMessage.id){
+                        console.log(currRoom);
+                        console.log(newMessage);
+                        console.log(socket);
+                        socket.send({newMessage, room: currRoom })
+                        // socket.emit('chat', newMessage)
+                        dispatch(getMessageId(newMessage.id))
+                        // dispatch(getChannel(channelId))
+                    }
+                })
 
             }
             else if(dmId){

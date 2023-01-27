@@ -75,11 +75,11 @@ const ServerWindow = () =>{
                                 }
                             </div>
                             <div className='channel-message'>
-                                <MessageWindow type={'channel'} channelId={channel.id}/>
+                                <MessageWindow type={'channel'} chId={channel.id}/>
                             </div>
-                            <div className='msg-input-container'>
+                            {/* <div className='msg-input-container'>
                                 <MessageInputComponent channelId={channel.id}/>
-                            </div>
+                            </div> */}
 
                         </div>
 

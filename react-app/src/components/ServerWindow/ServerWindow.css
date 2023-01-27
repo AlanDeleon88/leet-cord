@@ -63,7 +63,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     /* border:1px solid green */
 }
 
@@ -73,7 +73,7 @@
 
 .msg-input-container{
     /* border: 1px solid green; */
-    height: 8%;
+    height: 10%;
     display: flex;
     align-items: center;
     justify-content: center;
