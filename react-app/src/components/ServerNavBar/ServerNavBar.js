@@ -33,9 +33,16 @@ const ServerNavBar = () =>{
                         <li>
                             <NavLink to={`/dm`} exact={false} className='circle' activeClassName='square'>
                                 <div
-                                    className='server-icon-container'>
-                                    <div className='server-marker'></div>
-                                    <img className='dm-button' src='https://i.imgur.com/VxBVVgq.png'/>
+                                    className='server-icon-container icon-dm'>
+                                    <div className='dm-icon-marker-container'>
+                                        <div className='server-marker'></div>
+                                        <img className='dm-button' src='https://i.imgur.com/VxBVVgq.png'/>
+
+                                    </div>
+
+                                    <div className='dm-border-bottom'>
+
+                                    </div>
                                 </div>
 
                             </NavLink>

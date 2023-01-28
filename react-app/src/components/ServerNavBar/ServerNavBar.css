@@ -68,6 +68,8 @@
     border-radius: 100px;
     margin: 5px;
     background-color: red;
+    /* position: relative; */
+    /* right: 15px; */
 }
 
 
@@ -197,4 +199,19 @@
     margin: 5px;
     transition: 0.3s;
 
+}
+
+.dm-border-bottom{
+    width: 40px;
+    border-bottom: solid 2px #36393e;
+    padding-top: 5px;
+}
+.icon-dm{
+    display: flex;
+    flex-direction: column;
+}
+
+.dm-icon-marker-container{
+    display: flex;
+    align-items: center;
 }
