@@ -6,8 +6,8 @@ socketio = SocketIO()
 
 if os.environ.get('FLASK_ENV') == 'production':
     origins = [
-            'http://leet-cord-aa.herokuapp.com/',
-            'https://leet-cord-aa.herokuapp.com/'
+            'http://leet-cord-aa.herokuapp.com',
+            'https://leet-cord-aa.herokuapp.com'
     ]
 else:
     origins = '*'
