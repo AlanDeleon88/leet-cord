@@ -25,7 +25,7 @@ export const getDmMsg = (dmId) => async dispatch => {
     if(response.ok){
         const data = await response.json()
         dispatch(getDmMsgAction(data.direct_messages))
-        return null
+        return data.direct_messages
     }
     else if (response.status < 500){
         const data = await response.json()
@@ -47,7 +47,7 @@ export const postDmMsg = (dmId, message) => async dispatch =>{
     if(response.ok){
         const data = await response.json()
         dispatch(setDmMsgAction(data))
-        return null
+        return data
     }
     else if(response.status < 500){
         const data = await response.json()

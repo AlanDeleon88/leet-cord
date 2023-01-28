@@ -17,6 +17,10 @@ const deleteUserDmRoomAction = (id) => ({
     payload: id
 })
 
+export const getDmRoomId = (id) => async dispatch =>{
+
+}
+
 export const getUserDmRooms = (userId) => async dispatch =>{
     const response = await fetch(`/api/users/${userId}/dm`)
 

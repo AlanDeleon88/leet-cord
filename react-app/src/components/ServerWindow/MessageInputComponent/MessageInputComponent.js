@@ -13,6 +13,7 @@ const MessageInputComponent = ({channelId, dmId, socket, currRoom}) =>{
     const [imgName, setImgName] = useState('')
     const channel = useSelector(state => state.channel)
     const dispatch = useDispatch()
+    // console.log(socket);
 
     const updateBody = (e) =>{
         setBody(e.target.value)
@@ -68,9 +69,10 @@ const MessageInputComponent = ({channelId, dmId, socket, currRoom}) =>{
             if(channelId){
                 dispatch(postNewMessage(channelId, newMsg)).then(newMessage =>{
                     if(newMessage.id){
-                        console.log(currRoom);
-                        console.log(newMessage);
-                        console.log(socket);
+                        // console.log(currRoom);
+                        // console.log(newMessage);
+                        // console.log(socket);
+                        // console.log(socket);
                         socket.send({newMessage, room: currRoom })
                         // socket.emit('chat', newMessage)
                         dispatch(getMessageId(newMessage.id))
@@ -81,7 +83,13 @@ const MessageInputComponent = ({channelId, dmId, socket, currRoom}) =>{
             }
             else if(dmId){
                 //! dispatch for posting dm message here.
-                dispatch(postDmMsg(dmId, newMsg))
+
+                dispatch(postDmMsg(dmId, newMsg)).then(newMessage =>{
+                    if(newMessage.id){
+                        // console.log(socket);
+                        socket.send({newMessage, room: currRoom })
+                    }
+                })
             }
             setImg('')
             setImgName('')

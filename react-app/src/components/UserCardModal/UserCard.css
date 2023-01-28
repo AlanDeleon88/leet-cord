@@ -91,3 +91,22 @@
 .user-card-date{
     color: grey;
 }
+
+.user-card-dm-button-container{
+    height: 50px;
+    /* border:solid 1px green; */
+    display: flex;
+    align-items: center;
+}
+
+.user-card-dm-button{
+    border:none;
+    background-color:#7289da;
+    color: white;
+    height: 25px;
+    border-radius: 5px;
+}
+
+.user-card-dm-button:hover{
+    background-color:#839bf4;
+}

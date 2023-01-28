@@ -17,9 +17,10 @@ const UserCard = ({userId}) => {
 
     let date;
 
-    //! might add a send message input directly into the card, write the message then it will redirect to the dm room.
-    //!
-
+    //TODO implement sockets on user cards as well. it should match the dmId the other user is in
+    //* could use .then chain to first get the dm room id, then join dm room on socket, then send the message to room.
+    //* not sure it would work because i would need to implement sockets into the dm list to listen for adding new dm rooms
+    //* might be out of scope...
     useEffect (() =>{
         dispatch(getUserId(userId)).then((res) =>{
 
@@ -34,6 +35,14 @@ const UserCard = ({userId}) => {
         setDmMessage(e.target.value)
     }
 
+    const handleDmClick = e =>{
+        dispatch(addUserDmRoom(userId)).then(res =>{
+            if(res.dm_id){
+                history.push(`/dm/${res.dm_id}`)
+            }
+        })
+    }
+
     const handleSubmit = (e) =>{
         e.preventDefault();
         let dm_msg = {
@@ -45,7 +54,7 @@ const UserCard = ({userId}) => {
                 if(res.dm_id){
                     let dmId = res.dm_id;
                     dispatch(postDmMsg(res.dm_id, dm_msg)).then( res =>{
-                        if(!res){
+                        if(res.id){
                             history.push(`/dm/${dmId}`)
                         }
                         else{
@@ -94,7 +103,7 @@ const UserCard = ({userId}) => {
                         { currentUser.id !== user.id ?
                             (
                                 <>
-
+{/*
                                     <div className='user-card-input-container'>
                                         <form onSubmit={handleSubmit}>
 
@@ -103,6 +112,11 @@ const UserCard = ({userId}) => {
                                         </form>
 
 
+                                    </div> */}
+                                    <div className='user-card-dm-button-container'>
+                                            <button onClick={handleDmClick} className='user-card-dm-button'>
+                                                Direct message
+                                            </button>
                                     </div>
 
                                 </>

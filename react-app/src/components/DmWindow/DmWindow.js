@@ -74,9 +74,9 @@ const DmWindow = () =>{
                             <div className='channel-message'>
                                 <MessageWindow type={'dm'}/>
                             </div>
-                            <div className='msg-input-container'>
+                            {/* <div className='msg-input-container'>
                                 <MessageInputComponent dmId={dm.id}/>
-                            </div>
+                            </div> */}
                         </div>
                     </Route>
                     <Route path={`${match.url}`}>

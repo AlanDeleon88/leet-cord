@@ -48,6 +48,7 @@ const MessageWindow = ({type,chId}) =>{
 
     useEffect(() =>{
             // console.log('DEBUG PLACE3===============================', channel.id, id)
+            socket = io();
             if(type === 'channel'){
                 //!clicking channel buttons do not cause this to run.
                 //! adding the channel store to the dependency array makes this run, and
@@ -57,7 +58,7 @@ const MessageWindow = ({type,chId}) =>{
                     // console.log(id);
                     if(Array.isArray(res)){
                         setSocketMessages(res)
-                        console.log('SETTING MESSAGES');
+                        // console.log('SETTING MESSAGES');
                         // console.log(res);
                         // console.log(isLoaded);
                         // setIsLoaded(true)
@@ -66,10 +67,10 @@ const MessageWindow = ({type,chId}) =>{
                 })
                 dispatch(clearChMessages())
 
-                socket = io();
+                // socket = io();
                 socket.on('message', (chat) =>{
                     setSocketMessages((messages) =>[...messages, chat.newMessage]);
-                    console.log('I HAVE LISTENED TO AN EVENT');
+                    // console.log('I HAVE LISTENED TO AN EVENT');
                         // console.log('WHAT AM I---------------',chat)
                 })
 
@@ -79,28 +80,46 @@ const MessageWindow = ({type,chId}) =>{
                 //         // console.log('WHAT AM I---------------',chat)
                 // })
 
-                console.log('SOCKET CONNECTED');
+                // console.log('SOCKET CONNECTED');
                 setCurrRoom(`CHmessage${chId}`)
 
                 return() => {
-                    console.log('DISMOUNT CHANNEL DISCONNECT SOCKET');
+                    // console.log('DISMOUNT CHANNEL DISCONNECT SOCKET');
                     socket.disconnect();
                 }
 
 
             }
             else if(type === 'dm'){
-                setPrevRoom(`DMmessage${dId}`)
+                // setPrevRoom(`DMmessage${dId}`)
                 //!dispatch for dm message heres
-                dispatch(getDmMsg(dId))
+                dispatch(getDmMsg(dId)).then(res =>{
+                    if(Array.isArray(res)){
+                        setSocketMessages(res)
+                        // console.log(res);
+
+                    }
+                })
+
+                dispatch(clearChMessages())
+
+                // socket = io();
+                // console.log(socket);
+                socket.on('message', (chat) =>{
+                    setSocketMessages((messages) =>[...messages, chat.newMessage]);
+                    // console.log('I HAVE LISTENED TO AN EVENT');
+                        // console.log('WHAT AM I---------------',chat)
+                })
             }
-            setIsLoaded(true)
+            // setIsLoaded(true)
+            setCurrRoom(`DMmessage${dId}`)
 
             return(()=>{
                 //!issue seems to be that whenever the channel changes or server changes, the message window does not
                 //! unmount, therefore causing multiple connection to the socket?
                 //! does not dismount when changing channels...
-                console.log('DISMOUNTED')
+                // console.log('DISMOUNTED')
+                socket.disconnect();
             })
 
     },[dispatch, dId, chId])
@@ -175,7 +194,7 @@ const MessageWindow = ({type,chId}) =>{
                         {isLoaded && (
                             <>
                                 {/*make message component later, pass message into component..*/}
-                                {direct_messages.map(el =>{
+                                {socketMessages.map(el =>{
                                     return(
                                         <MessageComponent message={el} showEdit={false} type='dm'/>
 
@@ -193,7 +212,20 @@ const MessageWindow = ({type,chId}) =>{
 
             </div>
             <div className='msg-input-container'>
-                <MessageInputComponent channelId={chId} socket={socket} currRoom={currRoom}/>
+                {dId ?
+                (
+                    <>
+                        <MessageInputComponent dmId={dId} socket={socket} currRoom={currRoom}/>
+                    </>
+                )
+                    :
+                (
+                    <>
+                        <MessageInputComponent channelId={chId} socket={socket} currRoom={currRoom}/>
+                    </>
+                )
+                }
+
             </div>
         </>
     )
