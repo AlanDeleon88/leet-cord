@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import './ServerForm.css'
 import ReactTooltip from "react-tooltip"
+import { MdAddAPhoto } from "react-icons/md";
 const ImageUploadComponent = ({setServerIcon}) =>{
     const [image, setImage] = useState(null);
     const [imageLoading, setImageLoading] = useState(false);
@@ -77,7 +78,7 @@ const ImageUploadComponent = ({setServerIcon}) =>{
             <button className="img-place-holder" onClick={() =>{
               document.getElementById('file').click();
             }}>
-             Upload Server Icon
+             <MdAddAPhoto />
             </button>
           )
           }

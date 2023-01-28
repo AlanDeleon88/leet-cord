@@ -1,5 +1,5 @@
 .add-server-container{
-    height: 400px;
+    height: 500px;
     width: 400px;
     border-radius: 2%;
     /* border: blue solid 1px; */
@@ -51,8 +51,12 @@
     align-items: center;
     height: 90px;
     width: 90px;
-    border: black dashed 2px;
+    /* border: black dashed 2px; */
     border-radius: 100%;
+    font-size: 50px;
+    color: #5e71b6;
+    border: none;
+    /* background-color: #63686e; */
     /* background-color: #36393e; */
 }
 
@@ -78,9 +82,10 @@
     justify-content: center;
     height: 50px;
     width: 100%;
+    padding:10px;
     padding-bottom: 20px;
     /* border: red solid 1px; */
-    font-size: 45px;
+    font-size: 35px;
     color: whitesmoke
 }
 
@@ -114,7 +119,7 @@
 }
 
 .server-name-input{
-    background-color: #63686e;
+    background-color:#282a2e;
     color: whitesmoke;
     outline: none;
     border: none;
@@ -126,7 +131,7 @@
 }
 
 .server-description-input{
-    background-color: #63686e;
+    background-color:#282a2e;
     color: whitesmoke;
     outline: none;
     border: none;

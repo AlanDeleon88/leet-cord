@@ -32,11 +32,14 @@
 
 .login-input-box{
     background-color: #1e2124;
-    border-radius: 5px;
+    border-radius: 10px;
     width: 200px;
     height:30px;
     color: whitesmoke;
     font-size: 15px;
+    padding:10px;
+    outline: none;
+    border: none;
 }
 
 .login-button{
@@ -47,6 +50,7 @@
     width: 100px;
     height: 40px;
     margin-top: 15px;
+    border-radius: 10px;
 }
 
 .login-button:hover{

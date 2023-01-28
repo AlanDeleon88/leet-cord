@@ -1,6 +1,6 @@
 .server-info-container{
     width: 600px;
-    height: 350px;
+    height: 380px;
     /* border:red solid 1px; */
     display: flex;
     flex-direction: column;
@@ -38,6 +38,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
+    top: 20px;
 
 }
 
@@ -45,6 +47,8 @@
     height: 50px;
     width: 150px;
     margin-bottom: 10px;
+    border-radius: 10px;
+    border:none;
 }
 
 .save{
@@ -97,7 +101,14 @@
 .edit-button-container{
     display: flex;
     justify-content: space-around;
-    width:100%;
+    width:97%;
+    background-color: #282b30;
+    padding:10px;
+    padding-top: 15px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    position: relative;
+    /* right: 1px; */
 }
 
 .edit-icon-button{
@@ -132,4 +143,18 @@
     font-size:20px;
     resize: none;
     overflow: scroll;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    outline:none;
+}
+
+.desc-input{
+    position: relative;
+    bottom: 40px;
+}
+
+.name-input{
+    position: relative;
+    top: 10px;
 }

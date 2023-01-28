@@ -8,6 +8,8 @@ import { getIdServer } from "../../../store/focusServer"
 import { getChannel } from "../../../store/channel"
 import { getChannelMessages } from "../../../store/channelMessage"
 
+//MdAddAPhoto
+
 const ServerForm = ({setShowModal, setShowMenu, setActiveClass}) =>{
     const [name, setName] = useState('')
     const user = useSelector(state => state.session.user)
@@ -64,7 +66,7 @@ const ServerForm = ({setShowModal, setShowMenu, setActiveClass}) =>{
             <div className="add-server-container">
                 <div className="form-header">
 
-                             Create a Server
+                             Customize your server
 
                 </div>
                 <div>

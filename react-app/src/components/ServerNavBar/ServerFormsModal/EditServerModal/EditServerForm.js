@@ -245,17 +245,17 @@ const EditServerForm = ({server, setShowModal}) =>{
                     </div>
                     <div className="name-desc-container">
                         <div className="edit-server name-input">
-                            <label style={{color:'whitesmoke', fontSize:'40px'}}>
+                            <label style={{color:'whitesmoke', fontSize:'40px', marginBottom:'10px'}}>
                                 Server name
                             </label>
                             <input className="edit-text-input" type='text' value={inputtedName ? name : server.name} onChange={updateName}/>
                         </div>
 
                         <div className='edit-server desc-input'>
-                            <label style={{color:'whitesmoke', fontSize:'40px'}}>
+                            <label style={{color:'whitesmoke', fontSize:'40px', marginBottom:'10px'}}>
                                 Description
                             </label>
-                            <textarea className="edit-text-input" type='text' value={inputtedDesc? description : server.description} onChange={updateDescription}/>
+                            <textarea className="edit-text-input edit-text-area" type='text' value={inputtedDesc? description : server.description} onChange={updateDescription}/>
                         </div>
 
                     </div>

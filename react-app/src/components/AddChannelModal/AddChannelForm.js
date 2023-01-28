@@ -63,7 +63,7 @@ const AddChannelForm = ({serverId, setShowModal}) =>{
                         <input type='text' value={description} onChange={updateDescription} placeholder='Channel Description' className='channel-desc-input'/>
                     </div>
 
-                    <div className="buttons-container">
+                    <div className="add-ch-buttons-container">
                         <button type='submit' className="add-ch-form-button add-ch-yes">Submit</button>
                         <button onClick={handleCancel} className="add-ch-form-button add-ch-cancel">Cancel</button>
                     </div>
