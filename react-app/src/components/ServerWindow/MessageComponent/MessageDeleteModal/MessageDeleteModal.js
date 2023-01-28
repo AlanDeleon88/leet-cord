@@ -4,16 +4,22 @@ import { useDispatch } from 'react-redux';
 import { deleteChMessage } from '../../../../store/channelMessage';
 import { deleteDmMessage } from '../../../../store/dmMessages';
 
-const MessageDeleteModal = ({setShowDeleteModal, message, type}) =>{
+const MessageDeleteModal = ({setShowDeleteModal, message, type, socket, currRoom}) =>{
     const dispatch = useDispatch();
 
     const handleDelete = (e) =>{
         //*need conditional for dm message dispatch
         if(!type){
-            dispatch(deleteChMessage(message.message_id))
+            dispatch(deleteChMessage(message.message_id)).then(res =>{
+                let deletedMsg = res
+                socket.send({deletedMsg, room: currRoom })
+            })
         }
         else if(type === 'dm'){
-            dispatch(deleteDmMessage(message.message_id))
+            dispatch(deleteDmMessage(message.message_id)).then(res=>{
+                let deletedMsg = res
+                socket.send({deletedMsg, room: currRoom })
+            })
         }
         setShowDeleteModal(false);
     }

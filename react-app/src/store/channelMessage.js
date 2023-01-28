@@ -87,7 +87,7 @@ export const editChMessage = (message) => async dispatch =>{
     if(response.ok){
         const data = await response.json();
         dispatch(addMessageAction(data))
-        return null
+        return data
     }
     else if (response.status < 500){
         const data = response.json();
@@ -107,7 +107,7 @@ export const deleteChMessage = (id) => async dispatch =>{
     if(response.ok){
         const data = await response.json()
         dispatch(deleteChMsgAction(id))
-        return null
+        return data
     }
     else if (response.status < 500){
         const data = await response.json()

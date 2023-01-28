@@ -67,7 +67,7 @@ export const deleteDmMessage = (id) => async (dispatch) =>{
     if(response.ok){
         const data = await response.json()
         dispatch(deleteDmMsgAction(data.id))
-        return null
+        return data
     }
     else if(response.status < 500){
         const data = await response.json()
@@ -89,7 +89,7 @@ export const editDmMessage = (message) => async dispatch =>{
     if(response.ok){
         const data = await response.json();
         dispatch(setDmMsgAction(data))
-        return null
+        return data
     }
     else if (response.status < 500){
         const data = response.json();

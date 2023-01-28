@@ -9,7 +9,8 @@ import { getMessageId } from '../../../store/focusChMessage'
 import UserCard from '../../UserCardModal'
 import formatDate from '../../../utils/formatDate'
 import { editDmMessage } from '../../../store/dmMessages'
-const MessageComponent = ({message, channelId, preview, showEdit, type}) => {
+// import {io} from 'socket.io-client'
+const MessageComponent = ({message, channelId, preview, showEdit, type, socket, currRoom}) => {
     const [showMenu, setShowMenu] = useState(false);
     const [showUserCard, setShowUserCard] = useState(false);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -19,9 +20,7 @@ const MessageComponent = ({message, channelId, preview, showEdit, type}) => {
     const [editMessage, setEditMessage] = useState('');
     const user = useSelector(state=>state.session.user)
     const date = formatDate(message.updated_at, true)
-    // console.log('DM MESG', message.message_id);
-    // console.log(editMessage, message.body);
-    // console.log(message.updated_at.split(' '));
+
     useEffect(() =>{
         setShowEditMessage(false);
     },[showEdit])
@@ -67,24 +66,36 @@ const MessageComponent = ({message, channelId, preview, showEdit, type}) => {
         else{
             //* need conditional for Dm messages
             if(!type){
-                const data = await dispatch(editChMessage(editedMessage))
-                if(data){
-                    //!error handle here
-                }
-                else{
-                    setShowEditMessage(false);
-                }
+                const data = await dispatch(editChMessage(editedMessage)).then(res =>{
+                    const editedMessage = res
+                    if(res.id){
+
+                        socket.send({editedMessage, room: currRoom })
+
+                        setShowEditMessage(false);
+                    }
+                    else{
+                        //!error handle
+                    }
+                })
+
             }
             else if(type === 'dm'){
                 //! dm dispatch to edit message
                 // console.log(editedMessage);
-                const data = await dispatch(editDmMessage(editedMessage))
-                if(data){
-                    //! error handle here
-                }
-                else{
-                    setShowEditMessage(false)
-                }
+                const data = await dispatch(editDmMessage(editedMessage)).then(res =>{
+                    const editedMessage = res
+                    if(res.id){
+
+                        socket.send({editedMessage, room: currRoom })
+
+                        setShowEditMessage(false);
+                    }
+                    else{
+                        //!error handle
+                    }
+                })
+
             }
         }
 
@@ -179,13 +190,13 @@ const MessageComponent = ({message, channelId, preview, showEdit, type}) => {
                    (
                         <>
                             {/* Message Delete modal for dm here*/}
-                            <MessageDeleteModal setShowDeleteModal={setShowDeleteModal} message={message} type='dm'/>
+                            <MessageDeleteModal setShowDeleteModal={setShowDeleteModal} message={message} type='dm' socket={socket} currRoom={currRoom}/>
                         </>
                    )
                    :
                    (
                         <>
-                            <MessageDeleteModal setShowDeleteModal={setShowDeleteModal} message={message}/>
+                            <MessageDeleteModal setShowDeleteModal={setShowDeleteModal} message={message} socket={socket} currRoom={currRoom}/>
 
                         </>
                    )

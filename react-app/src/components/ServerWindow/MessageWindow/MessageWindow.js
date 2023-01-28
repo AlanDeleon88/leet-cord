@@ -69,7 +69,16 @@ const MessageWindow = ({type,chId}) =>{
 
                 // socket = io();
                 socket.on('message', (chat) =>{
-                    setSocketMessages((messages) =>[...messages, chat.newMessage]);
+                    if(chat.newMessage){
+
+                        setSocketMessages((messages) =>[...messages, chat.newMessage]);
+                    }
+                    else{
+                        // setSocketMessages((messages) =>[...messages])
+                        dispatch(getChannelMessages(chId)).then(res =>{
+                            setSocketMessages(res)
+                        })
+                    }
                     // console.log('I HAVE LISTENED TO AN EVENT');
                         // console.log('WHAT AM I---------------',chat)
                 })
@@ -106,7 +115,16 @@ const MessageWindow = ({type,chId}) =>{
                 // socket = io();
                 // console.log(socket);
                 socket.on('message', (chat) =>{
-                    setSocketMessages((messages) =>[...messages, chat.newMessage]);
+                    if(chat.newMessage){
+
+                        setSocketMessages((messages) =>[...messages, chat.newMessage]);
+                    }
+                    else{
+                        // setSocketMessages((messages) =>[...messages])
+                        dispatch(getDmMsg(dId)).then(res =>{
+                            setSocketMessages(res)
+                        })
+                    }
                     // console.log('I HAVE LISTENED TO AN EVENT');
                         // console.log('WHAT AM I---------------',chat)
                 })
@@ -167,7 +185,7 @@ const MessageWindow = ({type,chId}) =>{
                                 {socketMessages.map(el =>{
                                     return(
 
-                                        <MessageComponent message={el} showEdit={false} />
+                                        <MessageComponent message={el} showEdit={false} socket={socket} currRoom={currRoom}/>
 
                                     )
                                 })}
@@ -196,7 +214,7 @@ const MessageWindow = ({type,chId}) =>{
                                 {/*make message component later, pass message into component..*/}
                                 {socketMessages.map(el =>{
                                     return(
-                                        <MessageComponent message={el} showEdit={false} type='dm'/>
+                                        <MessageComponent message={el} showEdit={false} type='dm' socket={socket} currRoom={currRoom}/>
 
                                     )
                                 })}
