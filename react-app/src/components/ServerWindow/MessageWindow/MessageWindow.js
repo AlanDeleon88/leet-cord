@@ -124,13 +124,13 @@ const MessageWindow = ({type,chId}) =>{
 
     },[dispatch, dId, chId])
 
-    useEffect(() =>{
-        dispatch(getChannelMessages(chId)).then(res =>{
-            if(Array.isArray(res)){
-                // setSocketMessages(res)
-            }
-        })
-    },[dispatch, focusMessage])
+    // useEffect(() =>{
+    //     dispatch(getChannelMessages(chId)).then(res =>{
+    //         if(Array.isArray(res)){
+    //             // setSocketMessages(res)
+    //         }
+    //     })
+    // },[dispatch, focusMessage])
 
     useEffect(() =>{
         const joinRoom = (room)=> {

@@ -63,14 +63,17 @@ function App() {
           )
 
         }
+
         <ProtectedRoute path= '/debug-forms' exact={true}>
           Add debuging forms here for creating servers/channels/messages/edit
           <DebugForms />
 
         </ProtectedRoute>
-        <Route path='/'>
-          404 not found!
-        </Route>
+
+        <ProtectedRoute path='/'>
+          <Redirect to={'/dm'}/>
+        </ProtectedRoute>
+
       </Switch>
 
      </div>
