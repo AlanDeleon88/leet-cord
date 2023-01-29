@@ -1,5 +1,4 @@
 import img from './icons/discordSplashImg.jpg'
-import splash2 from './icons/discordSplashImg_2.jpg'
 import lnkedIcon from './icons/linkednIcon.png'
 import githubIcon from './icons/githubLogo.png'
 import reactIcon from './icons/reactIcon.png'
