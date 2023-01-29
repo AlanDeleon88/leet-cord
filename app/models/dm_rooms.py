@@ -14,7 +14,7 @@ class DmRoom(db.Model):
     user_one = db.relationship('User', foreign_keys=[user1_id], back_populates='dm_left')
     user_two = db.relationship('User', foreign_keys=[user2_id], back_populates='dm_right')
 
-    direct_messages = db.relationship('DirectMessage',back_populates = 'dm_rooms')
+    direct_messages = db.relationship('DirectMessage',back_populates = 'dm_rooms', order_by='DirectMessage.created_at')
 
     def to_dict(self):
         return{
