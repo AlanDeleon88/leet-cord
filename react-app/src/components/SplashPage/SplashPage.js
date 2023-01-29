@@ -1,10 +1,13 @@
 import img from './icons/discordSplashImg.jpg'
+import splash2 from './icons/discordSplashImg_2.jpg'
 import lnkedIcon from './icons/linkednIcon.png'
 import githubIcon from './icons/githubLogo.png'
 import reactIcon from './icons/reactIcon.png'
 import reduxIcon from './icons/reduxLogo.png'
 import sqlAlchIcon from './icons/sqlalchemyLogo.png'
 import flaskIcon from './icons/flaskLogo.png'
+import socketIcon from './icons/socketio_logo_icon.png'
+import aws from './icons/amazon_aws_logo.png'
 import './SplashPage.css'
 import LoginModal from '../LoginModal'
 
@@ -31,13 +34,14 @@ const SplashPage = () => {
                             <img className='tech-icon redux' src={reduxIcon}/>
                             <img className='tech-icon flask' src={flaskIcon}/>
                             <img className='tech-icon sqlalchemy' src={sqlAlchIcon} />
-
+                            <img className='tech-icon socket' src={socketIcon}/>
+                            <img className='tech-icon aws' src={aws}/>
 
                         </div>
                         <div className="about-links-container">
                             <div className='splash-caption'>
 
-                                @2022 Discord-clone by Alan Deleon
+                                @2022 leet-cord by Alan Deleon
 
                             </div>
 
