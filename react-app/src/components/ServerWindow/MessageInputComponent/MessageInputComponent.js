@@ -15,7 +15,7 @@ const MessageInputComponent = ({channelId, dmId, socket, currRoom}) =>{
     const dmRoom = useSelector(state=>state.focusDm)
     const dispatch = useDispatch()
     // console.log(socket);
-
+    //TODO add use effect hook to get place holder
     const updateBody = (e) =>{
         setBody(e.target.value)
     }
@@ -130,7 +130,7 @@ const MessageInputComponent = ({channelId, dmId, socket, currRoom}) =>{
                     <input type= 'file' accept="image/*" style={{display: 'none'}} id='msg-img-file' onChange={handleImg} onClick={(e) => e.target.value = null}/>
                     <form onSubmit={submitMessage} className='msg-form-container'>
 
-                            <input  type='text' className="message-input-box" value={body} onChange={updateBody} placeholder={dmId ? `Message @${dmRoom.other_user.username}` : `Message # ${channel.name}`}/>
+                            <input  type='text' className="message-input-box" value={body} onChange={updateBody} placeholder={dmId ? `Message` : `Message # ${channel.name}`}/>
 
                     </form>
                 </div>
