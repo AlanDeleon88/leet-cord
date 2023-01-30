@@ -12,6 +12,7 @@ const MessageInputComponent = ({channelId, dmId, socket, currRoom}) =>{
     const [img, setImg] = useState('')
     const [imgName, setImgName] = useState('')
     const channel = useSelector(state => state.channel)
+    const dmRoom = useSelector(state=>state.focusDm)
     const dispatch = useDispatch()
     // console.log(socket);
 
@@ -129,7 +130,7 @@ const MessageInputComponent = ({channelId, dmId, socket, currRoom}) =>{
                     <input type= 'file' accept="image/*" style={{display: 'none'}} id='msg-img-file' onChange={handleImg} onClick={(e) => e.target.value = null}/>
                     <form onSubmit={submitMessage} className='msg-form-container'>
 
-                            <input  type='text' className="message-input-box" value={body} onChange={updateBody} placeholder={`Message # ${channel.name}`}/>
+                            <input  type='text' className="message-input-box" value={body} onChange={updateBody} placeholder={dmId ? `Message @${dmRoom.other_user.username}` : `Message # ${channel.name}`}/>
 
                     </form>
                 </div>
