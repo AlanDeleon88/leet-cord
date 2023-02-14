@@ -47,7 +47,7 @@ const LoginForm = () => {
     <div className='login-form-container'>
         <form onSubmit={onLogin} className='login-form'>
             <div className='login-caption'>
-                Log in to Discord
+                Log in to leet-cord
             </div>
         <div>
             {errors.map((error, ind) => (
