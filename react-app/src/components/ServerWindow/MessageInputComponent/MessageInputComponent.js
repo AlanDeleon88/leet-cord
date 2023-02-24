@@ -22,7 +22,7 @@ const MessageInputComponent = ({channelId, dmId, socket, currRoom}) =>{
 
     const handleImg = async e =>{
         const image = e.target.files[0]
-        console.log(image);
+        // console.log(image);
 
         const formData = new FormData()
 
