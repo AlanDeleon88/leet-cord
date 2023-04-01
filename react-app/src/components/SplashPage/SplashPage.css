@@ -1,13 +1,13 @@
 .splash-main-container{
     width:100%;
-    height: 99%;
+    height: 98%;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
-    /* border: solid 1px red; */
+    overflow: visible;
+    border: solid 1px red;
     /* overflow-y: scroll; */
 
 
@@ -94,6 +94,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    border: 2px solid blue;
+    /* height: 90%; */
+    /* position: relative; */
+    /* bottom: 10%; */
 }
 
 
@@ -106,11 +110,12 @@
     display: flex;
     flex-direction: row;
     margin-bottom: 20px;
+    /* border: 1px green solid; */
 }
 
 .tech-container{
     display: flex;
     align-items: center;
-    margin-top:130px
+    /* margin-top:130px */
 
 }
