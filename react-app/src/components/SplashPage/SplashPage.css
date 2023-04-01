@@ -7,7 +7,7 @@
     align-items: center;
     justify-content: center;
     overflow: visible;
-    border: solid 1px red;
+    /* border: solid 1px red; */
     /* overflow-y: scroll; */
 
 
@@ -94,7 +94,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 2px solid blue;
+    /* border: 2px solid blue; */
     /* height: 90%; */
     /* position: relative; */
     /* bottom: 10%; */
