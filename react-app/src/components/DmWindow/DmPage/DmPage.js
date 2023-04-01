@@ -10,6 +10,7 @@ const DmPage = () =>{
                 <div className='dm-page-placeholder-prompt'>
                     Friend's List coming soon!
                 </div>
+
             </div>
 
         </>

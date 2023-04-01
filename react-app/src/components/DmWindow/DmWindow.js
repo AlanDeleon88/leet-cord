@@ -80,7 +80,9 @@ const DmWindow = () =>{
                         </div>
                     </Route>
                     <Route path={`${match.url}`}>
-                        <DmPage />
+
+                            <DmPage />
+
                     </Route>
                 </Switch>
             </div>

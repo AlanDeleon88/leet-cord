@@ -1,6 +1,7 @@
 /* TODO Add site wide styles */
 .main{
-    background-color: #1e2124;
+    /* background-color: #1e2124; */
+    background-color: #36393e;
     display: flex;
     position:fixed;
     width: auto !important;
