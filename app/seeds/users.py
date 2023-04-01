@@ -1,4 +1,8 @@
 from app.models import db, User
+from ..utils import generate_email
+from ..utils import generate_username
+from ..utils import generate_last_name
+from ..utils import generate_first_name
 
 
 # Adds a demo user, you can add other users here if you want
@@ -13,6 +17,11 @@ def seed_users():
     db.session.add(demo)
     db.session.add(marnie)
     db.session.add(bobbie)
+
+    for i in range(0, 40):
+        user = User(
+                username= generate_username(), email=generate_email(), first_name=generate_first_name(), last_name=generate_last_name(), password='password')
+        db.session.add(user)
 
     db.session.commit()
 

@@ -1,4 +1,6 @@
-from app.models import db, ServerMessage
+from app.models import db, ServerMessage, Server
+from ..utils.faker_seed import generate_server_message
+import random
 
 def seed_server_messages():
     ch1message1 = ServerMessage(
@@ -40,6 +42,29 @@ def seed_server_messages():
     db.session.add(ch2message1)
     db.session.add(ch2message2)
     db.session.add(ch3message1)
+
+    #! query for all servers --> iterate through all servers
+    #! each iteration query for all members in server
+    #! iterate through all of server's channels
+        #! each iteration random range of 4-15
+            #! each iteration create a server_message with userId picked randomly from server members, random message, and current channel.
+    servers = Server.query.all()
+    for server in servers:
+        serv_dict = server.to_dict()
+        users = serv_dict['members']
+        channels = serv_dict['channels']
+        for channel in channels:
+            for i in range(0, random.randint(7,20)):
+                server_message = ServerMessage(
+                    sender_id = users[random.randint(0,len(users) - 1)]['user_id'],
+                    channel_id = channel['channel_id'],
+                    body = generate_server_message()
+                )
+                db.session.add(server_message)
+
+    # for server in servers:
+    #     server.members
+
     db.session.commit();
 
 def undo_server_messages():
